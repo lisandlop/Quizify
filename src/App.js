@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import { HashRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
-import Navigation from './components/Navigation'
-import LandingPage from './components/LandingPage';
+import Navigation from './components/Navigation/Navigation'
+import LandingPage from './components/LandingPage/LandingPage';
 
 import * as ROUTES from './constants/routes';
 
