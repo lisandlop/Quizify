@@ -1,7 +1,7 @@
 {
   "name": "musicquiz",
   "version": "0.1.0",
-  "homepage": "https://username.github.io/repo",
+  "homepage": "https://jonatanlindstroom.github.io/MusicQuiz",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
