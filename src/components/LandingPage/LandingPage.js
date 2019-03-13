@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import logo from '../../logo.svg';
 import './LandingPage.scss';
+import SignUp from '../SignUp/SignUp'
 
 class LandingPage extends Component {
   render() {
@@ -11,7 +12,9 @@ class LandingPage extends Component {
       <div className="LandingPage Row">
         <Container fluid={true}>
           <Row>
-            <Col xs={6}></Col>
+            <Col xs={6}>
+              <SignUp/>
+            </Col>
 
             <Col xs={6}>
             <header className="App-header">

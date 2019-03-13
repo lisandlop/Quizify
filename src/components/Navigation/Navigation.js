@@ -2,7 +2,7 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedhat } from '@fortawesome/free-brands-svg-icons';
+import { faDrum } from '@fortawesome/free-solid-svg-icons';
 
 import './Navigation.scss';
 
@@ -12,7 +12,7 @@ const Navigation = () => (
     <div id="navigation">
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand>
-                <FontAwesomeIcon size="2x" icon={faRedhat}/>
+                <FontAwesomeIcon size="2x" icon={faDrum}/>
             </Navbar.Brand>
 
             <Nav>
