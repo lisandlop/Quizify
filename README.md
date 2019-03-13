@@ -1,10 +1,25 @@
-# MusicQuiz
+# Quizify
 
 ## First time setup:
 ```
 git clone git@github.com:JonatanLindstroom/MusicQuiz.git
-cd MusicQuiz
+cd Quizify
 yarn install
+```
+
+### Setup firebase:
+In *src/components/Firebase* add a file *config.js* with credentials of following format:
+```
+const config = {
+    apiKey: "abcdefghijklmnopqrstuvxyz",
+    authDomain: "project.firebaseapp.com",
+    databaseURL: "https://project.firebaseio.com",
+    projectId: "project",
+    storageBucket: "project.appspot.com",
+    messagingSenderId: "1234567890"
+};
+
+export default config;
 ```
 
 ## Available Scripts

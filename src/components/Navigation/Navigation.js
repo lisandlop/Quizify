@@ -2,7 +2,8 @@ import React from 'react';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDrum } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faSpotify } from '@fortawesome/free-brands-svg-icons';
 
 import './Navigation.scss';
 
@@ -12,8 +13,10 @@ const Navigation = () => (
     <div id="navigation">
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand>
-                <FontAwesomeIcon size="2x" icon={faDrum}/>
+                <FontAwesomeIcon size="2x" icon={faSpotify}/>
+                <FontAwesomeIcon size="2x" icon={faQuestion}/>
             </Navbar.Brand>
+            <Navbar.Brand>Quizify</Navbar.Brand>
 
             <Nav>
                 <Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
