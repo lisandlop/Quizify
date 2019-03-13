@@ -1,7 +1,7 @@
 {
   "name": "quizify",
   "version": "0.1.0",
-  "homepage": "https://kthquizify.github.io/quizify",
+  "homepage": "https://kthquizify.github.io/Quizify",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.15",
