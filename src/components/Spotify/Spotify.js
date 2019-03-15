@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
 import queryString from 'querystring';
+import Card from 'react-bootstrap/Card';
+
+import './Spotify.scss';
 
 const spotifyWebApi = new Spotify();
 
@@ -20,6 +23,18 @@ class SpotifyAPI extends Component {
 		if (params.access_token) {
 			spotifyWebApi.setAccessToken(params.access_token)
 		}
+	}
+
+	authenticateSpotify() {
+		const scope = 'user-read-private user-read-email user-read-playback-state';
+		const authUrl = 'https://accounts.spotify.com/authorize?' + queryString.stringify({
+			response_type: 'token',
+      client_id: 'a67493ba28914f69ac66dc7f6324c467',
+      scope: scope,
+      redirect_uri: 'http://localhost:3000'
+		})
+
+		window.location.replace(authUrl);
 	}
 
 	getHashParams() {
@@ -46,26 +61,26 @@ class SpotifyAPI extends Component {
 	}
 
 	render() {
-		const scope = 'user-read-private user-read-email user-read-playback-state';
-		const authUrl = 'https://accounts.spotify.com/authorize?' + queryString.stringify({
-			response_type: 'token',
-      client_id: 'a67493ba28914f69ac66dc7f6324c467',
-      scope: scope,
-      redirect_uri: 'http://localhost:3000'
-		})
-
     return (
-			<div className="SpotifyLogIn">
-				<a className="btn btn-success" href={authUrl}>
+			<div className="Spotify">
+				
+				{!this.state.loggedIn ? 
+				(<button className="btn btn-success" onClick={() => this.authenticateSpotify()}>
 					Log in to Spotify
-				</a>
-
-				<div style={{color: '#eee'}}>Now playing: {this.state.nowPlaying.name}</div>
-				<div style={{marginBottom: '20px'}}>
-					<img src={this.state.nowPlaying.image} style={{width: '100px'}}/>
-				</div>
-
-				<button className="btn btn-light" onClick={() => this.getNowPlaying()}>Refresh 'now playing'</button>
+				</button>) : 
+				(<div>
+					<div style={{color: '#eee'}}>Now playing: {this.state.nowPlaying.name}</div>	
+					{this.state.nowPlaying.image ? (
+					<div>
+						<Card id="recordPlayer">
+							<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Card image" />
+							<Card.ImgOverlay>
+								<img id="album" className="rounded-circle" src={this.state.nowPlaying.image}/>
+							</Card.ImgOverlay>
+						</Card>;
+					</div>) : (<div/>)}
+					<button className="btn btn-light" onClick={() => this.getNowPlaying()}>Refresh 'now playing'</button>
+				</div>)}
 			</div>
     );
   }
