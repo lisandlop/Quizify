@@ -1,5 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
+
 import config from './config.js'
 
 class Firebase {
@@ -7,6 +9,7 @@ class Firebase {
     app.initializeApp(config);
 
     this.auth = app.auth();
+    this.db = app.firestore();
   }
 
   // Auth API
@@ -22,6 +25,13 @@ class Firebase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
+
+
+  // *** Quiz API ***
+
+  quiz = uid => this.db.collection(`quizzes/${uid}`).get();
+
+  quizzes = () => this.db.collection('quizzes').get();
 }
 
 export default Firebase;

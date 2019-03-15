@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import logo from '../../logo.svg';
-import './LandingPage.scss';
-import SignUp from '../SignUp/SignUp'
+import logo from '../logo.svg';
+import '../styles/LandingPage.scss';
+
+import Spotify from '../components/Spotify/Spotify'
 
 class LandingPage extends Component {
   render() {
@@ -13,7 +14,7 @@ class LandingPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={6}>
-              <SignUp/>
+              <Spotify/>
             </Col>
 
             <Col xs={6}>

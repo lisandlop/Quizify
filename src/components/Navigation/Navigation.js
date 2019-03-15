@@ -20,6 +20,7 @@ const Navigation = () => (
 
             <Nav>
                 <Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
+                <Nav.Link href={ROUTES.TEST}>Test page</Nav.Link>
             </Nav>
         </Navbar>
     </div>
