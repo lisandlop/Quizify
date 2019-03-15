@@ -1,5 +1,7 @@
 # Quizify
 
+[Deployed application](https://kthquizify.github.io/Quizify/)
+
 ## First time setup:
 ```
 git clone git@github.com:JonatanLindstroom/MusicQuiz.git
