@@ -4,7 +4,7 @@
 
 ## First time setup:
 ```
-git clone git@github.com:JonatanLindstroom/MusicQuiz.git
+git clone git@github.com:kthquizify/Quizify.git
 cd Quizify
 yarn install
 ```
