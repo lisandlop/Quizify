@@ -75,9 +75,15 @@ class SpotifyAPI extends Component {
 						<Card id="recordPlayer">
 							<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Card image" />
 							<Card.ImgOverlay>
+								<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg"/>
+							</Card.ImgOverlay>
+							<Card.ImgOverlay className="albumCover">
 								<img id="album" className="rounded-circle" src={this.state.nowPlaying.image}/>
 							</Card.ImgOverlay>
-						</Card>;
+							<Card.ImgOverlay>
+								<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg"/>
+							</Card.ImgOverlay>
+						</Card>
 					</div>) : (<div/>)}
 					<button className="btn btn-light" onClick={() => this.getNowPlaying()}>Refresh 'now playing'</button>
 				</div>)}
