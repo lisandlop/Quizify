@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navigation from './components/Navigation/Navigation'
 import LandingPage from './containers/LandingPage';
@@ -8,7 +8,7 @@ import TestPage from './containers/TestPage';
 import * as ROUTES from './constants/routes';
 
 const App = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <div>
       <Navigation/>
       
