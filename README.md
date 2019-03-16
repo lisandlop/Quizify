@@ -1,6 +1,6 @@
 # Quizify
 
-### [Deployed application](https://quizify-a9936.firebaseapp.com/)
+### [Deployed application](https://kthquizify.firebaseapp.com)
 
 ## First time setup:
 ```
