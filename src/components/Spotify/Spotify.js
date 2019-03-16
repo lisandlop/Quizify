@@ -31,7 +31,7 @@ class SpotifyAPI extends Component {
 			response_type: 'token',
       client_id: 'a67493ba28914f69ac66dc7f6324c467',
       scope: scope,
-      redirect_uri: 'https://kthquizify.github.io/Quizify/#/'
+      redirect_uri: 'https://quizify-a9936.firebaseapp.com/'
 		})
 
 		window.location.replace(authUrl);
@@ -40,7 +40,7 @@ class SpotifyAPI extends Component {
 	getHashParams() {
 		var hashParams = {};
 		var e, r = /([^&;=]+)=?([^&;]*)/g,
-				q = window.location.hash.substring(3);
+				q = window.location.hash.substring(1);
 		while (e = r.exec(q)) {
 				hashParams[e[1]] = decodeURIComponent(e[2]);
 		}

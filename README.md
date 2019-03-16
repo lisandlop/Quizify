@@ -1,6 +1,6 @@
 # Quizify
 
-### [Deployed application](https://kthquizify.github.io/Quizify/)
+### [Deployed application](https://quizify-a9936.firebaseapp.com/)
 
 ## First time setup:
 ```
@@ -35,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn deploy`
 
-Deploys the react app to gh-pages. Should ony be used from master branch.
+Deploys the react app to firebase. Should ony be used from master branch.
 
 <br/>
 <br/>
