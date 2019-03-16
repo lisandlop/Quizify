@@ -1,15 +1,13 @@
-# Quizify
+# [Quizify](https://kthquizify.firebaseapp.com)
 
-### [Deployed application](https://kthquizify.firebaseapp.com)
-
-## First time setup:
+## First time setup :floppy_disk:
 ```
 git clone git@github.com:kthquizify/Quizify.git
 cd Quizify
 yarn install
 ```
 
-### Setup firebase:
+### Setup firebase 
 In *src/components/Firebase* add a file *config.js* with credentials of following format:
 ```
 const config = {
@@ -24,7 +22,7 @@ const config = {
 export default config;
 ```
 
-## Available Scripts
+## Available Scripts :computer:
 
 In the project directory, you can run:
 
@@ -45,7 +43,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
 <br/>
 <br/>
 
-## Development progress
+## Development progress :chart_with_upwards_trend:
 
 - [x] Setup basic framework (React)
 - [x] Install useful packages (Sass, React-router etc.)
@@ -65,7 +63,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
 <br/>
 <br/>
 
-## File structure (images ignored)
+## File structure (images ignored) :open_file_folder:
 
 */public*
   * *index.html* 
