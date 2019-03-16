@@ -1,6 +1,6 @@
 # Quizify
 
-[Deployed application](https://kthquizify.github.io/Quizify/)
+### [Deployed application](https://kthquizify.github.io/Quizify/)
 
 ## First time setup:
 ```
@@ -36,4 +36,90 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ### `yarn deploy`
 
 Deploys the react app to gh-pages.
+
+<br/>
+<br/>
+<br/>
+
+---
+
+## File structure (images ignored)
+
+*/public*
+  * *index.html* 
+    <br/>
+    The foundation in which the app rests.
+
+*/src*
+  * */components*
+    * */Firebase*
+      * config.js
+        <br/>
+        Contains the network secrets for the Firebase API.
+      * context.js
+        <br/>
+        Creates context's so that different parts of the Firebase connection can be instantiated from different parts of the component hierarchy.
+      * firebase.js
+        <br/>
+        Serves as our model for calling the Firebase API.
+      * indes.jx
+        <br/>
+        Exports the necessary functionalities from this folder.
+    * */Navigation*
+      * Navigation.js
+        <br/>
+        Creates html code for navigation.
+      * Navigation.scss
+        <br/>
+        Styles the navigation component with Sassy CSS.
+    * */Quizzes*
+      * Quizzes.js
+        <br/>
+        Currently serves as test for firebase db.
+    * */SignUp*
+      * SignUp.js
+        <br/>
+        Currently serves as test for firebase auth.
+    * */Spotify*
+      * Spotify.js
+        <br/>
+        Creates a spotify component and connections to the Spotify API.
+      * Spotify.scss
+        <br/>
+        Styles the spotify component with Sassy CSS.
+  * */constants*
+    * routes.js
+      <br/>
+      Exports string-constants for each path used as a route.
+  * */containers*
+    * LandingPage.js
+      <br/>
+      Creates the landing page component. <br/>
+      Corresponds to the '/' route.
+    * TestPage.js
+      <br/>
+      Creates the test page component. <br/>
+      Corresponds to the '/test' route.
+  * */styles*
+    * LandingPage.js
+      <br/>
+      Styles the LandingPage component with Sassy CSS.
+    * TestPage.js
+      <br/>
+      Styles the TestPage component with Sassy CSS.
+  * App.js
+    <br/>
+    Router for the application.
+  * App.test.js
+    <br/>
+    Test-file for application stability.
+  * index.css
+    <br/>
+    Global css for the entire application.
+  * index.js
+    <br/>
+    Instantiates the application and firebase connection.
+  * serviceWorker.js
+    <br/>
+    Default React service worker.
 
