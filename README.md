@@ -35,13 +35,35 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `yarn deploy`
 
-Deploys the react app to gh-pages.
+Deploys the react app to gh-pages. Should ony be used from master branch.
 
-<br/>
 <br/>
 <br/>
 
 ---
+
+<br/>
+<br/>
+
+## Development progress
+
+- [x] Setup basic framework (React)
+- [x] Install useful packages (Sass, React-router etc.)
+- [x] Initial layout
+- [x] Configure deployment method
+- [x] Make contant with Spotify API
+- [x] Connect to Firebase Cloudstore
+- [ ] Install Spotify WebPlayer
+- [ ] Setup Quizzing components
+- [ ] ...
+
+<br/>
+<br/>
+
+---
+
+<br/>
+<br/>
 
 ## File structure (images ignored)
 
