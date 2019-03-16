@@ -41,7 +41,7 @@ class SpotifyAPI extends Component {
 		var hashParams = {};
 		var e, r = /([^&;=]+)=?([^&;]*)/g,
 				q = window.location.hash.substring(1);
-		while ( e = r.exec(q)) {
+		while (e = r.exec(q)) {
 				hashParams[e[1]] = decodeURIComponent(e[2]);
 		}
 		return hashParams;
@@ -73,15 +73,15 @@ class SpotifyAPI extends Component {
 					{this.state.nowPlaying.image ? (
 					<div>
 						<Card id="recordPlayer">
-							<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Card image" />
+							<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Record base" />
 							<Card.ImgOverlay>
-								<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg"/>
+								<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg" alt="Record lines"/>
 							</Card.ImgOverlay>
 							<Card.ImgOverlay className="albumCover">
-								<img id="album" className="rounded-circle" src={this.state.nowPlaying.image}/>
+								<img id="album" className="rounded-circle" src={this.state.nowPlaying.image} alt=""/>
 							</Card.ImgOverlay>
 							<Card.ImgOverlay>
-								<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg"/>
+								<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg" alt=""/>
 							</Card.ImgOverlay>
 						</Card>
 					</div>) : (<div/>)}
