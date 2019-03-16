@@ -31,7 +31,7 @@ class SpotifyAPI extends Component {
 			response_type: 'token',
       client_id: 'a67493ba28914f69ac66dc7f6324c467',
       scope: scope,
-      redirect_uri: 'https://quizify-a9936.firebaseapp.com/'
+      redirect_uri: 'https://kthquizify.firebaseapp.com'
 		})
 
 		window.location.replace(authUrl);
