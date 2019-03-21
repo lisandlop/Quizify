@@ -107,6 +107,13 @@ Deploys the react app to firebase. Should ony be used from master branch.
       * Spotify.scss
         <br/>
         Styles the spotify component with Sassy CSS.
+    * */StartQuiz*
+      * StartQuiz.js
+        <br/>
+        Contains a button that starts the quiz.
+      * StartQuiz.sccs*
+        <br/>
+        Styles the startquiz component with Sassy CSS.
   * */constants*
     * routes.js
       <br/>
