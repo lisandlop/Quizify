@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Link } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button'; 
 
 import '../styles/LandingPage.scss';
 
 import Spotify from '../components/Spotify/Spotify'
+import * as ROUTES from '../constants/routes';
 
 class LandingPage extends Component {
   render() {
@@ -13,12 +15,20 @@ class LandingPage extends Component {
       <div className="LandingPage">
         <Container fluid={true}>
           <Row>
-            <Col xs={6}>
+            <h1>Welcome!</h1>
+          </Row>
+          <Row>
+            <Col xs={12} sm={6}>
               <Spotify/>
             </Col>
 
-            <Col xs={6}>
-              <h1>Landing page</h1>
+            <Col xs={12} sm={6} id="StartOrCreateCol">
+              <Row>
+                <Button href={ROUTES.SELECT} variant="warning" size="lg" block>Play quiz</Button>
+              </Row>
+              <Row>
+                <Button variant="warning" size="lg" block disabled>Create quiz</Button>
+              </Row>
             </Col>
           </Row>
         </Container>
