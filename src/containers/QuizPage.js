@@ -4,7 +4,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import '../styles/QuizPage.scss';
 
-import Quizzes from '../components/Quizzes/Quizzes'
+import Quizzes from '../components/Quizzes/Quizzes';
+import Question from '../components/Question/Question';
 
 class QuizPage extends Component {
   render() {
@@ -12,12 +13,8 @@ class QuizPage extends Component {
       <div className="QuizPage">
         <Container fluid={true}>
           <Row>
-            <Col xs={6}>
-              <Quizzes/>
-            </Col>
-
-            <Col xs={6}>
-              <h1>Play Quiz</h1>
+            <Col xs={12}>
+              <Question/>
             </Col>
           </Row>
         </Container>

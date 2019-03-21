@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { compose } from 'recompose';
+//import { compose } from 'recompose';
 
 import { withFirebase } from '../Firebase';
 
@@ -15,7 +15,7 @@ class QuizBase extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-
+ 
     var quizList = [];
     this.props.firebase.quizzes().then(snapshot => {
       snapshot.forEach((doc) => {

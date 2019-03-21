@@ -1,6 +1,13 @@
 .LandingPage {
   text-align: center;
   background-color: #282c34;
+
+  #StartOrCreateCol {
+    padding: 5em; 
+
+    .btn {
+      padding: 1em; 
+      margin: 1em; 
+    }
+  }
 }
-
-
