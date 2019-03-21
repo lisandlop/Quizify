@@ -53,6 +53,12 @@ Deploys the react app to firebase. Should ony be used from master branch.
 - [x] Connect to Firebase Cloudstore
 - [ ] Install Spotify WebPlayer
 - [ ] Setup Quizzing components
+- [ ] Make all buttons work
+- [ ] Create a quiz
+- [ ] Create filter functions
+- [ ] ...
+- [ ] ...
+- [ ] ...
 - [ ] ...
 
 <br/>
@@ -92,10 +98,21 @@ Deploys the react app to firebase. Should ony be used from master branch.
       * Navigation.scss
         <br/>
         Styles the navigation component with Sassy CSS.
+    * */Question*
+      * Question.js
+        <br/>
+        Creates a question component.
+      * Question.scss
+        <br/>
+        Styles the uestion component with Sassy CSS.
     * */Quizzes*
       * Quizzes.js
         <br/>
         Currently serves as test for firebase db.
+    * */SelectQuiz*
+      * SelectQuiz.js
+        <br/>
+        Creates a select quiz component.
     * */SignUp*
       * SignUp.js
         <br/>
