@@ -6,14 +6,10 @@ import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 import Firebase, { FirebaseContext } from './components/Firebase';
-import SpotifyContext from './components/Spotify/context';
-import SpotifyAPI from './components/Spotify/Spotify';
 
 ReactDOM.render(
     <FirebaseContext.Provider value={new Firebase()}>
-        <SpotifyContext.Provider value={new SpotifyAPI()}>
-            <App />
-        </SpotifyContext.Provider>
+        <App />
     </FirebaseContext.Provider>, 
     document.getElementById('root')
 );
