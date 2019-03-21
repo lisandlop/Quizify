@@ -51,7 +51,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
 - [x] Configure deployment method
 - [x] Make contant with Spotify API
 - [x] Connect to Firebase Cloudstore
-- [ ] Install Spotify WebPlayer
+- [ ] Install Spotify WebPlayer (If needed)
 - [ ] Setup Quizzing components
 - [ ] Make all buttons work
 - [ ] Create a quiz
@@ -104,7 +104,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
         Creates a question component.
       * Question.scss
         <br/>
-        Styles the uestion component with Sassy CSS.
+        Styles the question component with Sassy CSS.
     * */Quizzes*
       * Quizzes.js
         <br/>
@@ -132,6 +132,9 @@ Deploys the react app to firebase. Should ony be used from master branch.
         <br/>
         Styles the startquiz component with Sassy CSS.
   * */constants*
+    * colors.scss
+      <br/>
+      Exports scss-variables for useful colors. 
     * routes.js
       <br/>
       Exports string-constants for each path used as a route.
