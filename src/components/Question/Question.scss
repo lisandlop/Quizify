@@ -1,0 +1,88 @@
+.Question {
+    #altCol {
+        align-self: center;
+    }
+
+    .selectedWrong {
+        background-color: red; 
+        border: solid 2px red; 
+    }
+
+    .correctAnswer {
+        border: solid 3px green; 
+    }
+
+    .selectedCorrect {
+        background-color: green; 
+        border: solid 2px green; 
+    }
+
+    .remainingAnswers {
+        background-color: grey; 
+    }
+
+    #altButtons {
+        padding:1em; 
+        margin-bottom:1em; 
+        margin-right:1em; 
+    }
+
+    #recordPlayers {
+        align-self: center; 
+    }
+
+    #tictacRow {
+        align-self: center; 
+    }
+
+    #record {
+        width: 300px;
+        margin-bottom: 10px;
+        align-self: center;
+        animation: Album-wobble infinite 3s linear;
+    }
+    
+    #album {
+    width: 140px;
+    animation: Album-spin infinite 20s linear;
+    }
+
+    #recordHole {
+    padding-top: 8.6rem;
+    }
+
+    #recordLines {
+    opacity: 0.2;
+    width: 300px;
+    animation: Album-spin infinite 20s linear; 
+    }
+
+    #recordPlayer {
+    background-color: rgba(0,0,0,0);
+    border: none;
+
+        .card-img-overlay {
+            padding: 0;
+        }
+
+        .albumCover {
+            padding-top: 5rem;
+        }
+    }
+
+    @keyframes Album-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+    }
+
+    @keyframes Album-wobble {
+    from { transform: rotate(0deg); }
+    50% { transform: rotate(3deg); }
+    to { transform: rotate(0deg); }
+    }
+
+    #nextQuestion {
+        align-self: left; 
+    }
+}
+  
