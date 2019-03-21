@@ -13,7 +13,7 @@ class SpotifyLogin extends Component {
     return (
       <div className="SpotifyLogin">
 				{!this.props.spotify.state.loggedIn ? 
-        (<button className="btn btn-success" onClick={() => this.authenticateSpotify()}>
+        (<button className="btn btn-success" onClick={() => this.props.spotify.authenticateSpotify()}>
 					Log in to Spotify
 				</button>) : 
 				(<div>
