@@ -114,19 +114,26 @@ Deploys the react app to firebase. Should ony be used from master branch.
   * */containers*
     * LandingPage.js
       <br/>
-      Creates the landing page component. <br/>
+      Creates the landing page. <br/>
       Corresponds to the '/' route.
-    * TestPage.js
+    * QuizPage.js
       <br/>
-      Creates the test page component. <br/>
-      Corresponds to the '/test' route.
+      Creates the quiz playing page. <br/>
+      Corresponds to the '/playQuiz' route.
+    * SelectPage.js
+      <br/>
+      Creates the select quiz page. <br/>
+      Corresponds to the '/selectQuiz' route.
   * */styles*
-    * LandingPage.js
+    * LandingPage.scss
       <br/>
       Styles the LandingPage component with Sassy CSS.
-    * TestPage.js
+    * QuizPage.scss
       <br/>
-      Styles the TestPage component with Sassy CSS.
+      Styles the QuizPage component with Sassy CSS.
+    * SelectPage.scss
+      <br/>
+      Styles the SelectPage component with Sassy CSS.
   * App.js
     <br/>
     Router for the application.

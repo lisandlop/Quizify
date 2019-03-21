@@ -1,2 +1,3 @@
 export const LANDING = '/';
-export const TEST = '/test';
+export const SELECT = '/selectQuiz';
+export const PLAY = '/playQuiz';

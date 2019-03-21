@@ -2,23 +2,22 @@ import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import '../styles/QuizPage.scss';
 
-import '../styles/LandingPage.scss';
+import Quizzes from '../components/Quizzes/Quizzes'
 
-import Spotify from '../components/Spotify/Spotify'
-
-class LandingPage extends Component {
+class QuizPage extends Component {
   render() {
     return (
-      <div className="LandingPage">
+      <div className="QuizPage">
         <Container fluid={true}>
           <Row>
             <Col xs={6}>
-              <Spotify/>
+              <Quizzes/>
             </Col>
 
             <Col xs={6}>
-              <h1>Landing page</h1>
+              <h1>Play Quiz</h1>
             </Col>
           </Row>
         </Container>
@@ -27,4 +26,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default QuizPage;

@@ -20,7 +20,8 @@ const Navigation = () => (
 
             <Nav>
                 <Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
-                <Nav.Link href={ROUTES.TEST}>Test page</Nav.Link>
+                <Nav.Link href={ROUTES.SELECT}>SelectQuiz</Nav.Link>
+                <Nav.Link href={ROUTES.PLAY}>PlayQuiz</Nav.Link>
             </Nav>
         </Navbar>
     </div>
