@@ -6,6 +6,7 @@ class SpotifyAPI extends Component {
 	constructor() {
 		super();
 		
+		console.log("New Spotify")
 		const spotifyWebApi = new Spotify();
 		const params = this.getHashParams();
 

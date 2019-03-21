@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import '../styles/LandingPage.scss';
+import SpotifyLogin from '../components/SpotifyLogin/SpotifyLogin';
 
 class LandingPage extends Component {
   render() {
@@ -12,6 +13,7 @@ class LandingPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={6}>
+              <SpotifyLogin/>
             </Col>
 
             <Col xs={6}>
