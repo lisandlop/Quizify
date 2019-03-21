@@ -5,8 +5,6 @@ import Col from 'react-bootstrap/Col';
 
 import '../styles/LandingPage.scss';
 
-import Spotify from '../components/Spotify/Spotify'
-
 class LandingPage extends Component {
   render() {
     return (
@@ -14,7 +12,6 @@ class LandingPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={6}>
-              <Spotify/>
             </Col>
 
             <Col xs={6}>
