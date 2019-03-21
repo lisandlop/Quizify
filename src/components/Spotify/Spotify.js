@@ -32,7 +32,7 @@ class SpotifyAPI extends Component {
       client_id: 'a67493ba28914f69ac66dc7f6324c467',
       scope: scope,
 			// redirect_uri: 'https://kthquizify.firebaseapp.com'
-			redirect_uri: 'HTTP://localhost:3000'
+			redirect_uri: 'http://localhost:3000'
 		})
 
 		window.location.replace(authUrl);
