@@ -17,7 +17,7 @@ class QuizBase extends Component {
     this.setState({ loading: true });
  
     var quizList = [];
-    this.props.firebase.quizzes().then(snapshot => {
+    this.props.firebase.getAllQuizzes().then(snapshot => {
       snapshot.forEach((doc) => {
         quizList[doc.id] = doc.data();
       });
@@ -27,7 +27,7 @@ class QuizBase extends Component {
   }
 
   componentWillUnmount() {
-    this.props.firebase.quizzes().off();
+    this.props.firebase.getAllQuizzes().off();
   }
 
   render() {
