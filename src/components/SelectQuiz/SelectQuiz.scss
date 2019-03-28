@@ -1,0 +1,26 @@
+.Confirm {
+    //margin-top:200px;
+    padding-top: 10px;
+    padding-bottom:10px;
+    margin: 4px 2px;
+    border-radius: 50%;
+    //background-color: rgb(250, 236, 36);  
+    transform: translateY(4px);
+
+}
+ 
+.ConfirmButton span { 
+    transition: 0.5s;
+}
+
+
+.ConfirmButton:hover span {
+padding-right: 10px;
+padding-left: 10px;
+}
+
+.ConfirmButton:hover span:after {
+opacity: 1;
+right: 0;
+}
+
