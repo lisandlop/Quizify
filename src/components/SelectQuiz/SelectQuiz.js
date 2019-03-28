@@ -5,9 +5,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
-
-
 import { withFirebase } from '../Firebase';
+
 
 class SelectQuiz extends Component {
     constructor(props) {
@@ -20,7 +19,14 @@ class SelectQuiz extends Component {
   
     componentDidMount() {
       this.setState({ loading: true });
+      this.props.firebase.getAllQuizzes().then((response) => {
+        // this.setState({
+        //   name: response.
+        // })
+        console.log(response)
+      })
     }
+
   
     render() {
   
@@ -66,6 +72,7 @@ class SelectQuiz extends Component {
       <th>Quiz Name</th>
       <th>Author Name</th>
     </tr>
+    {/* <tr>{allQuizzes}</tr> */}
   </thead>
   </Table>
           </Col>
@@ -74,4 +81,4 @@ class SelectQuiz extends Component {
       );
     }
   }
-  export default SelectQuiz
+  export default withFirebase(SelectQuiz);

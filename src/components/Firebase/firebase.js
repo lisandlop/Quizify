@@ -29,9 +29,9 @@ class Firebase {
 
   // *** Quiz API ***
 
-  quiz = uid => this.db.collection(`quizzes/${uid}`).get();
+  getQuizById = uid => this.db.collection(`quizzes/${uid}`).get();
 
-  quizzes = () => this.db.collection('quizzes').get();
+  getAllQuizzes = () => this.db.collection('quizzes').get();
 }
 
 export default Firebase;
