@@ -6,6 +6,9 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import { withFirebase } from '../Firebase';
+import Button from 'react-bootstrap/Button';
+
+
 
 
 class SelectQuiz extends Component {
@@ -32,19 +35,24 @@ class SelectQuiz extends Component {
   
       return (
         <div>
-          <Col sm={10}>
-          <input type="text" className="form-control mr-sm-3" placeholder={"Enter song"}/>
-          </Col>
-        <Container>
-          <Row>
-          <Col sm={3}>
-          <Form>
+          <p id="selectaquiz">Select a Quiz</p>
+    
+  <Container>
+    <Row>
+    <Col sm={3}>
+    <Form>
+  <Form.Group controlId="exampleForm.Quiz">
+    <Form.Label>Search quiz name</Form.Label>
+    <input type="text" className="form-control mr-sm-3" placeholder={"Enter song"}/>
+  </Form.Group>
+
   <Form.Group controlId="exampleForm.Author">
-    <Form.Label>Author of quiz</Form.Label>
+    <Form.Label>Search author of quiz</Form.Label>
     <Form.Control type="text" placeholder="Q_master" />
   </Form.Group>
+  
   <Form.Group controlId="exampleForm.TypeOfMusic">
-    <Form.Label>Type of music</Form.Label>
+    <Form.Label>Search by genre</Form.Label>
     <Form.Control as="select">
       <option>Julmusik</option>
       <option>Sommarvisor</option>
@@ -53,16 +61,7 @@ class SelectQuiz extends Component {
       <option>Barnsånger</option>
     </Form.Control>
   </Form.Group>
-  <Form.Group controlId="exampleForm.ControlSelect2">
-    <Form.Label>Example multiple select</Form.Label>
-    <Form.Control as="select" multiple>
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </Form.Control>
-  </Form.Group>
+
 </Form>
           </Col>
           <Col md="auto">
@@ -72,6 +71,7 @@ class SelectQuiz extends Component {
       <th>#</th>
       <th>Quiz Name</th>
       <th>Author Name</th>
+      <th>Genre</th>
     </tr>
     {/* <tr>{allQuizzes}</tr> */}
   </thead>
@@ -79,7 +79,8 @@ class SelectQuiz extends Component {
           </Col>
         </Row>
         </Container></div>
-      );
+
+      ); 
     }
   }
   export default withFirebase(SelectQuiz);
