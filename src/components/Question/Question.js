@@ -4,7 +4,11 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'; 
 import Card from 'react-bootstrap/Card';
 
+import { withFirebase } from '../Firebase';
+
 import './Question.scss';
+
+// skicka med id av quiz
 
 class Question extends Component {
     constructor(props) {
@@ -13,34 +17,67 @@ class Question extends Component {
         this.state = {
             question: 0,
             answerSelected: "", 
-            correctAnswer: "C"
+            correctAnswer: "C",
+            quizzes: []
         };
+
     }
 
     handleAnswer(answer) {
-        if (this.state.answerSelected == "") {
+        if (this.state.answerSelected === "") {
             this.setState({ answerSelected: answer })
         }
         console.log(answer);
     }
 
     checkAnswer(option) {
-        if (option == this.state.answerSelected) {
-            if (option == this.state.correctAnswer) return "selectedCorrect"; 
+        if (option === this.state.answerSelected) {
+            if (option === this.state.correctAnswer) return "selectedCorrect"; 
             return "selectedWrong"; 
         }
 
-        else if (option == this.state.correctAnswer && this.state.answerSelected != "") return "correctAnswer"; 
+        else if (option === this.state.correctAnswer && this.state.answerSelected !== "") return "correctAnswer"; 
         else if (this.state.answerSelected) return "remainingAnswers disabled"; 
         return ""; 
 
     }
 
+    componentDidMount(){
+        this.getQuizzesFromFirebase()
+    }
+
+    getQuizzesFromFirebase(){
+        this.props.firebase.getAllQuizzes()
+            .then(snapshot => {
+                let quizzes = []
+                snapshot.forEach((doc) => {
+                    const quiz = doc.data()  
+                    quizzes.push(quiz)  
+                })
+                this.setState({
+                    quizzes: quizzes
+                })
+            })
+            
+    }
+
     render() {
+
+        // var quizList = [];
+        // this.props.firebase.getAllQuizzes().then(snapshot => {
+        //   snapshot.forEach((doc) => {
+        //     quizList[doc.id] = doc.data();
+        //   });
+        // });
+
+        const quizzes = this.state.quizzes
+        const quiz = quizzes.length > 0 ? quizzes[0] : {}
+
         return (
             <div className="Question">
                 <h2>Question nr{this.question}</h2>
                 <h1>Random question?</h1>
+                <h1>{ quiz.name }</h1>
                 <Row>
                     <Col xs={12} sm={6}>
                         <Row id="tictacRow">
@@ -65,7 +102,7 @@ class Question extends Component {
                             <Button className={this.checkAnswer ("C")} onClick={() => this.handleAnswer("C") } id="altButtons" variant="info" size="lg">Random answer</Button>
                             <Button className={this.checkAnswer ("D")} onClick={() => this.handleAnswer("D") } id="altButtons" variant="light" size="lg">Random answer</Button>
                         </Row>
-                        {this.state.answerSelected == "" ? (<div/>) : (
+                        {this.state.answerSelected === "" ? (<div/>) : (
                             <Button id="nextQuestion" variant="light" size="lg" block>Next question</Button>
                         ) }
                         <br/>
@@ -77,4 +114,4 @@ class Question extends Component {
     }
 }
 
-export default Question; 
+export default withFirebase(Question); 
