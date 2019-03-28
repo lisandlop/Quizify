@@ -17,7 +17,7 @@ const App = () => (
       <Switch>
         <Route exact path={ROUTES.LANDING} component={LandingPage}/>
         <Route exact path={ROUTES.SELECT} component={SelectPage}/>
-        <Route exact path={ROUTES.PLAY} component={QuizPage}/>
+        <Route exact path={ROUTES.PLAY + '/:id'} component={QuizPage}/>
         <Route component={NoMatch} />
       </Switch>
     </div>

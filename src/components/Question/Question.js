@@ -8,8 +8,6 @@ import { withFirebase } from '../Firebase';
 
 import './Question.scss';
 
-// skicka med id av quiz
-
 class Question extends Component {
     constructor(props) {
         super(props);

@@ -8,10 +8,12 @@ import StartQuiz from '../components/StartQuiz/StartQuiz';
 import Question from '../components/Question/Question';
 
 class QuizPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
     this.state = {
-      started: false
+      started: false,
+      quiz: this.props.match.params.id
     }
   }
 
@@ -25,7 +27,7 @@ class QuizPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={12}>
-              {!this.state.started ? (<StartQuiz startQuiz={this.startQuiz}/>) : (<Question/>)}
+              {!this.state.started ? (<StartQuiz startQuiz={this.startQuiz}/>) : (<Question id={this.quiz}/>)}
             </Col>
           </Row>
         </Container>
