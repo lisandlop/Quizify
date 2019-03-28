@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: gragreyscale;
+
 }
 
 code {
@@ -14,5 +15,17 @@ code {
 }
 
 html, body, #root, #root>div {
-  height: 100%
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  
+  
 }
+
+.backpage {
+  background-color:#282c34;
+  /*position: relative;
+  height: 100%;*/
+  flex: 1;
+  
+ }

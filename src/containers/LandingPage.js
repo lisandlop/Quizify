@@ -12,7 +12,7 @@ import * as ROUTES from '../constants/routes';
 class LandingPage extends Component {
   render() {
     return (
-      <div className="LandingPage">
+      <div className="LandingPage backpage">
         <Container fluid={true}>
           <Row>
             <Col xs={12} sm={6}>

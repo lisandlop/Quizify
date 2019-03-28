@@ -21,7 +21,7 @@ class QuizPage extends Component {
 
   render() {
     return (
-      <div className="QuizPage">
+      <div className="QuizPage backpage">
         <Container fluid={true}>
           <Row>
             <Col xs={12}>

@@ -6,7 +6,7 @@ import SelectQuiz from '../components/SelectQuiz/SelectQuiz'
 class SelectPage extends Component {
   render() {
     return (
-      <div className="SelectPage">
+      <div className="SelectPage backpage">
         <SelectQuiz/>
       </div>
     );

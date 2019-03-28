@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\public",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\Firebase",
+    "\\src\\components\\Navigation",
+    "\\src\\components\\Quizzes",
+    "\\src\\components\\StartQuiz",
+    "\\src\\constants",
+    "\\src\\styles"
+  ],
+  "SelectedNode": "\\src\\components\\SignUp\\SignUp.js",
+  "PreviewInSolutionExplorer": false
+}
