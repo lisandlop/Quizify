@@ -32,8 +32,9 @@ class SelectQuiz extends Component {
   
       return (
         <div>
+          <Col sm={10}>
           <input type="text" className="form-control mr-sm-3" placeholder={"Enter song"}/>
-        
+          </Col>
         <Container>
           <Row>
           <Col sm={3}>
