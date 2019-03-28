@@ -31,9 +31,9 @@ class SpotifyAPI extends Component {
 			response_type: 'token',
       client_id: 'a67493ba28914f69ac66dc7f6324c467',
       scope: scope,
-			redirect_uri: document.URL.substring(0, document.URL.indexOf('/'))
+			redirect_uri: document.URL.substring(0, document.URL.indexOf('/', 10))
 		})
-
+		
 		window.location.replace(authUrl);
 	}
 
