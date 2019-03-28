@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
 import queryString from 'querystring';
-import Card from 'react-bootstrap/Card';
 
-import './Spotify.scss';
-
-const spotifyWebApi = new Spotify();
-
-class SpotifyAPI extends Component {
+class SpotifyAPI extends Spotify {
 	constructor() {
 		super();
+		
+		console.log("New Spotify")
 		const params = this.getHashParams();
 
 		this.state = {
-			loggedIn: params.access_token ? true : false,
-			nowPlaying: {
-				name: 'Not checked',
-				image: ''
-			}
+			loggedIn: params.access_token ? true : false
 		}
 
 		if (params.access_token) {
-			spotifyWebApi.setAccessToken(params.access_token)
+			this.setAccessToken(params.access_token)
 		}
 	}
 
@@ -33,7 +26,7 @@ class SpotifyAPI extends Component {
       scope: scope,
 			redirect_uri: document.URL.substring(0, document.URL.indexOf('/', 10))
 		})
-		
+
 		window.location.replace(authUrl);
 	}
 
@@ -47,50 +40,15 @@ class SpotifyAPI extends Component {
 		return hashParams;
 	}
 
-	getNowPlaying() {
-		spotifyWebApi.getMyCurrentPlaybackState()
-			.then((response) => {
-				console.log(response)
-				this.setState({
-					nowPlaying: {
-						name: response.item ? response.item.name : 'No song',
-						image: response.item ? response.item.album.images[0].url : ''
-					}
-				})
-			})
+	async getNowPlaying() {
+		return this.getMyCurrentPlaybackState()
 	}
 
-	render() {
-    return (
-			<div className="Spotify">
-				
-				{!this.state.loggedIn ? 
-				(<button className="btn btn-success" onClick={() => this.authenticateSpotify()}>
-					Log in to Spotify
-				</button>) : 
-				(<div>
-					<div style={{color: '#eee'}}>Now playing: {this.state.nowPlaying.name}</div>	
-					{this.state.nowPlaying.image ? (
-					<div>
-						<Card id="recordPlayer">
-							<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Record base" />
-							<Card.ImgOverlay>
-								<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg" alt="Record lines"/>
-							</Card.ImgOverlay>
-							<Card.ImgOverlay className="albumCover">
-								<img id="album" className="rounded-circle" src={this.state.nowPlaying.image} alt=""/>
-							</Card.ImgOverlay>
-							<Card.ImgOverlay>
-								<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg" alt=""/>
-							</Card.ImgOverlay>
-						</Card>
-					</div>) : (<div/>)}
-					<button className="btn btn-light" onClick={() => this.getNowPlaying()}>Refresh 'now playing'</button>
-				</div>)}
-			</div>
-    );
-  }
+	async getUserInfo() {
+		return this.getMe()
+	}
 }
 
 export default SpotifyAPI;
+
 

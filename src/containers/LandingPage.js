@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button';
 
 import '../styles/LandingPage.scss';
 
-import Spotify from '../components/Spotify/Spotify'
 import * as ROUTES from '../constants/routes';
+import SpotifyLogin from '../components/SpotifyLogin/SpotifyLogin';
 
 class LandingPage extends Component {
   render() {
@@ -16,7 +16,7 @@ class LandingPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={12} sm={6}>
-              <Spotify/>
+              <SpotifyLogin/>
             </Col>
 
             <Col xs={12} sm={6} id="StartOrCreateCol">
