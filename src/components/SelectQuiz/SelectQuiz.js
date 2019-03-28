@@ -72,7 +72,7 @@ class SelectQuiz extends Component {
       <th>Quiz Name</th>
       <th>Author Name</th>
     </tr>
-    <tr>{allQuizzes}</tr>
+    {/* <tr>{allQuizzes}</tr> */}
   </thead>
   </Table>
           </Col>
