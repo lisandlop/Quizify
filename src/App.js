@@ -5,6 +5,7 @@ import Navigation from './components/Navigation/Navigation'
 import LandingPage from './containers/LandingPage';
 import SelectPage from './containers/SelectPage';
 import QuizPage from './containers/QuizPage';
+import NoMatch from './containers/NoMatch';
 
 import * as ROUTES from './constants/routes';
 
@@ -15,8 +16,9 @@ const App = () => (
       
       <Switch>
         <Route exact path={ROUTES.LANDING} component={LandingPage}/>
-        <Route path={ROUTES.SELECT} component={SelectPage}/>
-        <Route path={ROUTES.PLAY} component={QuizPage}/>
+        <Route exact path={ROUTES.SELECT} component={SelectPage}/>
+        <Route exact path={ROUTES.PLAY} component={QuizPage}/>
+        <Route component={NoMatch} />
       </Switch>
     </div>
   </Router>
