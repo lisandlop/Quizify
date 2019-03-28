@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
 import queryString from 'querystring';
 
