@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Image from 'react-bootstrap/Image';
-import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button'; 
 import Row from 'react-bootstrap/Row';
 
 import { withSpotify } from '../Spotify';
@@ -17,9 +17,7 @@ class SpotifyLogin extends Component {
 
   componentDidMount() {
     if (this.props.spotify.state.loggedIn) {
-      console.log('Setting name')
       this.props.spotify.getUserInfo().then(response => {
-        console.log(response)
         this.setState({
           name: response.display_name,
           userImage: response.images[0].url
@@ -29,22 +27,21 @@ class SpotifyLogin extends Component {
   }
 
   render() {
-    console.log('Rendering')
     return (
       <div className="SpotifyLogin">
 				{!this.props.spotify.state.loggedIn ? 
-        (<button className="btn btn-success" style={{margin: '4em'}}onClick={() => this.props.spotify.authenticateSpotify()}>
+        (<Button variant="success" style={{margin: '4em'}} onClick={() => this.props.spotify.authenticateSpotify()}>
 					Log in to Spotify
-				</button>) : 
+				</Button>) : 
 				(<div style={{color: 'white'}}>
           <br />
           <h1>Welcome, </h1>
           <h1>{this.state.name}!</h1>
           <Image src={this.state.userImage} style={{width: '50%'}} roundedCircle/>
           <Row>
-            <button style={{margin: '5em', alignItems: 'center'}}>
+            <Button variant="light" style={{margin: '1em 10em', alignItems: 'center'}} block>
               Log out
-            </button>
+            </Button>
           </Row>
         </div>)
         }
