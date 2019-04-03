@@ -29,7 +29,7 @@ class Firebase {
 
   // *** Quiz API ***
 
-  getQuizByID = id => this.db.collection('quizzes').doc(id)
+  getQuizByID = quizid => this.db.collection('quizzes').doc(quizid)
     .get()
     .then(snapshot => {
       return snapshot.data().name;
@@ -38,11 +38,21 @@ class Firebase {
   getAllQuizzes = () => this.db.collection('quizzes')
     .get()
     .then(snapshot => {
-      let quizzes = Array()
+      let quizzes = []
       snapshot.forEach(doc => {
         quizzes[doc.id] = doc.data();
       })
       return quizzes;
+    })
+
+  getQuestionIDs = quizid => this.db.collection('quizzes').doc(quizid).collection('songs')
+    .get()
+    .then(snapshot => {
+      let songs = []
+      snapshot.forEach(doc => {
+        songs.push(doc.id);
+      })
+      return songs;
     })
 
   getQuestionFromQuiz = (quizid, questionid) => this.db.collection('quizzes').doc(quizid).collection('songs').doc(questionid)

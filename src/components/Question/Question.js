@@ -12,6 +12,8 @@ class Question extends Component {
 	constructor(props) {
 		super(props);
 
+		this.points = 0;
+
 		this.state = {
 			questionnr: 0,
 			answerSelected: '', 
@@ -28,7 +30,10 @@ class Question extends Component {
 
 	checkAnswer(option) {
 		if (option === this.state.answerSelected) {
-			if (option === this.state.correctAnswer) return "selectedCorrect"; 
+			if (option === this.state.correctAnswer) {
+				this.points += 1; 
+				return "selectedCorrect"; 
+			} 
 			return "selectedWrong"; 
 		}
 
@@ -37,15 +42,20 @@ class Question extends Component {
 		return ""; 
 	}
 
-	componentDidMount(){
-		this.props.firebase.getQuestionFromQuiz(this.props.quizid, 'dRb8XOqlcNkgXm4JERaM').then(response => {
+	getQuestion() {
+		this.props.firebase.getQuestionFromQuiz(this.props.quizid, this.props.questions[this.state.questionnr]).then(response => {
 			this.setState({
 				questionnr: this.state.questionnr + 1,
+				answerSelected: '',
 				question: response.question,
 				options: response.options,
 				correctAnswer: response.correctAnswer
 			})
 		})
+	}
+
+	componentDidMount() {
+		this.getQuestion();
 	}
 
 	render() {
@@ -84,8 +94,13 @@ class Question extends Component {
 									<Button className={this.checkAnswer(3)} onClick={() => this.handleAnswer(3)} variant="light" size="lg" block>{this.state.options[3]}</Button>
 								</Col>
 							</Row>
-							{this.state.answerSelected === "" ? (<div/>) : (
-								<Button id="nextQuestion" variant="light" size="lg" block>Next question</Button>)}
+							{this.state.answerSelected === ''
+								? <div/>
+								: [this.state.questionnr !== this.props.questions.length
+										? <Button id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
+										: <Button id="checkResults" onClick={() => alert(this.points)} variant="light" size="lg" block>Check results</Button>
+									]
+							}
 							<br/>
 						</Col>
 					</Row>

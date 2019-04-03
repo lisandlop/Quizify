@@ -7,14 +7,30 @@ import '../styles/QuizPage.scss';
 import StartQuiz from '../components/StartQuiz/StartQuiz';
 import Question from '../components/Question/Question';
 
+import { withFirebase } from '../components/Firebase';
+
 class QuizPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       started: false,
-      quiz: this.props.match.params.id
+      quizid: this.props.match.params.id,
+      quizname: '',
+      questions: []
     }
+  }
+
+  componentDidMount() {
+    this.props.firebase.getQuizByID(this.state.quizid)
+      .then(result => {
+        this.setState({quizname: result})
+      })
+
+    this.props.firebase.getQuestionIDs(this.state.quizid)
+      .then(result => {
+        this.setState({questions: result})
+      })
   }
 
   startQuiz = (start) => {
@@ -27,8 +43,10 @@ class QuizPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={12}>
-              {!this.state.started ?  (<StartQuiz startQuiz={this.startQuiz} quizid={this.state.quiz}/>) : 
-                                      (<Question quizid={this.state.quiz}/>)}
+              {!this.state.started 
+                ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname}/>
+                : <Question quizid={this.state.quizid} questions={this.state.questions}/>
+              }
             </Col>
           </Row>
         </Container>
@@ -37,4 +55,4 @@ class QuizPage extends Component {
   }
 }
 
-export default QuizPage;
+export default withFirebase(QuizPage);
