@@ -7,7 +7,8 @@ import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
 import { withFirebase } from '../Firebase';
 import Button from 'react-bootstrap/Button';
-import './CreateQuiz.scss'
+import './CreateQuiz.scss';
+//import './CreateQuestion.js';
 
 
 class CreateQuiz extends Component {
@@ -39,13 +40,10 @@ render() {
   
 
 {/* LÄGGA TILL EN KNAPP SOM LÄGGER TILL FRÅGA */}
-<Form.Group controlId="CreateForm.Questions">
-    <Form.Label>Enter quiz questions</Form.Label>
-    <Form.Control type="text" placeholder="Question 1" />
-    <Form.Control type="text" placeholder="Question 2" />
-    <Form.Control type="text" placeholder="Question 3" />
-    <Form.Control type="text" placeholder="Question 4" />
-</Form.Group>
+
+<Button variant="primary" size="lg" className="AddButton" onClick={() => this.props.CreateQuestion}>
+    <span>Add question</span>
+</Button>
 
 </Form>
           </Col>
@@ -77,9 +75,6 @@ render() {
       </Col>
     </Row>
         </Container></div>
-
-
-
 
       ); 
     }
