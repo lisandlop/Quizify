@@ -1,6 +1,12 @@
 .Question {
     #altCol {
         align-self: center;
+
+        .btn {
+            padding:1em; 
+            margin-bottom:1em; 
+            margin-right:1em; 
+        }
     }
 
     .selectedWrong {
@@ -19,12 +25,6 @@
 
     .remainingAnswers {
         background-color: grey; 
-    }
-
-    #altButtons {
-        padding:1em; 
-        margin-bottom:1em; 
-        margin-right:1em; 
     }
 
     #recordPlayers {
