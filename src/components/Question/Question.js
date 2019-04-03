@@ -9,106 +9,90 @@ import { withFirebase } from '../Firebase';
 import './Question.scss';
 
 class Question extends Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            question: 0,
-            answerSelected: "", 
-            correctAnswer: "C",
-            quizzes: []
-        };
+		this.state = {
+			questionnr: 0,
+			answerSelected: "", 
+			correctAnswer: "1",
+			options: ['', '', '', '']
+		};
+	}
 
-    }
+	handleAnswer(answer) {
+		if (this.state.answerSelected === "") {
+				this.setState({ answerSelected: answer })
+		}
+	}
 
-    handleAnswer(answer) {
-        if (this.state.answerSelected === "") {
-            this.setState({ answerSelected: answer })
-        }
-        console.log(answer);
-    }
+	checkAnswer(option) {
+		if (option === this.state.answerSelected) {
+			if (option === this.state.correctAnswer) return "selectedCorrect"; 
+			return "selectedWrong"; 
+		}
 
-    checkAnswer(option) {
-        if (option === this.state.answerSelected) {
-            if (option === this.state.correctAnswer) return "selectedCorrect"; 
-            return "selectedWrong"; 
-        }
+		else if (option === this.state.correctAnswer && this.state.answerSelected !== "") return "correctAnswer"; 
+		else if (this.state.answerSelected) return "remainingAnswers disabled"; 
+		return ""; 
+	}
 
-        else if (option === this.state.correctAnswer && this.state.answerSelected !== "") return "correctAnswer"; 
-        else if (this.state.answerSelected) return "remainingAnswers disabled"; 
-        return ""; 
+	componentDidMount(){
+		this.props.firebase.getQuestionFromQuiz(this.props.quizid, 'dRb8XOqlcNkgXm4JERaM').then(response => {
+			this.setState({
+				questionnr: this.state.questionnr + 1,
+				question: response.question,
+				options: response.options,
+				correctAnswer: response.correctAnswer
+			})
+		})
+	}
 
-    }
-
-    componentDidMount(){
-        this.getQuizzesFromFirebase()
-    }
-
-    getQuizzesFromFirebase(){
-        this.props.firebase.getAllQuizzes()
-            .then(snapshot => {
-                let quizzes = []
-                snapshot.forEach((doc) => {
-                    const quiz = doc.data()  
-                    quizzes.push(quiz)  
-                })
-                this.setState({
-                    quizzes: quizzes
-                })
-            })
-    }
-
-    render() {
-
-        // var quizList = [];
-        // this.props.firebase.getAllQuizzes().then(snapshot => {
-        //   snapshot.forEach((doc) => {
-        //     quizList[doc.id] = doc.data();
-        //   });
-        // });
-
-        const quizzes = this.state.quizzes
-        const quiz = quizzes.length > 0 ? quizzes[0] : {}
-
-        return (
-            <div className="Question">
-                <h2>Question nr{this.question}</h2>
-                <h1>Random question?</h1>
-                {/* <h1>{ quiz.name }</h1> */}
-                <Row>
-                    <Col xs={12} sm={6}>
-                        <Row id="tictacRow">
-                            <Card id="recordPlayer">
-                                <Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Record base" />
-                                <Card.ImgOverlay>
-                                    <img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg" alt="Record lines"/>
-                                </Card.ImgOverlay>
-                                <Card.ImgOverlay>
-                                    <img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg" alt=""/>
-                                </Card.ImgOverlay>
-                            </Card>
-                        </Row>
-                    </Col>
-                    <Col xs={12} sm={6} id="altCol">
-                        <br/>
-                        <Row>
-                            <Button className={this.checkAnswer ("A")} onClick={() => this.handleAnswer("A") } id="altButtons" variant="warning" size="lg">Random answer</Button>
-                            <Button className={this.checkAnswer ("B")} onClick={() => this.handleAnswer("B") } id="altButtons" variant="primary" size="lg">Random answer</Button>
-                        </Row>
-                        <Row>
-                            <Button className={this.checkAnswer ("C")} onClick={() => this.handleAnswer("C") } id="altButtons" variant="info" size="lg">Random answer</Button>
-                            <Button className={this.checkAnswer ("D")} onClick={() => this.handleAnswer("D") } id="altButtons" variant="light" size="lg">Random answer</Button>
-                        </Row>
-                        {this.state.answerSelected === "" ? (<div/>) : (
-                            <Button id="nextQuestion" variant="light" size="lg" block>Next question</Button>
-                        ) }
-                        <br/>
-                    </Col>
-                </Row>
-                <br/><br/>
-            </div>
-        );
-    }
+	render() {
+			return (
+				<div className="Question">
+					<h2>Question nr.{this.state.questionnr}</h2>
+					<h1>{this.state.question}</h1>
+					
+					<Row>
+						<Col xs={12} sm={6}>
+							<Row id="tictacRow">
+								<Card id="recordPlayer">
+									<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Record base" />
+									<Card.ImgOverlay>
+										<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg" alt="Record lines"/>
+									</Card.ImgOverlay>
+									<Card.ImgOverlay>
+										<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg" alt=""/>
+									</Card.ImgOverlay>
+								</Card>
+							</Row>
+						</Col>
+						<Col xs={12} sm={6} id="altCol">
+							<br/>
+							<Row>
+								<Col xs={6}>
+									<Button className={this.checkAnswer(0)} onClick={() => this.handleAnswer(0) } variant="warning" size="lg" block>{this.state.options[0]}</Button>
+								</Col><Col xs={6}>
+								<Button className={this.checkAnswer(1)} onClick={() => this.handleAnswer(1) } variant="primary" size="lg" block>{this.state.options[1]}</Button>
+								</Col>
+							</Row>
+							<Row>
+								<Col xs={6}>
+								<Button className={this.checkAnswer(2)} onClick={() => this.handleAnswer(2) } variant="info" size="lg" block>{this.state.options[2]}</Button>
+								</Col><Col xs={6}>
+								<Button className={this.checkAnswer(3)} onClick={() => this.handleAnswer(3) } variant="light" size="lg" block>{this.state.options[3]}</Button>
+								</Col>
+							</Row>
+							{this.state.answerSelected === "" ? (<div/>) : (
+								<Button id="nextQuestion" variant="light" size="lg" block>Next question</Button>)}
+							<br/>
+						</Col>
+					</Row>
+					<br/><br/>
+			</div>
+		);
+	}
 }
 
 export default withFirebase(Question); 
