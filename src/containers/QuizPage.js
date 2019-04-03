@@ -29,7 +29,7 @@ class QuizPage extends Component {
 
     this.props.firebase.getQuestionIDs(this.state.quizid)
       .then(result => {
-        this.setState({questions: result})
+        this.setState({questions: result, status: 'READY'})
       })
   }
 
@@ -44,7 +44,7 @@ class QuizPage extends Component {
           <Row>
             <Col xs={12}>
               {!this.state.started 
-                ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname}/>
+                ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname} status={this.state.status}/>
                 : <Question quizid={this.state.quizid} questions={this.state.questions}/>
               }
             </Col>
