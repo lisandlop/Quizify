@@ -45,6 +45,8 @@ render() {
   </Table>
           </Col>
         </Row>
+        </Container>
+        </div>
 
       ); 
     }
