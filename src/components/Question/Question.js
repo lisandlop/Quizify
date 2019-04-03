@@ -32,7 +32,7 @@ class Question extends Component {
 			return "selectedWrong"; 
 		}
 
-		else if (option === this.state.correctAnswer && this.state.answerSelected !== "") return "correctAnswer"; 
+		else if (option === this.state.correctAnswer && this.state.answerSelected !== '') return "correctAnswer"; 
 		else if (this.state.answerSelected !== '') return "remainingAnswers disabled"; 
 		return ""; 
 	}
