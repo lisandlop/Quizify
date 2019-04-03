@@ -10,11 +10,14 @@ class QuizStart extends Component {
   render() {
     return (
       <div>
-        <h1>Quiz: { this.props.quizname }</h1>
+        {this.props.quizname
+          ? <h1>Quiz: { this.props.quizname }</h1> 
+          : <h1>Loading quiz...</h1>
+        }
         <div className="StartQuiz" >
           {this.props.status !== 'READY' 
             ? <Button variant="primary disabled" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)} disabled>
-                <span>Loading...</span>
+                <span>Start Quiz!</span>
               </Button>
             : <Button variant="primary" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)}>
                 <span>Start Quiz!</span>
