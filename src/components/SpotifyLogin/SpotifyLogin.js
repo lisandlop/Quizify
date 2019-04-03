@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Image from 'react-bootstrap/Image';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
 
 import { withSpotify } from '../Spotify';
 
@@ -31,13 +33,21 @@ class SpotifyLogin extends Component {
     return (
       <div className="SpotifyLogin">
 				{!this.props.spotify.state.loggedIn ? 
-        (<button className="btn btn-success" onClick={() => this.props.spotify.authenticateSpotify()}>
+        (<button className="btn btn-success" style={{margin: '4em'}}onClick={() => this.props.spotify.authenticateSpotify()}>
 					Log in to Spotify
 				</button>) : 
-				(<div>
-          <h1>Welcome, {this.state.name}!</h1>
+				(<div style={{color: 'white'}}>
+          <br />
+          <h1>Welcome, </h1>
+          <h1>{this.state.name}!</h1>
           <Image src={this.state.userImage} style={{width: '50%'}} roundedCircle/>
-				</div>)}
+          <Row>
+            <button style={{margin: '5em', alignItems: 'center'}}>
+              Log out
+            </button>
+          </Row>
+        </div>)
+        }
 			</div>
     );
   }

@@ -74,6 +74,7 @@ class Question extends Component {
             <div className="Question">
                 <h2>Question nr{this.question}</h2>
                 <h1>Random question?</h1>
+                <h1>{ quiz.question }</h1>
                 {/* <h1>{ quiz.name }</h1> */}
                 <Row>
                     <Col xs={12} sm={6}>
