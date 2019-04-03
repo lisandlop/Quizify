@@ -98,7 +98,7 @@ class Question extends Component {
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
 										? <Button id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										: <Button id="checkResults" onClick={() => alert(this.points)} variant="light" size="lg" block>Check results</Button>
+										: <Button id="checkResults" onClick={() => alert(this.points + ' out of ' + this.props.questions.length + ' points.')} variant="light" size="lg" block>Check results</Button>
 									]
 							}
 							<br/>
