@@ -29,9 +29,29 @@ class Firebase {
 
   // *** Quiz API ***
 
-  getQuizById = uid => this.db.collection(`quizzes/${uid}`).get();
+  getQuizByID = id => this.db.collection('quizzes').doc(id)
+    .get()
+    .then(snapshot => {
+      return snapshot.data().name;
+    });
 
-  getAllQuizzes = () => this.db.collection('quizzes').get();
-}
+  getAllQuizzes = () => this.db.collection('quizzes')
+    .get()
+    .then(snapshot => {
+      let quizzes = Array()
+      snapshot.forEach(doc => {
+        quizzes[doc.id] = doc.data();
+      })
+      return quizzes;
+    })
+
+  getQuestionFromQuiz = (quizid, questionid) => this.db.collection('quizzes').doc(quizid).collection('songs').doc(questionid)
+    .get()
+    .then(snapshot => {
+      return snapshot.data();
+    })
+
+
+};
 
 export default Firebase;

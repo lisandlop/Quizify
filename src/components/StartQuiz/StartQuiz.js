@@ -9,37 +9,21 @@ class QuizStart extends Component {
       super(props);
 
       this.state = {
-          quizzes: []
+          quizname: ''
       };
-
   }
 
-  componentDidMount(){
-    this.getQuizzesFromFirebase()
-  }
-
-  getQuizzesFromFirebase(){
-    this.props.firebase.getAllQuizzes()
-      .then(snapshot => {
-          let quizzes = []
-          snapshot.forEach((doc) => {
-              const quiz = doc.data()  
-              quizzes.push(quiz)  
-          })
-          this.setState({
-              quizzes: quizzes
-          })
-      })   
+  componentDidMount() {
+    this.props.firebase.getQuizByID(this.props.quizid)
+      .then(result => {
+        this.setState({quizname: result})
+      })
   }
 
   render() {
-
-    const quizzes = this.state.quizzes
-    const quiz = quizzes.length > 0 ? quizzes[0] : {}
-
     return (
       <div>
-        <h1>Quiz: { quiz.name }</h1>
+        <h1>Quiz: { this.state.quizname }</h1>
         <div className="StartQuiz" >
           <Button variant="primary" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)}>
             <span>Start Quiz!</span>

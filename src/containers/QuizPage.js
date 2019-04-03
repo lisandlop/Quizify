@@ -27,7 +27,8 @@ class QuizPage extends Component {
         <Container fluid={true}>
           <Row>
             <Col xs={12}>
-              {!this.state.started ? (<StartQuiz startQuiz={this.startQuiz}/>) : (<Question id={this.quiz}/>)}
+              {!this.state.started ?  (<StartQuiz startQuiz={this.startQuiz} quizid={this.state.quiz}/>) : 
+                                      (<Question quizid={this.state.quiz}/>)}
             </Col>
           </Row>
         </Container>
