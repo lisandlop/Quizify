@@ -39,14 +39,11 @@ class SelectQuiz extends Component {
     }
 
     render() {
-
-      var questionList = this.state.questions.map(function(question){
-        return(<tr>
-          <td>1</td>
-          <td>Hello there</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>)
+      console.log(this.state.questions.map(question => {return question}))
+      const questionList = this.state.questions.map((question, index) => {
+        console.log("hej")
+        // <td key={index}>{question.name}</td>
+        console.log(question)
       }); 
       // // <li key={i}>Test</li>); 
       // <li> {question} </li>); 
@@ -54,7 +51,7 @@ class SelectQuiz extends Component {
   
       return (
         <div>
-          <p id="selectaquiz">Select a Quiz</p>
+          <p id="selectaquiz">Selec t a Quiz</p>
 
           <Container>
             <Row>
@@ -89,7 +86,9 @@ class SelectQuiz extends Component {
                   </thead>
 
                   <tbody>
-                    {questionList}
+                    <tr>
+                      {questionList}
+                    </tr>
                   </tbody>
 
                 </Table>
