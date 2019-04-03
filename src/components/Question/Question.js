@@ -15,7 +15,7 @@ class Question extends Component {
 		this.state = {
 			questionnr: 0,
 			answerSelected: "", 
-			correctAnswer: 1,
+			correctAnswer: -1,
 			options: ['', '', '', '']
 		};
 	}
