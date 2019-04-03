@@ -22,6 +22,7 @@ const Navigation = () => (
                 <Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
                 <Nav.Link href={ROUTES.SELECT}>SelectQuiz</Nav.Link>
                 <Nav.Link href={ROUTES.PLAY}>PlayQuiz</Nav.Link>
+                <Nav.Link href={ROUTES.CREATE}>CreateQuiz</Nav.Link>
             </Nav>
         </Navbar>
     </div>

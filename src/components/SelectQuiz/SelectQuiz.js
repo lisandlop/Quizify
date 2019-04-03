@@ -10,9 +10,6 @@ import Button from 'react-bootstrap/Button';
 import './SelectQuiz.scss'
 
 
-
-
-
 class SelectQuiz extends Component {
     constructor(props) {
       super(props);
