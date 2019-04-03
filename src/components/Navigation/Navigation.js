@@ -10,22 +10,22 @@ import './Navigation.scss';
 import * as ROUTES from '../../constants/routes';
 
 const Navigation = () => (
-    <div id="navigation">
-        <Navbar bg="dark" variant="dark">
-            <Navbar.Brand>
-                <FontAwesomeIcon size="2x" icon={faSpotify}/>
-                <FontAwesomeIcon size="2x" icon={faQuestion}/>
-            </Navbar.Brand>
-            <Navbar.Brand>Quizify</Navbar.Brand>
+	<div id="navigation">
+		<Navbar bg="dark" variant="dark">
+			<Navbar.Brand>
+				<FontAwesomeIcon size="2x" icon={faSpotify}/>
+				<FontAwesomeIcon size="2x" icon={faQuestion}/>
+			</Navbar.Brand>
+			<Navbar.Brand>Quizify</Navbar.Brand>
 
-            <Nav>
-                <Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
-                <Nav.Link href={ROUTES.SELECT}>SelectQuiz</Nav.Link>
-                <Nav.Link href={ROUTES.PLAY + '/BaFGpkf52zTNGOwN7pAq'}>PlayQuiz</Nav.Link>
-                <Nav.Link href={ROUTES.CREATE}>CreateQuiz</Nav.Link>
-            </Nav>
-        </Navbar>
-    </div>
+			<Nav>
+				<Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
+				<Nav.Link href={ROUTES.SELECT}>SelectQuiz</Nav.Link>
+				<Nav.Link href={ROUTES.PLAY + '/BaFGpkf52zTNGOwN7pAq'}>PlayQuiz</Nav.Link>
+				<Nav.Link href={ROUTES.CREATE}>CreateQuiz</Nav.Link>
+			</Nav>
+		</Navbar>
+	</div>
 );
 
 export default Navigation;
