@@ -15,7 +15,7 @@ class Question extends Component {
 		this.state = {
 			questionnr: 0,
 			answerSelected: "", 
-			correctAnswer: "1",
+			correctAnswer: 1,
 			options: ['', '', '', '']
 		};
 	}
@@ -72,16 +72,16 @@ class Question extends Component {
 							<br/>
 							<Row>
 								<Col xs={6}>
-									<Button className={this.checkAnswer(0)} onClick={() => this.handleAnswer(0) } variant="warning" size="lg" block>{this.state.options[0]}</Button>
+									<Button className={this.checkAnswer(0)} onClick={() => this.handleAnswer(0)} variant="warning" size="lg" block>{this.state.options[0]}</Button>
 								</Col><Col xs={6}>
-								<Button className={this.checkAnswer(1)} onClick={() => this.handleAnswer(1) } variant="primary" size="lg" block>{this.state.options[1]}</Button>
+									<Button className={this.checkAnswer(1)} onClick={() => this.handleAnswer(1)} variant="primary" size="lg" block>{this.state.options[1]}</Button>
 								</Col>
 							</Row>
 							<Row>
 								<Col xs={6}>
-								<Button className={this.checkAnswer(2)} onClick={() => this.handleAnswer(2) } variant="info" size="lg" block>{this.state.options[2]}</Button>
+									<Button className={this.checkAnswer(2)} onClick={() => this.handleAnswer(2)} variant="info" size="lg" block>{this.state.options[2]}</Button>
 								</Col><Col xs={6}>
-								<Button className={this.checkAnswer(3)} onClick={() => this.handleAnswer(3) } variant="light" size="lg" block>{this.state.options[3]}</Button>
+									<Button className={this.checkAnswer(3)} onClick={() => this.handleAnswer(3)} variant="light" size="lg" block>{this.state.options[3]}</Button>
 								</Col>
 							</Row>
 							{this.state.answerSelected === "" ? (<div/>) : (
