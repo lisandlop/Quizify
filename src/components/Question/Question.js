@@ -14,7 +14,7 @@ class Question extends Component {
 
 		this.state = {
 			questionnr: 0,
-			answerSelected: "", 
+			answerSelected: '', 
 			correctAnswer: -1,
 			options: ['', '', '', '']
 		};
@@ -33,7 +33,7 @@ class Question extends Component {
 		}
 
 		else if (option === this.state.correctAnswer && this.state.answerSelected !== "") return "correctAnswer"; 
-		else if (this.state.answerSelected) return "remainingAnswers disabled"; 
+		else if (this.state.answerSelected !== '') return "remainingAnswers disabled"; 
 		return ""; 
 	}
 
