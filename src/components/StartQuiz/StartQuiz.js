@@ -3,10 +3,6 @@ import Button from 'react-bootstrap/Button';
 import './StartQuiz.scss'
 
 class QuizStart extends Component {
-  constructor(props) {
-      super(props);
-  }
-
   render() {
     return (
       <div>
