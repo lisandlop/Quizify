@@ -8,7 +8,10 @@ class SpotifyAPI extends Spotify {
 		const params = this.getHashParams();
 
 		this.state = {
-			loggedIn: params.access_token ? true : false
+			loggedIn: params.access_token ? true : false,
+			audio: null,
+			isPlaying: false,
+			playingTrackID: ''
 		}
 
 		if (params.access_token) {
@@ -36,6 +39,17 @@ class SpotifyAPI extends Spotify {
 				hashParams[e[1]] = decodeURIComponent(e[2]);
 		}
 		return hashParams;
+	}
+
+	playPauseAudio(trackID) {
+		this.getTrack(trackID).then((response) => {
+			if (this.audio !== undefined) {
+				this.audio.pause();
+			}
+			
+			this.audio = new Audio(response.preview_url)
+			this.audio.play();
+		})
 	}
 }
 
