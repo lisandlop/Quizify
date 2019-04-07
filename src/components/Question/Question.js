@@ -55,9 +55,8 @@ class Question extends Component {
 			})
 			return response.track;
 		}).then(track => {
-			this.props.spotify.playPauseAudio(track);
+			this.props.spotify.playAudio(track);
 		})
-		
 	}
 
 	componentDidMount() {

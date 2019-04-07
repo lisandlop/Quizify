@@ -1,57 +1,37 @@
 import React, { Component } from 'react';
-import { compose, renderComponent } from 'recompose';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
-import { withFirebase } from '../Firebase';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './SelectQuiz.scss'
-import { Function } from 'core-js';
 
+import { withFirebase } from '../Firebase';
 
 class SelectQuiz extends Component {
     constructor(props) {
       super(props);
   
       this.state = {
-        loading: false,
-        questionNr: 0, 
-        quizName: '', 
-        quizAuthor: '',
-        questions: []
+        loading: true,
+        quizzes: []
       };
     }
   
     componentDidMount() {
-      this.setState({ loading: true });
       this.props.firebase.getAllQuizzes().then((response) => {
         this.setState({
-          questions: response
-          // questionNr: this.state.questionNr + 1,
-          // quizName: response.name, 
-          // quizAuthor: response.author
+          quizzes: response,
+          loading: false
         })
-        console.log(response)
       })
     }
 
     render() {
-      console.log(this.state.questions.map(question => {return question}))
-      const questionList = this.state.questions.map((question, index) => {
-        console.log("hej")
-        // <td key={index}>{question.name}</td>
-        console.log(question)
-      }); 
-      // // <li key={i}>Test</li>); 
-      // <li> {question} </li>); 
-
-  
       return (
         <div>
-          <p id="selectaquiz">Selec t a Quiz</p>
+          <p id="selectaquiz">Select a Quiz</p>
 
           <Container>
             <Row>
@@ -71,51 +51,31 @@ class SelectQuiz extends Component {
                 </Form>
               </Col>
 
-              {/* <Col md="auto" className="quizList"> */}
+
               <Col xs={12} sm={8} className="quizList">
-                <Table striped bordered hover>
 
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Quiz Name</th>
-                      <th>Author Name</th>
-                      <th>Nr of q</th>
-                    </tr>
-                    {/* <tr>{allQuizzes}</tr> */}
-                  </thead>
+                {this.state.quizzes.map((quiz, k) => (
+                  <Card key={k} bg="info" text="white" style={{ marginBottom: '20px' }}>
+                    <Card.Body>
+                      <Card.Title>{quiz.name}</Card.Title>
+                      <Card.Text>{`By: ${quiz.author}`}</Card.Text>
+                    </Card.Body>
+                    <Card.Footer style={{ fontStyle: 'italic' }}>{`Quiz id: ${quiz.id}`}</Card.Footer>
+                  </Card>
+                ))}
 
-                  <tbody>
-                    <tr>
-                      {questionList}
-                    </tr>
-                  </tbody>
-
-                </Table>
               </Col>
             </Row>
 
-            <Row>
-              <Col>
-                <Card bg="info" text="white" style={{ width: '18rem' }}>
-                  <Card.Header>Header</Card.Header>
-                  <Card.Body>
-                    <Card.Title>Primary Card Title</Card.Title>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the bulk
-                      of the card's content.
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-                <br />
-              </Col>
-            </Row>
+            
+                
+            
 
             <Row md={12}>
               <Col>
 
                 <div className = "Confirm" >
-                  <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)}>
+                  <Button variant="primary" size="lg" className="ConfirmButton">
                     <span>Confirm</span>
                   </Button>
                 </div>

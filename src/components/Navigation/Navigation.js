@@ -21,7 +21,7 @@ const Navigation = () => (
 			<Nav>
 				<Nav.Link href={ROUTES.LANDING}>Landing</Nav.Link>
 				<Nav.Link href={ROUTES.SELECT}>SelectQuiz</Nav.Link>
-				<Nav.Link href={ROUTES.PLAY + '/BaFGpkf52zTNGOwN7pAq'}>PlayQuiz</Nav.Link>
+				<Nav.Link href={ROUTES.PLAY + '/F2Nr2yoFziKtkWy9UOSD'}>PlayQuiz</Nav.Link>
 				<Nav.Link href={ROUTES.CREATE}>CreateQuiz</Nav.Link>
 			</Nav>
 		</Navbar>
