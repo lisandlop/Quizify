@@ -5,7 +5,6 @@ class SpotifyAPI extends Spotify {
 	constructor() {
 		super();
 		
-		console.log("New Spotify")
 		const params = this.getHashParams();
 
 		this.state = {
@@ -37,14 +36,6 @@ class SpotifyAPI extends Spotify {
 				hashParams[e[1]] = decodeURIComponent(e[2]);
 		}
 		return hashParams;
-	}
-
-	async getNowPlaying() {
-		return this.getMyCurrentPlaybackState()
-	}
-
-	async getUserInfo() {
-		return this.getMe()
 	}
 }
 

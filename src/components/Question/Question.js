@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'; 
 import Card from 'react-bootstrap/Card';
 
+import { compose } from 'recompose';
+import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
 
 import './Question.scss';
@@ -22,9 +24,16 @@ class Question extends Component {
 		};
 	}
 
+	playAudio(trackID) {
+		this.props.spotify.getTrack(trackID).then(response => {
+			let audio = new Audio(response.preview_url)
+			audio.play();
+		})
+	}
+
 	handleAnswer(answer) {
 		if (this.state.answerSelected === "") {
-				this.setState({ answerSelected: answer })
+			this.setState({ answerSelected: answer })
 		}
 	}
 
@@ -51,7 +60,11 @@ class Question extends Component {
 				options: response.options,
 				correctAnswer: response.correctAnswer
 			})
+			return response.track;
+		}).then(track => {
+			this.playAudio(track);
 		})
+		
 	}
 
 	componentDidMount() {
@@ -110,4 +123,4 @@ class Question extends Component {
 	}
 }
 
-export default withFirebase(Question); 
+export default compose(withSpotify,withFirebase,)(Question); 
