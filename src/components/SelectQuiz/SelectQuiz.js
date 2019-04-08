@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import FlagIcon from '../FlagIcon/FlagIcon.js'
 import './SelectQuiz.scss'
 
 import { withFirebase } from '../Firebase';
@@ -56,11 +57,16 @@ class SelectQuiz extends Component {
 
                 {this.state.quizzes.map((quiz, k) => (
                   <Card key={k} bg="info" text="white" style={{ marginBottom: '20px' }}>
+                    <Card.Header>
+                      <FlagIcon code={quiz.language.toLowerCase()} size={'2x'} />
+                    </Card.Header>
                     <Card.Body>
                       <Card.Title>{quiz.name}</Card.Title>
                       <Card.Text>{`By: ${quiz.author}`}</Card.Text>
                     </Card.Body>
-                    <Card.Footer style={{ fontStyle: 'italic' }}>{`Quiz id: ${quiz.id}`}</Card.Footer>
+                    <Card.Footer style={{ fontStyle: 'italic' }}>
+                      {`Quiz id: ${quiz.id}`}
+                    </Card.Footer>
                   </Card>
                 ))}
 
