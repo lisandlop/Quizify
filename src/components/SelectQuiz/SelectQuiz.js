@@ -57,9 +57,9 @@ class SelectQuiz extends Component {
 
                 {this.state.quizzes.map((quiz, k) => (
                   <Card key={k} bg="info" text="white" style={{ marginBottom: '20px' }}>
-                    <Card.Header>
-                      <FlagIcon code={quiz.language.toLowerCase()} size={'2x'} />
-                    </Card.Header>
+                    <Card.ImgOverlay>
+                      <FlagIcon code={quiz.language.toLowerCase()} size={'3x'}/>
+                    </Card.ImgOverlay>
                     <Card.Body>
                       <Card.Title>{quiz.name}</Card.Title>
                       <Card.Text>{`By: ${quiz.author}`}</Card.Text>

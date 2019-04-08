@@ -18,6 +18,19 @@
     transition: 0.5s;
 }
 
+.card-img-overlay {
+    padding: 0;
+
+    span {
+        -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+        -webkit-mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: left, right;
+
+        float: right;
+        height: 100%;
+    }
+}
 
 .ConfirmButton:hover span {
 padding-right: 10px;
