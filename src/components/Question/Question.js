@@ -20,7 +20,8 @@ class Question extends Component {
 			questionnr: 0,
 			answerSelected: '', 
 			correctAnswer: -1,
-			options: ['', '', '', '']
+			options: ['', '', '', ''],
+			track: []
 		};
 	}
 
@@ -56,7 +57,12 @@ class Question extends Component {
 			return response.track;
 		}).then(track => {
 			this.props.spotify.playAudio(track);
+			this.props.spotify.getTrack(track).then(nowPlaying => {
+				this.setState({ albumCover: nowPlaying.album.images[0].url })
+			})
 		})
+
+		
 	}
 
 	componentDidMount() {
@@ -66,7 +72,7 @@ class Question extends Component {
 	render() {
 			return (
 				<div className="Question">
-					<h2>Question nr.{this.state.questionnr}</h2>
+					<h2>{this.state.questionnr !== 0 && `Question nr. ${this.state.questionnr}`}</h2>
 					<h1>{this.state.question}</h1>
 					
 					<Row>
@@ -77,6 +83,12 @@ class Question extends Component {
 									<Card.ImgOverlay>
 										<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg" alt="Record lines"/>
 									</Card.ImgOverlay>
+									{this.state.answerSelected !== ''
+										? <Card.ImgOverlay className="albumCover">
+												<img id="album" className="rounded-circle" src={this.state.albumCover} alt="Album cover"/>
+											</Card.ImgOverlay>
+										: <div/>
+									}
 									<Card.ImgOverlay>
 										<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg" alt=""/>
 									</Card.ImgOverlay>

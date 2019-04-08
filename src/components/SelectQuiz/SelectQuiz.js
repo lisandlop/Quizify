@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
-import FlagIcon from '../FlagIcon/FlagIcon.js'
+import FlagIcon from '../FlagIcon/FlagIcon.js';
 
 import './SelectQuiz.scss'
 
@@ -74,7 +74,9 @@ class SelectQuiz extends Component {
 
               <Col xs={12} sm={8} className="quizList">
 
-                {this.state.quizzes.map((quiz, k) => (
+                {this.state.loading
+                ? <h1>Loading...</h1>
+                : this.state.quizzes.map((quiz, k) => (
                   <Link key={k} to={`${ROUTES.PLAY}/${quiz.id}`}>
                     <Card bg="info" text="white" style={{ marginBottom: '20px' }}>
                       <Card.ImgOverlay>

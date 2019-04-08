@@ -14,7 +14,7 @@ class QuizStart extends Component {
         }
         <div className="StartQuiz" >
           {this.props.status !== 'READY' 
-            ? <Button variant="primary disabled" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)} disabled>
+            ? <Button variant="primary disabled" size="lg" className="StartQuizButton" disabled>
                 <span>Start Quiz!</span>
               </Button>
             : <Button variant="primary" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)}>
