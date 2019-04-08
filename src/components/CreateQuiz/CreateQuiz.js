@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { compose, renderComponent } from 'recompose';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,10 +7,10 @@ import Table from 'react-bootstrap/Table';
 import { withFirebase } from '../Firebase';
 import Button from 'react-bootstrap/Button';
 import './CreateQuiz.scss';
-//import './CreateQuestion.js';
 
 
 class CreateQuiz extends Component {
+
     //constructor(props) {
       //super(props);
 
@@ -142,3 +141,4 @@ render() {
 
 
    
+

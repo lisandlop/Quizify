@@ -24,7 +24,7 @@ class QuizPage extends Component {
   componentDidMount() {
     this.props.firebase.getQuizByID(this.state.quizid)
       .then(result => {
-        this.setState({quizname: result})
+        this.setState({quizname: result.name})
       })
 
     this.props.firebase.getQuestionIDs(this.state.quizid)

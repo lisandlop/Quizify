@@ -17,7 +17,7 @@ class SpotifyLogin extends Component {
 
   componentDidMount() {
     if (this.props.spotify.state.loggedIn) {
-      this.props.spotify.getUserInfo().then(response => {
+      this.props.spotify.getMe().then(response => {
         this.setState({
           name: response.display_name,
           userImage: response.images[0].url

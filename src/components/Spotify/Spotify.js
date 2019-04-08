@@ -5,7 +5,6 @@ class SpotifyAPI extends Spotify {
 	constructor() {
 		super();
 		
-		console.log("New Spotify")
 		const params = this.getHashParams();
 
 		this.state = {
@@ -39,12 +38,15 @@ class SpotifyAPI extends Spotify {
 		return hashParams;
 	}
 
-	async getNowPlaying() {
-		return this.getMyCurrentPlaybackState()
-	}
-
-	async getUserInfo() {
-		return this.getMe()
+	playAudio(trackID) {
+		this.getTrack(trackID).then((response) => {
+			if (this.audio !== undefined) {
+				this.audio.pause();
+			}
+			
+			this.audio = new Audio(response.preview_url)
+			this.audio.play();
+		})
 	}
 }
 

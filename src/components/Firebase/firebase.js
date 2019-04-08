@@ -32,7 +32,7 @@ class Firebase {
   getQuizByID = quizid => this.db.collection('quizzes').doc(quizid)
     .get()
     .then(snapshot => {
-      return snapshot.data().name;
+      return snapshot.data();
     });
 
   getAllQuizzes = () => this.db.collection('quizzes')
@@ -40,7 +40,10 @@ class Firebase {
     .then(snapshot => {
       let quizzes = []
       snapshot.forEach(doc => {
-        quizzes[doc.id] = doc.data();
+        let quiz = doc.data()
+        quiz.id = doc.id;
+
+        quizzes.push(quiz)
       })
       return quizzes;
     })

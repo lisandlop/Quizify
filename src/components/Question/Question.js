@@ -4,6 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'; 
 import Card from 'react-bootstrap/Card';
 
+import { compose } from 'recompose';
+import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
 
 import './Question.scss';
@@ -24,7 +26,7 @@ class Question extends Component {
 
 	handleAnswer(answer) {
 		if (this.state.answerSelected === "") {
-				this.setState({ answerSelected: answer })
+			this.setState({ answerSelected: answer })
 		}
 	}
 
@@ -51,6 +53,9 @@ class Question extends Component {
 				options: response.options,
 				correctAnswer: response.correctAnswer
 			})
+			return response.track;
+		}).then(track => {
+			this.props.spotify.playAudio(track);
 		})
 	}
 
@@ -66,7 +71,7 @@ class Question extends Component {
 					
 					<Row>
 						<Col xs={12} sm={6}>
-							<Row id="tictacRow">
+							<Row id="tictacRow" className="justify-content-center">
 								<Card id="recordPlayer">
 									<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Record base" />
 									<Card.ImgOverlay>
@@ -97,8 +102,8 @@ class Question extends Component {
 							{this.state.answerSelected === ''
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
-										? <Button id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										: <Button id="checkResults" onClick={() => alert(this.points)} variant="light" size="lg" block>Check results</Button>
+										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
+										: <Button key="finish" id="checkResults" onClick={() => alert(this.points + ' out of ' + this.props.questions.length + ' points.')} variant="light" size="lg" block>Check results</Button>
 									]
 							}
 							<br/>
@@ -110,4 +115,4 @@ class Question extends Component {
 	}
 }
 
-export default withFirebase(Question); 
+export default compose(withSpotify,withFirebase,)(Question); 
