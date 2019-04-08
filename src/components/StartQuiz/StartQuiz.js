@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import './StartQuiz.scss'
 
+import * as ROUTES from '../../constants/routes';
+
 class QuizStart extends Component {
   render() {
     return (
@@ -20,6 +22,7 @@ class QuizStart extends Component {
               </Button>
           }
         </div>
+        <Button variant="dark" href={ROUTES.SELECT}>Back</Button>
       </div>
     );
   }
