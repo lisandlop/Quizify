@@ -44,14 +44,30 @@ class SelectQuiz extends Component {
               <Col xs={12} sm={4}>
                 <Form>
 
-                  <Form.Group controlId="exampleForm.Quiz">
-                    <Form.Label>Search quiz name</Form.Label>
-                    <input type="text" className="form-control mr-sm-3" placeholder={"Quiz name"}/>
+                  <Form.Group controlId="quizName">
+                    <input type="text" className="form-control mr-sm-3" placeholder="Quiz name"/>
                   </Form.Group>
 
-                  <Form.Group controlId="exampleForm.Author">
+                  <Form.Group controlId="quizAuthor">
                     <Form.Label>Search author of quiz</Form.Label>
-                    <Form.Control type="text" placeholder="Q_master" />
+                    <Form.Control type="text" placeholder="Author" />
+                  </Form.Group>
+
+                  <Form.Group controlId="quizLanguage">
+                    <Form.Label>Language</Form.Label>
+                    <Form.Control as="select">
+                      <option value="All">Any language</option>
+                      <option disabled>-----------</option>
+                      <option value="DK">Dansk</option>
+                      <option value="GB">English</option>
+                      <option value="ES">Español</option>
+                      <option value="FR">Français</option>
+                      <option value="FI">Íslenska</option>
+                      <option value="DE">Deutsch</option>
+                      <option value="NO">Norsk</option>
+                      <option value="SV">Svenska</option>
+                      <option value="FI">Soumi</option>
+                    </Form.Control>
                   </Form.Group>
                 </Form>
               </Col>
