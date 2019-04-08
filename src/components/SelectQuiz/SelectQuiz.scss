@@ -12,6 +12,14 @@
 .quizList {
     text-align: center; 
     // margin-left: 2em; 
+
+    a:hover {
+        text-decoration: unset;    
+    }
+
+    div.bg-info:hover {
+        background-color: #167685!important
+    }
 }
  
 .ConfirmButton span { 
@@ -33,6 +41,10 @@
 
         float: right;
         height: 100%;
+    }
+
+    .flag-icon {
+        background-position: none !important;
     }
 }
 
