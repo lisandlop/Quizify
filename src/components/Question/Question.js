@@ -116,7 +116,6 @@ class Question extends Component {
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
 										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										// : <Button key="finish" id="checkResults" onClick={() => alert('You got ' + this.points + ' out of ' + this.props.questions.length + ' points!')} variant="light" size="lg" block>Check results</Button>
 										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true)} variant="light" size="lg" block>Check results</Button>
 									]
 									// this.proprs.funktionjagskapade med parameter s
