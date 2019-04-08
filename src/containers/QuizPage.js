@@ -6,6 +6,7 @@ import '../styles/QuizPage.scss';
 
 import StartQuiz from '../components/StartQuiz/StartQuiz';
 import Question from '../components/Question/Question';
+import EndGame from '../components/EndGame/EndGame'; 
 
 import { withFirebase } from '../components/Firebase';
 
@@ -15,6 +16,7 @@ class QuizPage extends Component {
 
     this.state = {
       started: false,
+      finished: false, 
       quizid: this.props.match.params.id,
       quizname: '',
       questions: []
@@ -37,6 +39,12 @@ class QuizPage extends Component {
     this.setState({started: start});
   }
 
+  finishedQuiz = (finish, points) => {
+    this.setState({finished: finish});
+    this.setState({finalPoints: points})
+    // skicka ner state som prop till sista komponenten, och skicka upp det från förra komponenten
+  }
+
   render() {
     return (
       <div className="QuizPage backpage">
@@ -45,7 +53,10 @@ class QuizPage extends Component {
             <Col xs={12}>
               {!this.state.started 
                 ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname} status={this.state.status}/>
-                : <Question quizid={this.state.quizid} questions={this.state.questions}/>
+                : [!this.state.finished
+                  ? <Question finishedQuiz={this.finishedQuiz} quizid={this.state.quizid} questions={this.state.questions}/>
+                  : <EndGame/>
+                ]
               }
             </Col>
           </Row>
