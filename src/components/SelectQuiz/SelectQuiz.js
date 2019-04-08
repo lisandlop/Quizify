@@ -94,22 +94,6 @@ class SelectQuiz extends Component {
 
               </Col>
             </Row>
-
-            
-                
-            
-
-            <Row md={12}>
-              <Col>
-
-                <div className = "Confirm" >
-                  <Button variant="primary" size="lg" className="ConfirmButton">
-                    <span>Confirm</span>
-                  </Button>
-                </div>
-
-              </Col>
-            </Row>
             <br /><br />
 
           </Container>
