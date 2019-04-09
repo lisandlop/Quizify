@@ -8,6 +8,8 @@ class EndGame extends Component {
   constructor(props) {
     super(props);
 
+    this.points = 0
+
     this.state = {
       quizstart: 0
       //loading: false,
@@ -18,13 +20,25 @@ class EndGame extends Component {
   render() {
     return (
       <div className = "EndGame" >
+        <h2>You got ? out of ? points!</h2>
+
+        {/* : <Button key="finish" id="checkResults" onClick={() => alert('You got ' + this.points + ' out of ' + this.props.questions.length + ' points!')} variant="light" size="lg" block>Check results</Button> */}
+
+        <h5>Here are the songs used for this quiz: </h5>
+        <p>Artist – song name</p>
+        <p>Artist – song name</p>
+        <p>Artist – song name</p>
+        <br/>
         <Button variant="primary" size="lg" className = "QuizAgainButton">
           <span>Take quiz again?</span>
         </Button>
       </div>
 
+      // antal rätt svar
+      // lista med låtarna 
+
     );
   }
 }
 
-export default QuizStart;
+export default EndGame;

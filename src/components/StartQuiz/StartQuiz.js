@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import './StartQuiz.scss'
 
+import * as ROUTES from '../../constants/routes';
+
 class QuizStart extends Component {
   render() {
     return (
@@ -12,7 +14,7 @@ class QuizStart extends Component {
         }
         <div className="StartQuiz" >
           {this.props.status !== 'READY' 
-            ? <Button variant="primary disabled" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)} disabled>
+            ? <Button variant="primary disabled" size="lg" className="StartQuizButton" disabled>
                 <span>Start Quiz!</span>
               </Button>
             : <Button variant="primary" size="lg" className="StartQuizButton" onClick={() => this.props.startQuiz(true)}>
@@ -20,6 +22,7 @@ class QuizStart extends Component {
               </Button>
           }
         </div>
+        <Button variant="dark" href={ROUTES.SELECT}>Back</Button>
       </div>
     );
   }

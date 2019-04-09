@@ -9,6 +9,7 @@ import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
 
 import './Question.scss';
+//import * as ROUTES from '../../constants/routes';
 
 class Question extends Component {
 	constructor(props) {
@@ -20,7 +21,8 @@ class Question extends Component {
 			questionnr: 0,
 			answerSelected: '', 
 			correctAnswer: -1,
-			options: ['', '', '', '']
+			options: ['', '', '', ''],
+			track: []
 		};
 	}
 
@@ -56,7 +58,12 @@ class Question extends Component {
 			return response.track;
 		}).then(track => {
 			this.props.spotify.playAudio(track);
+			this.props.spotify.getTrack(track).then(nowPlaying => {
+				this.setState({ albumCover: nowPlaying.album.images[0].url })
+			})
 		})
+
+		
 	}
 
 	componentDidMount() {
@@ -66,7 +73,7 @@ class Question extends Component {
 	render() {
 			return (
 				<div className="Question">
-					<h2>Question nr.{this.state.questionnr}</h2>
+					<h2>{this.state.questionnr !== 0 && `Question nr. ${this.state.questionnr}`}</h2>
 					<h1>{this.state.question}</h1>
 					
 					<Row>
@@ -77,6 +84,12 @@ class Question extends Component {
 									<Card.ImgOverlay>
 										<img id="recordLines" src="https://upload.wikimedia.org/wikipedia/commons/3/37/Vinyl_disc_icon.svg" alt="Record lines"/>
 									</Card.ImgOverlay>
+									{this.state.answerSelected !== ''
+										? <Card.ImgOverlay className="albumCover">
+												<img id="album" className="rounded-circle" src={this.state.albumCover} alt="Album cover"/>
+											</Card.ImgOverlay>
+										: <div/>
+									}
 									<Card.ImgOverlay>
 										<img id="recordHole" src="https://upload.wikimedia.org/wikipedia/commons/1/11/BlackDot.svg" alt=""/>
 									</Card.ImgOverlay>
@@ -103,8 +116,9 @@ class Question extends Component {
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
 										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										: <Button key="finish" id="checkResults" onClick={() => alert(this.points + ' out of ' + this.props.questions.length + ' points.')} variant="light" size="lg" block>Check results</Button>
+										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true)} variant="light" size="lg" block>Check results</Button>
 									]
+									// this.proprs.funktionjagskapade med parameter s
 							}
 							<br/>
 						</Col>

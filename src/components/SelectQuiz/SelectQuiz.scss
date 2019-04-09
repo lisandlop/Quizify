@@ -12,12 +12,41 @@
 .quizList {
     text-align: center; 
     // margin-left: 2em; 
+
+    a:hover {
+        text-decoration: unset;    
+    }
+
+    div.bg-info:hover {
+        background-color: #167685!important
+    }
 }
  
 .ConfirmButton span { 
     transition: 0.5s;
 }
 
+.card-img-overlay {
+    padding: 0;
+
+    span {
+        -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+        -webkit-mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: left, right;
+        mask-image: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+        mask-size: 100% 100%;
+        mask-repeat: no-repeat;
+        mask-position: left, right;
+
+        float: right;
+        height: 100%;
+    }
+
+    .flag-icon {
+        background-position: none !important;
+    }
+}
 
 .ConfirmButton:hover span {
 padding-right: 10px;
