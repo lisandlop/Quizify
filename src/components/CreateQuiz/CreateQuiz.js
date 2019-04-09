@@ -9,112 +9,94 @@ import Button from 'react-bootstrap/Button';
 import './CreateQuiz.scss';
 
 
-class CreateQuiz extends Component {
-
-    //constructor(props) {
-      //super(props);
-
-        state = {
+class CreateQuiz extends React.Component {
+        
+      state = {
         musicquiz: [{question:"", answer:""}],
+      }
+        
+        handleChange = (e) => {
+          if (["question", "answer"].includes(e.target.className)) {
+            let musicquiz = [...this.state.musicquiz]
+            musicquiz[e.target.dataset.id][e.target.className] = e.target.value
+            this.setState({musicquiz}, () => console.log(this.state.musicquiz))
+          } else {
+            this.setState({ [e.target.name]: e.target.value})
+          }
         }
-    }
-      
-render() {
+
+      addQuestion = (e) => {
+        this.setState((prevState) => ({
+          musicquiz: [...prevState.musicquiz, {question:"", answer:""}],
+        }));
+      }
+
+handleSubmit = (e) => { e.preventDefault() }
+render() { 
     let {musicquiz} = this.state    
     return (
-        <div>
-          <p id="selectaquiz">Create a Quiz</p>
-    
-  <Container>
-    <Row>
-    <Col sm={6}>
-    <Form>
 
-<Form.Group controlId="CreateForm.Author">
-    <Form.Label>Enter author name</Form.Label>
-    <input type="text" className="form-control mr-sm-3" placeholder={"Author name"}/>
-</Form.Group>
+<div>
+  <p id="selectaquiz">Create a Quiz</p>
 
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Label>Enter quiz name</Form.Label>
-    <Form.Control type="text" placeholder="Question" />
-</Form.Group>
-  
+<Container>
+  <Row>
+    <Col sm={3}>
+      <Form>
 
-{/* LÄGGA TILL EN KNAPP SOM LÄGGER TILL FRÅGA */}
+        <Form.Group controlId="CreateForm.Author">
+            <Form.Label>Enter author name</Form.Label>
+            <input type="text" className="form-control mr-sm-3" placeholder={"Author name"}/>
+        </Form.Group>
 
-<Button variant="primary" size="lg" className="AddButton" onClick={() => this.handleclick()}>
-    <span>Add question</span>
-</Button>
-{
-          musicquiz.map((val, idx)=> {
-            let questionId = `question-${idx}`, answerId = `answer-${idx}`
-            return (
-              <div key={idx}>
-                <label htmlFor={questionId}>{`Question #${idx + 1}`}</label>
-                <input
-                  type="text"
-                  name={questionId}
-                  data-id={idx}
-                  id={questionId}
-                  className="question"
-                />
-                <label htmlFor={answerId}>Answer</label>
-                <input
-                  type="text"
-                  name={answerId}
-                  data-id={idx}
-                  id={answerId}
-                  className="answer"
-                />
-              </div>
-            )
-          })
-        }
-
-</Form>
-          </Col>
-          <Col md={2}>
+        <Form.Group controlId="CreateForm.QuizName">
+            <Form.Label>Enter quiz name</Form.Label>
+            <Form.Control type="text" placeholder="Question" />
+        </Form.Group>
           
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Control type="text" placeholder="Quiz name" />
-</Form.Group>
+        <Button variant="primary" size="lg" className="AddButton" onClick ={this.addQuestion} >
+            <span>Add question</span>
+        </Button>
 
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Control type="text" placeholder="Song" />
-</Form.Group>
+      </Form>
+    </Col>
 
-</Col>
-<Col md={2}>
+{
+  musicquiz.map((val, idx)=> {
+    let questionId = `question-${idx}`, answerId = `answer-${idx}`
+    return (
 
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Control type="text" placeholder="Correct answer" />
-</Form.Group>
+<div>
+  <Col sm={6}>
+    <Col sm={6}> 
+      <Form.Group controlId="CreateForm.QuizName" id="vline">
+          <Form.Control type="text" placeholder="Question" />
+          <Form.Control type="text" placeholder="Song" />
 
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Control type="text" placeholder="Wrong answer 1" />
-</Form.Group>
+    <Col sm={6}> 
+    
+          <Form.Control type="text" id="correct" placeholder="Correct answer" />
+          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
 
-</Col>
-<Col md={2}>
+    <Col sm={6}> 
 
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Control type="text" placeholder="Wrong answer 2" />
-</Form.Group>
+          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+    </Col>
+    </Col>   
+        </Form.Group>
+      </Col>
+  </Col>    
+</div>
+          )
+      })
+}
 
-<Form.Group controlId="CreateForm.QuizName">
-    <Form.Control type="text" placeholder="Wrong answer 3" />
-</Form.Group>
 
-</Col>
-<Col md={2}>
+  </Row>
 
-        
-          </Col>
-        </Row>
-        
-    <Row md={12}>
-      <Col md={3}>
+  <Row>
+      <Col>
         <div className = "Confirm" >
           <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)}>
             <span>Confirm</span>
@@ -122,20 +104,24 @@ render() {
         </div>
       </Col>
     </Row>
-        </Container></div>
+
+</Container>
+</div>
 
       ); 
+      }
+
+
     }
-  
-  class Foo extends Component {
+  {/*class Foo extends Component {
     // Note: this syntax is experimental and not standardized yet.
     handleClick = () => {
       console.log('Click happened');
     }
     render() {
       return <button onClick={this.handleClick}>Add Question</button>;
-    }
-  } 
+    } */}
+  
   export default withFirebase(CreateQuiz);
 
 

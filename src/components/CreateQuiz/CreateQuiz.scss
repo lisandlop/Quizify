@@ -44,3 +44,21 @@
   .StartQuiz {
     margin: 5em; 
   }
+
+#vline {
+  border-left: 6px solid yellow;
+  height: 80px;
+  
+}
+
+  .Wrong {
+    border-color: red;
+    border-width: 5px;
+
+
+  }
+
+  #correct {
+    border-color: green;
+    border-width: 5px;
+  }
