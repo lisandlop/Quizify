@@ -62,12 +62,14 @@ class Question extends Component {
 				this.setState({ albumCover: nowPlaying.album.images[0].url })
 			})
 		})
-
-		
 	}
 
 	componentDidMount() {
 		this.getQuestion();
+	}
+
+	componentWillUnmount() {
+		this.props.spotify.audio.pause();
 	}
 
 	render() {

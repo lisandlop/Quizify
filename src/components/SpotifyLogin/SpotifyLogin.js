@@ -10,13 +10,14 @@ class SpotifyLogin extends Component {
     super(props);
 
     this.state = {
+      loggedIn: this.props.spotify.getAccessToken() !== null ? true : false,
       name: '',
       userImage: ''
     }
   }
 
   componentDidMount() {
-    if (this.props.spotify.state.loggedIn) {
+    if (this.state.loggedIn) {
       this.props.spotify.getMe().then(response => {
         this.setState({
           name: response.display_name,
@@ -26,10 +27,15 @@ class SpotifyLogin extends Component {
     }
   }
 
+  signOut() {
+    this.props.spotify.setAccessToken(null);
+    this.setState({ loggedIn: false });
+  }
+
   render() {
     return (
       <div className="SpotifyLogin">
-        {!this.props.spotify.state.loggedIn 
+        {!this.state.loggedIn 
           ? <Button variant="success" style={{margin: '4em'}} onClick={() => this.props.spotify.authenticateSpotify()}>
 					    Log in to Spotify
             </Button>
@@ -39,7 +45,7 @@ class SpotifyLogin extends Component {
               <h1>{this.state.name}!</h1>
               <Image src={this.state.userImage} style={{width: '50%'}} roundedCircle/>
               <Row>
-                <Button variant="light" style={{margin: '1em 10em', alignItems: 'center'}} block>
+                <Button variant="light" onClick={() => this.signOut()} style={{margin: '1em 10em', alignItems: 'center'}} block>
                   Log out
                 </Button>
               </Row>

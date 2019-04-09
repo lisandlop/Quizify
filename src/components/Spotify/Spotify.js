@@ -7,10 +7,6 @@ class SpotifyAPI extends Spotify {
 		
 		const params = this.getHashParams();
 
-		this.state = {
-			loggedIn: params.access_token ? true : false
-		}
-
 		if (params.access_token) {
 			this.setAccessToken(params.access_token)
 		}
