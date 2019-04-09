@@ -9,6 +9,7 @@ import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
 
 import './Question.scss';
+// import { notEqual } from 'assert';
 //import * as ROUTES from '../../constants/routes';
 
 class Question extends Component {
@@ -16,6 +17,7 @@ class Question extends Component {
 		super(props);
 
 		this.points = 0;
+		this.songList = [];
 
 		this.state = {
 			questionnr: 0,
@@ -23,6 +25,7 @@ class Question extends Component {
 			correctAnswer: -1,
 			options: ['', '', '', ''],
 			track: []
+			
 		};
 	}
 
@@ -60,6 +63,15 @@ class Question extends Component {
 			this.props.spotify.playAudio(track);
 			this.props.spotify.getTrack(track).then(nowPlaying => {
 				this.setState({ albumCover: nowPlaying.album.images[0].url })
+				var artistString = ""
+				nowPlaying.artists.map(artist => {
+					artistString += artist.name + ', '
+				})
+				// artistString -= ', '
+				// substring javascript ta bort två sista tecknen
+
+				this.songList.push({songName: nowPlaying.name, artist: artistString})
+				// console.log(artistString)
 			})
 		})
 	}
@@ -98,6 +110,7 @@ class Question extends Component {
 								</Card>
 							</Row>
 						</Col>
+
 						<Col xs={12} sm={6} id="altCol">
 							<br/>
 							<Row>
@@ -107,6 +120,7 @@ class Question extends Component {
 									<Button className={this.checkAnswer(1)} onClick={() => this.handleAnswer(1)} variant="primary" size="lg" block>{this.state.options[1]}</Button>
 								</Col>
 							</Row>
+
 							<Row>
 								<Col xs={6}>
 									<Button className={this.checkAnswer(2)} onClick={() => this.handleAnswer(2)} variant="info" size="lg" block>{this.state.options[2]}</Button>
@@ -114,17 +128,17 @@ class Question extends Component {
 									<Button className={this.checkAnswer(3)} onClick={() => this.handleAnswer(3)} variant="light" size="lg" block>{this.state.options[3]}</Button>
 								</Col>
 							</Row>
+
 							{this.state.answerSelected === ''
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
 										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										// : <Button key="finish" id="checkResults" onClick={() => alert('You got ' + this.points + ' out of ' + this.props.questions.length + ' points!')} variant="light" size="lg" block>Check results</Button>
-										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true)} variant="light" size="lg" block>Check results</Button>
+										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true, this.points, this.songList)} variant="light" size="lg" block>Check results</Button>
 									]
-									// this.proprs.funktionjagskapade med parameter s
 							}
 							<br/>
 						</Col>
+
 					</Row>
 					<br/><br/>
 			</div>

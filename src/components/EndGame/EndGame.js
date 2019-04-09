@@ -18,20 +18,21 @@ class EndGame extends Component {
   render() {
     return (
       <div className = "EndGame" >
-        <h2>You got ? out of ? points!</h2>
-        <h5>Here are the songs used for this quiz: </h5>
-        <p>Artist – song name</p>
-        <p>Artist – song name</p>
-        <p>Artist – song name</p>
+        <h1>You got {this.props.finalPoints} out of {this.props.questions.length} points!</h1>
+        <br/><br/>
+        
+        {/* : <Button key="finish" id="checkResults" onClick={() => alert('You got ' + this.points + ' out of ' + this.props.questions.length + ' points!')} variant="light" size="lg" block>Check results</Button> */}
+        <h6>Here are the songs used for this quiz: </h6>
         <br/>
+        {this.props.songList.map((song, k) => {
+          return (<h4 key={k}> {song.artist} – {song.songName} </h4>)
+        })}
+        <br/>
+
         <Button variant="primary" size="lg" className = "QuizAgainButton">
           <span>Take quiz again?</span>
         </Button>
       </div>
-
-      // antal rätt svar
-      // lista med låtarna 
-
     );
   }
 }
