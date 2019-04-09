@@ -39,8 +39,11 @@ class QuizPage extends Component {
     this.setState({started: start});
   }
 
-  finishedQuiz = (finish, points) => {
-    this.setState({finished: finish, finalPoints: points})
+  finishedQuiz = (finish, points, songList) => {
+    this.setState({
+      finished: finish, 
+      finalPoints: points, 
+      songs: songList})
     // skicka ner state som prop till sista komponenten, och skicka upp det från förra komponenten
   }
 
@@ -53,8 +56,8 @@ class QuizPage extends Component {
               {!this.state.started 
                 ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname} status={this.state.status}/>
                 : [!this.state.finished
-                  ? <Question finishedQuiz={this.finishedQuiz} quizid={this.state.quizid} questions={this.state.questions}/>
-                  : <EndGame finalPoints={this.state.finalPoints} questions={this.state.questions}/>
+                  ? <Question key = '1' finishedQuiz={this.finishedQuiz} quizid={this.state.quizid} questions={this.state.questions}/>
+                  : <EndGame key = '2' finalPoints={this.state.finalPoints} questions={this.state.questions} songList={this.state.songs}/>
                 ]
               }
             </Col>

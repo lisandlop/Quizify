@@ -9,7 +9,7 @@ import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
 
 import './Question.scss';
-import { notEqual } from 'assert';
+// import { notEqual } from 'assert';
 //import * as ROUTES from '../../constants/routes';
 
 class Question extends Component {
@@ -50,7 +50,6 @@ class Question extends Component {
 	}
 
 	getQuestion() {
-		const self = this
 		this.props.firebase.getQuestionFromQuiz(this.props.quizid, this.props.questions[this.state.questionnr]).then(response => {
 			this.setState({
 				questionnr: this.state.questionnr + 1,
@@ -64,8 +63,15 @@ class Question extends Component {
 			this.props.spotify.playAudio(track);
 			this.props.spotify.getTrack(track).then(nowPlaying => {
 				this.setState({ albumCover: nowPlaying.album.images[0].url })
-				self.songList.push({songName: nowPlaying.name, artist: nowPlaying.artists[0].name})
-				console.log(nowPlaying.artists[0].name)
+				var artistString = ""
+				nowPlaying.artists.map(artist => {
+					artistString += artist.name + ', '
+				})
+				// artistString -= ', '
+				// substring javascript ta bort två sista tecknen
+
+				this.songList.push({songName: nowPlaying.name, artist: artistString})
+				// console.log(artistString)
 			})
 		})
 	}
@@ -123,9 +129,8 @@ class Question extends Component {
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
 										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true, this.points)} variant="light" size="lg" block>Check results</Button>
+										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true, this.points, this.songList)} variant="light" size="lg" block>Check results</Button>
 									]
-									// this.proprs.funktionjagskapade med parameter s
 							}
 							<br/>
 						</Col>
