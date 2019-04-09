@@ -40,8 +40,7 @@ class QuizPage extends Component {
   }
 
   finishedQuiz = (finish, points) => {
-    this.setState({finished: finish});
-    this.setState({finalPoints: points})
+    this.setState({finished: finish, finalPoints: points})
     // skicka ner state som prop till sista komponenten, och skicka upp det från förra komponenten
   }
 
@@ -55,7 +54,7 @@ class QuizPage extends Component {
                 ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname} status={this.state.status}/>
                 : [!this.state.finished
                   ? <Question finishedQuiz={this.finishedQuiz} quizid={this.state.quizid} questions={this.state.questions}/>
-                  : <EndGame/>
+                  : <EndGame finalPoints={this.state.finalPoints} questions={this.state.questions}/>
                 ]
               }
             </Col>
