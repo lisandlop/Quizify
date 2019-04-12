@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { withFirebase } from '../Firebase';
 import Button from 'react-bootstrap/Button';
 
+import Modal from 'react-bootstrap/Modal';
 import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 
 import './CreateQuiz.scss';
@@ -44,11 +45,14 @@ class CreateQuiz extends Component {
 
   spotifySongSelection = (e) => {
     e.target.blur();
-    this.setState({ selectingSong: true })
+    this.setState({ selectingSong: true, target: e.target })
   }
 
-  spotifySongSelected = () => {
-    this.setState({ selectingSong: false })
+  spotifySongSelected = (cancelled, track) => {
+    if (!cancelled) {
+      document.getElementById(this.state.target.id).value = track.name;
+    }
+    this.setState({ selectingSong: false, target: null })
   }
   
   render() {
@@ -56,7 +60,9 @@ class CreateQuiz extends Component {
     return (
 
       <div>
-        <SpotifySongSelect show={this.state.selectingSong} selectSong={this.spotifySongSelected}/>
+        <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
+          {this.state.selectingSong && <SpotifySongSelect selectSong={this.spotifySongSelected}/>}
+        </Modal>
 
         <p id="selectaquiz">Create a Quiz</p>
         <Container>
@@ -82,38 +88,36 @@ class CreateQuiz extends Component {
             </Col>
 
             <Col className="questionList">
-            {
-              musicquiz.map((val, idx) => {
-                let questionId = `question-${idx}`, answerId = `answer-${idx}`
-                return (
+            {musicquiz.map((val, idx) => {
+              // let questionId = `question-${idx}`, answerId = `answer-${idx}`
+              return (
 
-                  <div key={idx}>
-                    <Row>
+                <div key={idx}>
+                  <Row>
 
-                      <Col>
-                        <Form.Group id="vline">
-                          <Form.Control type="text" placeholder="Question" />
-                          <Form.Control type="text" placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
-                        </Form.Group>
-                      </Col>
+                    <Col>
+                      <Form.Group id="vline">
+                        <Form.Control type="text" placeholder="Question" />
+                        <Form.Control type="text" id={`song-${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
+                      </Form.Group>
+                    </Col>
 
-                      <Col>
-                        <Form.Group>
-                          <Form.Control type="text" id="correct" placeholder="Correct answer" />
-                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
-                        </Form.Group>
-                      </Col>
+                    <Col>
+                      <Form.Group>
+                        <Form.Control type="text" id="correct" placeholder="Correct answer" />
+                        <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+                      </Form.Group>
+                    </Col>
 
-                      <Col>
-                        <Form.Group>
-                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
-                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
-                        </Form.Group>
-                      </Col>
+                    <Col>
+                      <Form.Group>
+                        <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+                        <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+                      </Form.Group>
+                    </Col>
 
-                    </Row>
-                  </div>
-
+                  </Row>
+                </div>
                 )
               })
             }

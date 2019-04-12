@@ -71,9 +71,13 @@ class SpotifySongSelect extends Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.props.spotify.audio) this.props.spotify.audio.pause();
+  }
+
   render() {
     return (
-      <Modal className="SpotifySongSelect" size="xl" show={this.props.show} onHide={() => this.props.selectSong()}>
+      <div>
         <Modal.Header closeButton>
           <Modal.Title>Select a song</Modal.Title>
         </Modal.Header>
@@ -91,28 +95,27 @@ class SpotifySongSelect extends Component {
               </Col>
             </Row>
           </Form>
-          {console.log(this.songList)}
           <CardDeck>
             {this.songList.map((song, k) => (
               <Card className="songPreview" key={k}>
-                <Card.Img src={song.album.images[0].url}/>
-                <Card.ImgOverlay onClick={() => this.playPause(song.id)}>
+                <Card.Img variant="top" src={song.album.images[0].url}/>
+                <Card.ImgOverlay className="justify-content-center" onClick={() => this.playPause(song.id)}>
                   {this.state.playing === song.id
-                    ? <FontAwesomeIcon size="2x" icon={faPauseCircle}/>
-                    : <FontAwesomeIcon size="2x" icon={faPlayCircle}/>
+                    ? <FontAwesomeIcon size="3x" icon={faPauseCircle}/>
+                    : <FontAwesomeIcon size="3x" icon={faPlayCircle}/>
                   }
                 </Card.ImgOverlay>
                 <Card.Body>
                   <Card.Text>{song.name}</Card.Text>
                 </Card.Body>
                 <Card.Footer>
-                  <Button block>Select</Button>
+                  <Button onClick={() => this.props.selectSong(false, song)} block>Select</Button>
                 </Card.Footer>
               </Card>
             ))}
           </CardDeck>
         </Modal.Body>
-      </Modal>
+      </div>
     );
   }
 }

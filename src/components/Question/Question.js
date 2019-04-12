@@ -74,7 +74,7 @@ class Question extends Component {
 	}
 
 	componentWillUnmount() {
-		this.props.spotify.audio.pause();
+		if (this.props.spotify.audio) this.props.spotify.audio.pause();
 	}
 
 	render() {
