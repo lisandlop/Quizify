@@ -63,11 +63,8 @@ class Question extends Component {
 			this.props.spotify.playAudio(track);
 			this.props.spotify.getTrack(track).then(nowPlaying => {
 				this.setState({ albumCover: nowPlaying.album.images[0].url })
-				var artistString = ""
-				nowPlaying.artists.map(artist => {
-					artistString += artist.name + ', '
-				})
-				artistString = artistString.substr(0, artistString.length-2)
+				
+				var artistString = nowPlaying.artists.map(artist => `${artist.name}`).join(', ');
 
 				this.songList.push({songName: nowPlaying.name, artist: artistString})
 			})
