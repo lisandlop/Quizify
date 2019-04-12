@@ -21,29 +21,20 @@
     //position: relative;
     transition: 0.5s;
 }
-
-.StartQuizButton span:after {
-    //content: '\00bb';
-    //position: absolute;
-    //opacity: 10;
-    //top: 0;
-    //right: -20px;
-    //transition: 0.5s;
-  }
   
-  .StartQuizButton:hover span {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-  
-  .StartQuizButton:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
+.StartQuizButton:hover span {
+  padding-right: 10px;
+  padding-left: 10px;
+}
 
-  .StartQuiz {
-    margin: 5em; 
-  }
+.StartQuizButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.StartQuiz {
+  margin: 5em; 
+}
 
 #vline {
   border-left: 6px solid yellow;
