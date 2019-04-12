@@ -6,9 +6,26 @@ class SpotifyAPI extends Spotify {
 		super();
 		
 		const params = this.getHashParams();
+		
+		//Fetch stored access token (user already logged in)
+		if (JSON.parse(localStorage.getItem("spotifyToken"))) {
+			let spotifyToken = JSON.parse(localStorage.getItem("spotifyToken"));
 
+			//Check if the access token is still valid, else flags for timeout
+			if (new Date().getTime() - parseInt(spotifyToken.timeStamp) < spotifyToken.timeOut)  {
+				this.setAccessToken(spotifyToken.value)
+			}
+			else {
+				this.userTimedOut = true;
+			}
+		}
+		
+		//Set new access token (user logged in or updated login)
 		if (params.access_token) {
 			this.setAccessToken(params.access_token)
+
+			let spotifyToken = {value: params.access_token, timeStamp: new Date().getTime(), timeOut: params.expires_in} //*1000}
+			localStorage.setItem('spotifyToken', JSON.stringify(spotifyToken));
 		}
 	}
 
