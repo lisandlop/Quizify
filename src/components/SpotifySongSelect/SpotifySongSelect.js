@@ -60,9 +60,15 @@ class SpotifySongSelect extends Component {
 		}
   }
 
-  playSong(trackID) {
-    this.props.spotify.playAudio(trackID)
-    this.setState({ playing: trackID });
+  playPause(trackID) {
+    if (trackID === this.state.playing) {
+      this.props.spotify.audio.pause()
+      this.setState({ playing: null });
+    }
+    else {
+      this.props.spotify.playAudio(trackID)
+      this.setState({ playing: trackID });
+    }
   }
 
   render() {
@@ -90,7 +96,7 @@ class SpotifySongSelect extends Component {
             {this.songList.map((song, k) => (
               <Card className="songPreview" key={k}>
                 <Card.Img src={song.album.images[0].url}/>
-                <Card.ImgOverlay onClick={() => this.playSong(song.id)}>
+                <Card.ImgOverlay onClick={() => this.playPause(song.id)}>
                   {this.state.playing === song.id
                     ? <FontAwesomeIcon size="2x" icon={faPauseCircle}/>
                     : <FontAwesomeIcon size="2x" icon={faPlayCircle}/>
