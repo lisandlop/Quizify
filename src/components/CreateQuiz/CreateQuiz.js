@@ -11,114 +11,116 @@ import './CreateQuiz.scss';
 
 
 class CreateQuiz extends React.Component {
-        
-      state = {
-        musicquiz: [{question:"", answer:""}],
-      }
-        
-        handleChange = (e) => {
-          if (["question", "answer"].includes(e.target.className)) {
-            let musicquiz = [...this.state.musicquiz]
-            musicquiz[e.target.dataset.id][e.target.className] = e.target.value
-            this.setState({musicquiz}, () => console.log(this.state.musicquiz))
-          } else {
-            this.setState({ [e.target.name]: e.target.value})
-          }
-        }
+  state = {
+    musicquiz: [{ question: "", answer: "" }],
+  }
 
-      addQuestion = (e) => {
-        this.setState((prevState) => ({
-          musicquiz: [...prevState.musicquiz, {question:"", answer:""}],
-        }));
-      }
+  handleChange = (e) => {
+    if (["question", "answer"].includes(e.target.className)) {
+      let musicquiz = [...this.state.musicquiz]
+      musicquiz[e.target.dataset.id][e.target.className] = e.target.value
+      this.setState({ musicquiz }, () => console.log(this.state.musicquiz))
+    } else {
+      this.setState({ [e.target.name]: e.target.value })
+    }
+  }
 
-handleSubmit = (e) => { e.preventDefault() }
-render() { 
-    let {musicquiz} = this.state    
+  addQuestion = (e) => {
+    this.setState((prevState) => ({
+      musicquiz: [...prevState.musicquiz, { question: "", answer: "" }],
+    }));
+  }
+
+  handleSubmit = (e) => { e.preventDefault() }
+  
+  render() {
+    let { musicquiz } = this.state
     return (
 
-<div>
-  <p id="selectaquiz">Create a Quiz</p>
+      <div>
+        <p id="selectaquiz">Create a Quiz</p>
 
-<Container>
-  <Row>
-    <Col sm={3}>
-      <Form>
+        <Container>
+          <Row>
+            <Col sm={3}>
+              <Form>
 
-        <Form.Group controlId="CreateForm.Author">
-            <Form.Label>Enter author name</Form.Label>
-            <input type="text" className="form-control mr-sm-3" placeholder={"Author name"}/>
-        </Form.Group>
+                <Form.Group controlId="CreateForm.Author">
+                  <Form.Label>Enter author name</Form.Label>
+                  <input type="text" className="form-control mr-sm-3" placeholder={"Author name"} />
+                </Form.Group>
 
-        <Form.Group controlId="CreateForm.QuizName">
-            <Form.Label>Enter quiz name</Form.Label>
-            <Form.Control type="text" placeholder="Question" />
-        </Form.Group>
-          
-        <Button variant="primary" size="lg" className="AddButton" onClick ={this.addQuestion} >
-            <span>Add question</span>
-        </Button>
+                <Form.Group controlId="CreateForm.QuizName">
+                  <Form.Label>Enter quiz name</Form.Label>
+                  <Form.Control type="text" placeholder="Question" />
+                </Form.Group>
 
-      </Form>
-    </Col>
+                <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} >
+                  <span>Add question</span>
+                </Button>
 
-{
-  musicquiz.map((val, idx)=> {
-    let questionId = `question-${idx}`, answerId = `answer-${idx}`
-    return (
+              </Form>
+            </Col>
 
-<div>
-<Row>
+            <Col className="questionList">
+            {
+              musicquiz.map((val, idx) => {
+                let questionId = `question-${idx}`, answerId = `answer-${idx}`
+                return (
 
-  <Col auto> 
-    <Form.Group controlId="CreateForm.QuizName" id="vline">
-      <Form.Control type="text" placeholder="Question" />
-      <Form.Control type="text" placeholder="Song" />
-    </Form.Group>
-  </Col>
+                  <div>
+                    <Row>
 
-  <Col auto> 
-    <Form.Group controlId="CreateForm.QuizName">
-      <Form.Control type="text" id="correct" placeholder="Correct answer" />
-      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
-    </Form.Group>
-  </Col>
+                      <Col auto>
+                        <Form.Group controlId="CreateForm.QuizName" id="vline">
+                          <Form.Control type="text" placeholder="Question" />
+                          <Form.Control type="text" placeholder="Song" />
+                        </Form.Group>
+                      </Col>
 
-  <Col auto>
-    <Form.Group controlId="CreateForm.QuizName">
-      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
-      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
-    </Form.Group>  
-  </Col>
+                      <Col auto>
+                        <Form.Group controlId="CreateForm.QuizName">
+                          <Form.Control type="text" id="correct" placeholder="Correct answer" />
+                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+                        </Form.Group>
+                      </Col>
 
-</Row>
-</div>
+                      <Col auto>
+                        <Form.Group controlId="CreateForm.QuizName">
+                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+                        </Form.Group>
+                      </Col>
 
-          )
-      })
-    }
+                    </Row>
+                  </div>
 
-  </Row>
+                )
+              })
+            }
+            </Col>
 
-  <Row>
-      <Col>
-        <div className = "Confirm" >
-          <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)}>
-            <span>Confirm</span>
-          </Button>
-        </div>
-      </Col>
-    </Row>
+          </Row>
 
-</Container>
-</div>
+          <Row>
+            <Col>
+              <div className="Confirm" >
+                <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)}>
+                  <span>Confirm</span>
+                </Button>
+              </div>
+            </Col>
+          </Row>
 
-      ); 
-      }
+        </Container>
+      </div>
+
+    );
+  }
 
 
-    }
-  {/*class Foo extends Component {
+}
+{/*class Foo extends Component {
     // Note: this syntax is experimental and not standardized yet.
     handleClick = () => {
       console.log('Click happened');
@@ -126,10 +128,10 @@ render() {
     render() {
       return <button onClick={this.handleClick}>Add Question</button>;
     } */}
-  
-  export default withFirebase(CreateQuiz);
+
+export default withFirebase(CreateQuiz);
 
 
 
-   
+
 
