@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table';
 import { withFirebase } from '../Firebase';
 import Button from 'react-bootstrap/Button';
 import './CreateQuiz.scss';
+import './CreateQuestion.js';
 
 
 class CreateQuiz extends React.Component {
@@ -61,37 +62,41 @@ render() {
       </Form>
     </Col>
 
-{
+
   musicquiz.map((val, idx)=> {
     let questionId = `question-${idx}`, answerId = `answer-${idx}`
     return (
 
 <div>
-  <Col sm={6}>
-    <Col sm={6}> 
-      <Form.Group controlId="CreateForm.QuizName" id="vline">
-          <Form.Control type="text" placeholder="Question" />
-          <Form.Control type="text" placeholder="Song" />
+<Row>
 
-    <Col sm={6}> 
-    
-          <Form.Control type="text" id="correct" placeholder="Correct answer" />
-          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+  <Col auto> 
+    <Form.Group controlId="CreateForm.QuizName" id="vline">
+      <Form.Control type="text" placeholder="Question" />
+      <Form.Control type="text" placeholder="Song" />
+    </Form.Group>
+  </Col>
 
-    <Col sm={6}> 
+  <Col auto> 
+    <Form.Group controlId="CreateForm.QuizName">
+      <Form.Control type="text" id="correct" placeholder="Correct answer" />
+      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+    </Form.Group>
+  </Col>
 
-          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
-          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
-    </Col>
-    </Col>   
-        </Form.Group>
-      </Col>
-  </Col>    
+  <Col auto>
+    <Form.Group controlId="CreateForm.QuizName">
+      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+    </Form.Group>  
+  </Col>
+
+</Row>
 </div>
+
           )
       })
-}
-
+    }
 
   </Row>
 
