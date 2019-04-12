@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 import { compose, renderComponent } from 'recompose';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
