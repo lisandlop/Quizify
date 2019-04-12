@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table';
 import { withFirebase } from '../Firebase';
 import Button from 'react-bootstrap/Button';
 import './CreateQuiz.scss';
-import './CreateQuestion.js';
+//import './CreateQuestion.js';
 
 
 class CreateQuiz extends React.Component {
@@ -62,7 +62,7 @@ render() {
       </Form>
     </Col>
 
-
+{
   musicquiz.map((val, idx)=> {
     let questionId = `question-${idx}`, answerId = `answer-${idx}`
     return (
