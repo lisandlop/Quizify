@@ -58,86 +58,78 @@ class CreateQuiz extends Component {
   render() {
     let { musicquiz } = this.state
     return (
-
-      <div>
+      <Container>
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
           {this.state.selectingSong && <SpotifySongSelect selectSong={this.spotifySongSelected}/>}
         </Modal>
 
-        <p id="selectaquiz">Create a Quiz</p>
-        <Container>
-          <Row>
-            <Col sm={3}>
-              <Form>
+        <Row>
+          <Col xs={12}>
+            <p id="createaquiz">Create a Quiz</p>
+          </Col>
+          <Col sm={3}>
+            <Form>
 
-                <Form.Group controlId="CreateForm.Author">
-                  <Form.Label>Enter author name</Form.Label>
-                  <input type="text" className="form-control mr-sm-3" placeholder={"Author name"} />
-                </Form.Group>
+              <Form.Group controlId="CreateForm.Author">
+                <Form.Label>Enter author name</Form.Label>
+                <input type="text" className="form-control mr-sm-3" placeholder={"Author name"} />
+              </Form.Group>
 
-                <Form.Group controlId="CreateForm.QuizName">
-                  <Form.Label>Enter quiz name</Form.Label>
-                  <Form.Control type="text" placeholder="Question" />
-                </Form.Group>
+              <Form.Group controlId="CreateForm.QuizName">
+                <Form.Label>Enter quiz name</Form.Label>
+                <Form.Control type="text" placeholder="Question" />
+              </Form.Group>
 
-                <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} >
-                  <span>Add question</span>
-                </Button>
+              <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} >
+                <span>Add question</span>
+              </Button>
 
-              </Form>
-            </Col>
+            </Form>
+          </Col>
 
-            <Col className="questionList">
-            {musicquiz.map((val, idx) => {
-              // let questionId = `question-${idx}`, answerId = `answer-${idx}`
-              return (
+          <Col>
+            <div className="questionList">
+          {musicquiz.map((val, idx) => {
+            // let questionId = `question-${idx}`, answerId = `answer-${idx}`
+            return (
 
-                <div key={idx}>
-                  <Row>
+              <div key={idx}>
+                <Row>
 
-                    <Col>
-                      <Form.Group id="vline">
-                        <Form.Control type="text" placeholder="Question" />
-                        <Form.Control type="text" id={`song-${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
-                      </Form.Group>
-                    </Col>
+                  <Col>
+                    <Form.Group id="vline">
+                      <Form.Control type="text" placeholder="Question" />
+                      <Form.Control type="text" id={`song-${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
+                    </Form.Group>
+                  </Col>
 
-                    <Col>
-                      <Form.Group>
-                        <Form.Control type="text" id="correct" placeholder="Correct answer" />
-                        <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
-                      </Form.Group>
-                    </Col>
+                  <Col>
+                    <Form.Group>
+                      <Form.Control type="text" id="correct" placeholder="Correct answer" />
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+                    </Form.Group>
+                  </Col>
 
-                    <Col>
-                      <Form.Group>
-                        <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
-                        <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
-                      </Form.Group>
-                    </Col>
+                  <Col>
+                    <Form.Group>
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+                    </Form.Group>
+                  </Col>
 
-                  </Row>
-                </div>
-                )
-              })
-            }
-            </Col>
-
-          </Row>
-
-          <Row>
-            <Col>
-              <div className="Confirm" >
-                <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)}>
-                  <span>Confirm</span>
-                </Button>
+                </Row>
               </div>
-            </Col>
-          </Row>
-
-        </Container>
-      </div>
-
+              )
+            })
+          }</div>
+          <div className="Confirm" >
+            <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)} block>
+              <span>Confirm</span>
+            </Button>
+          </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 
