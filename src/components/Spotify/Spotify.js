@@ -24,7 +24,7 @@ class SpotifyAPI extends Spotify {
 		if (params.access_token) {
 			this.setAccessToken(params.access_token)
 
-			let spotifyToken = {value: params.access_token, timeStamp: new Date().getTime(), timeOut: params.expires_in*1000}
+			let spotifyToken = {value: params.access_token, timeStamp: new Date().getTime(), timeOut: (params.expires_in-300)*1000}
 			localStorage.setItem('spotifyToken', JSON.stringify(spotifyToken));
 		}
 	}
@@ -60,6 +60,11 @@ class SpotifyAPI extends Spotify {
 			this.audio = new Audio(response.preview_url)
 			this.audio.play();
 		})
+	}
+
+	logOut() {
+		this.setAccessToken(null);
+		localStorage.removeItem('spotifyToken');
 	}
 }
 

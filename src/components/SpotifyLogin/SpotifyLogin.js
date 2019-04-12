@@ -28,7 +28,7 @@ class SpotifyLogin extends Component {
   }
 
   signOut() {
-    this.props.spotify.setAccessToken(null);
+    this.props.spotify.logOut();
     this.setState({ loggedIn: false });
   }
 

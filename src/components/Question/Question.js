@@ -67,11 +67,9 @@ class Question extends Component {
 				nowPlaying.artists.map(artist => {
 					artistString += artist.name + ', '
 				})
-				// artistString -= ', '
-				// substring javascript ta bort två sista tecknen
+				artistString = artistString.substr(0, artistString.length-2)
 
 				this.songList.push({songName: nowPlaying.name, artist: artistString})
-				// console.log(artistString)
 			})
 		})
 	}
