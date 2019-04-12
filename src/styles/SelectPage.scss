@@ -2,15 +2,25 @@
   text-align: center;
   color: white;
 
+  .form-control {
+    margin: 2%;
+    padding-right: 5px;
+  }
+  
+  #selectaquiz {
+    font-size: 36pt;
+  }
+
+  .quizList {
+    position: relative;
+    height: 100%;
+  }
 }
 
-.form-control {
-  margin: 2%;
-  padding-right: 5px;
-}
-
-#selectaquiz {
-  font-size: 36pt;
+.SelectPage > div,
+.SelectPage > div > div {
+  position: relative;
+  height: 100%;
 }
 
 

@@ -34,12 +34,11 @@ class SelectQuiz extends Component {
 
     render() {
       return (
-        <div>
-          <p id="selectaquiz">Select a Quiz</p>
-
-          <Container>
+        <Container>
             <Row>
-              {/* <Col sm={3}> */}
+              <Col xs={12}>
+                <p id="selectaquiz">Select a Quiz</p>
+              </Col>
               <Col xs={12} sm={4}>
                 <Form>
 
@@ -96,10 +95,7 @@ class SelectQuiz extends Component {
               </Col>
             </Row>
             <br /><br />
-
-          </Container>
-          </div>
-
+        </Container>
       ); 
     }
   }

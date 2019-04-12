@@ -25,4 +25,5 @@ html, body, #root, #root>div {
 .backpage {
   background-color: $main-background;
   flex: 1;
- }
+  overflow: hidden;
+}
