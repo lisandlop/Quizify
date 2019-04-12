@@ -89,6 +89,7 @@ class Question extends Component {
 				<div className="Question">
 					<h2>{this.state.questionnr !== 0 && `Question nr. ${this.state.questionnr}`}</h2>
 					<h1>{this.state.question}</h1>
+					<br/>
 					
 					<Row>
 						<Col xs={12} sm={6}>
