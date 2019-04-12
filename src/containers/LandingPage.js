@@ -24,7 +24,7 @@ class LandingPage extends Component {
                 <Button href={ROUTES.SELECT} variant="warning" size="lg" block>Play quiz</Button>
               </Row>
               <Row>
-                <Button variant="warning" size="lg" block disabled>Create quiz</Button>
+                <Button href={ROUTES.CREATE} variant="warning" size="lg" block>Create quiz</Button>
               </Row>
             </Col>
           </Row>
