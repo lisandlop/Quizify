@@ -16,13 +16,21 @@ import { withFirebase } from '../Firebase';
 class SelectQuiz extends Component {
     constructor(props) {
       super(props);
+      
+      let url = new URL(document.URL);
+
+      this.quizName = url.searchParams.get("quizName") == null ? '' : url.searchParams.get("quizName");
+      this.filter = url.searchParams.get("quizAuthor") == null ? '' : url.searchParams.get("quizAuthor");
+      this.filter = url.searchParams.get("quizLanguage") == null ? '' : url.searchParams.get("quizLanguage");
   
       this.state = {
         loading: true,
-        quizzes: []
+        quizzes: [],
+        filtered: [],
       };
+      this.updated = false;
     }
-  
+    
     componentDidMount() {
       this.props.firebase.getAllQuizzes().then((response) => {
         this.setState({
@@ -32,6 +40,45 @@ class SelectQuiz extends Component {
       })
     }
 
+    handleNameChange = (e) => {
+        console.log("NameChange")
+		this.quizname = e.target.value
+		this.updated = true
+  }
+  
+    handleAuthorChange = (e) => {
+		this.quizAuthor = e.target.value
+		this.updated = true
+	}
+
+    handleLanguageChange = (e) => {
+        console.log('Language change')
+        this.quizLanguage = e.target.value
+        console.log(this.quizLanguage)
+		this.updated = true
+    }
+    
+	handleSubmit = (e) => {
+        alert("Hit kom jag!")
+        e.preventDefault()
+
+    //Update URL if new query
+	    if (this.updated) {
+            console.log('Här nu')
+            let url = '/search?'
+            
+            if (this.quizName!== '') {url += 'name='+ this.quizName}
+            if (this.quizAuthor!== '') {url += 'name='+ this.quizAuthor}
+            if (this.quizLanguage!== '') {url += 'name='+ this.quizLanguage}
+
+			//Push new URL and re-render page
+			window.history.pushState({}, '', url)
+			this.updated = false;
+			this.setState({updated: true})
+        }
+    }
+
+
     render() {
       return (
         <Container>
@@ -40,20 +87,22 @@ class SelectQuiz extends Component {
                 <p id="selectaquiz">Select a Quiz</p>
               </Col>
               <Col xs={12} sm={4}>
-                <Form>
+                
+                <form onSubmit={this.handleSubmit}>
+                {/* <Form> */}
 
-                  <Form.Group controlId="quizName">
-                    <input type="text" className="form-control mr-sm-3" placeholder="Quiz name"/>
+                  <Form.Group role="form" controlId="quizName">
+                    <input type="text" className="form-control mr-sm-3" defaultValue={this.quizName} onChange={this.handleNameChange} placeholder="Quiz name"/>
                   </Form.Group>
 
                   <Form.Group controlId="quizAuthor">
                     <Form.Label>Search author of quiz</Form.Label>
-                    <Form.Control type="text" placeholder="Author" />
+                    <Form.Control type="text" onChange={this.handleAuthorChange} placeholder="Author" />
                   </Form.Group>
 
-                  <Form.Group controlId="quizLanguage">
+                  <Form.Group role="form" controlId="quizLanguage">
                     <Form.Label>Language</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" onChange={this.handleLanguageChange}>
                       <option value="All">Any language</option>
                       <option disabled>-----------</option>
                       <option value="DK">Dansk</option>
@@ -65,9 +114,11 @@ class SelectQuiz extends Component {
                       <option value="NO">Norsk</option>
                       <option value="SV">Svenska</option>
                       <option value="FI">Soumi</option>
-                    </Form.Control>
+                    </Form.Control> 
                   </Form.Group>
-                </Form>
+                
+                {/* </Form> */}
+                </form>
               </Col>
 
 
