@@ -9,8 +9,6 @@ import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
 
 import './Question.scss';
-// import { notEqual } from 'assert';
-//import * as ROUTES from '../../constants/routes';
 
 class Question extends Component {
 	constructor(props) {
@@ -76,7 +74,7 @@ class Question extends Component {
 	}
 
 	componentWillUnmount() {
-		this.props.spotify.audio.pause();
+		if (this.props.spotify.audio) this.props.spotify.audio.pause();
 	}
 
 	render() {

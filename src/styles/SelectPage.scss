@@ -9,6 +9,7 @@
   
   #selectaquiz {
     font-size: 36pt;
+    margin-bottom: 0px;
   }
 
   .quizList {
@@ -18,7 +19,9 @@
 }
 
 .SelectPage > div,
-.SelectPage > div > div {
+.SelectPage .container,  
+.SelectPage .row,
+.SelectPage .col {
   position: relative;
   height: 100%;
 }

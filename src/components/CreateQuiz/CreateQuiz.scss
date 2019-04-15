@@ -9,11 +9,14 @@
 
 }
 
-/*.StartQuizButton active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}*/
+.questionList {
+  text-align: center; 
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(75% - 20px);
+  padding-top: 5px;
+  margin-bottom: 10px;
+}
 
 .StartQuizButton span { //makes it slow/panning
     //cursor: pointer;
@@ -21,29 +24,20 @@
     //position: relative;
     transition: 0.5s;
 }
-
-.StartQuizButton span:after {
-    //content: '\00bb';
-    //position: absolute;
-    //opacity: 10;
-    //top: 0;
-    //right: -20px;
-    //transition: 0.5s;
-  }
   
-  .StartQuizButton:hover span {
-    padding-right: 10px;
-    padding-left: 10px;
-  }
-  
-  .StartQuizButton:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
+.StartQuizButton:hover span {
+  padding-right: 10px;
+  padding-left: 10px;
+}
 
-  .StartQuiz {
-    margin: 5em; 
-  }
+.StartQuizButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.StartQuiz {
+  margin: 5em; 
+}
 
 #vline {
   border-left: 6px solid yellow;
