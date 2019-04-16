@@ -49,9 +49,8 @@ class SpotifySongSelect extends Component {
 
       this.props.spotify.searchTracks(query)
         .then(data => {
-          this.songList = [];
-          data.tracks.items.map(song => {
-            this.songList.push(song)
+          this.songList = data.tracks.items.map(song => {
+            return song;
           });
           this.updated = false;
 
