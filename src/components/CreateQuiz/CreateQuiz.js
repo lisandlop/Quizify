@@ -80,6 +80,8 @@ render() {
   <Col auto> 
     <Form.Group controlId="CreateForm.QuizName">
       <Form.Control type="text" id="correct" placeholder="Correct answer" />
+    </Form.Group>
+    <Form.Group controlId="CreateForm.QuizName">
       <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
     </Form.Group>
   </Col>
@@ -87,6 +89,8 @@ render() {
   <Col auto>
     <Form.Group controlId="CreateForm.QuizName">
       <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+    </Form.Group>
+    <Form.Group controlId="CreateForm.QuizName">
       <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
     </Form.Group>  
   </Col>
