@@ -38,22 +38,21 @@ class Firebase {
     var query = this.db.collection('quizzes');
     if (lang !== '') query = query.where('language', '==', lang);
 
-    let result = query
-    .get()
-    .then(snapshot => {
-      let quizzes = []
-      snapshot.forEach(doc => {
-        let quiz = doc.data()
-        quiz.id = doc.id;
+    let result = query.get()
+      .then(snapshot => {
+        let quizzes = []
+        snapshot.forEach(doc => {
+          let quiz = doc.data()
+          quiz.id = doc.id;
 
-        let flag = false;
-        if (name !== '' && !quiz.name.toLowerCase().includes(name.toLowerCase())) flag = true;
-        if (author !== '' && !quiz.author.toLowerCase().includes(author.toLowerCase())) flag = true;
+          let flag = false;
+          if (name !== '' && !quiz.name.toLowerCase().includes(name.toLowerCase())) flag = true;
+          if (author !== '' && !quiz.author.toLowerCase().includes(author.toLowerCase())) flag = true;
 
-        if (!flag) quizzes.push(quiz)
+          if (!flag) quizzes.push(quiz)
+        })
+        return quizzes;
       })
-      return quizzes;
-    })
     return result;
   }
 
