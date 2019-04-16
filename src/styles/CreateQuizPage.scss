@@ -1,9 +1,17 @@
 .CreateQuizPage {
-    text-align: center;
-    color: white; 
-    padding: 2em; 
-  
+  text-align: center;
+  color: white; 
+
+  #createaquiz {
+    font-size: 36pt;
+    margin-bottom: 0px;
   }
+}
   
-  
-  
+.CreateQuizPage > div,
+.CreateQuizPage .container,  
+.CreateQuizPage .row,
+.CreateQuizPage .col {
+  position: relative;
+  height: 100%;
+}

@@ -1,0 +1,40 @@
+@import './src/constants/colors.scss';
+
+.SpotifySongSelect {
+  form {
+    padding-bottom: 15px;
+  }
+
+  .modal-content {
+    background-color: $main-background;
+    color: #eee;
+  }
+
+  .songPreview {
+    color: #000;
+    width: 15%;
+    min-width: 15%;
+    margin-bottom: 15px;
+
+    .card-body {
+      text-align: center;
+      font-size: 12px;
+      padding: 0.25rem;
+    }
+  }
+
+  .card-img-overlay {
+    display: none;
+    text-align: center;
+    top: 80px;
+    bottom: 25vh;
+  }
+
+  .songPreview:hover {
+    color: #f00;
+
+    .card-img-overlay {
+      display: inline-block;
+    }
+  }
+}

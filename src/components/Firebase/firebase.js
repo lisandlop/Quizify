@@ -28,12 +28,33 @@ class Firebase {
 
 
   // *** Quiz API ***
-
   getQuizByID = quizid => this.db.collection('quizzes').doc(quizid)
     .get()
     .then(snapshot => {
       return snapshot.data();
     });
+
+  async getQuizzesByParams(name, author, lang) {
+    var query = this.db.collection('quizzes');
+    if (lang !== '') query = query.where('language', '==', lang);
+
+    let result = query.get()
+      .then(snapshot => {
+        let quizzes = []
+        snapshot.forEach(doc => {
+          let quiz = doc.data()
+          quiz.id = doc.id;
+
+          let flag = false;
+          if (name !== '' && !quiz.name.toLowerCase().includes(name.toLowerCase())) flag = true;
+          if (author !== '' && !quiz.author.toLowerCase().includes(author.toLowerCase())) flag = true;
+
+          if (!flag) quizzes.push(quiz)
+        })
+        return quizzes;
+      })
+    return result;
+  }
 
   getAllQuizzes = () => this.db.collection('quizzes')
     .get()

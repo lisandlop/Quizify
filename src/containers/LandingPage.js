@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import '../styles/LandingPage.scss';
 
 import * as ROUTES from '../constants/routes';
+import { withSpotify } from '../components/Spotify';
 import SpotifyLogin from '../components/SpotifyLogin/SpotifyLogin';
 
 class LandingPage extends Component {
@@ -21,10 +22,14 @@ class LandingPage extends Component {
 
             <Col xs={12} sm={6} id="StartOrCreateCol">
               <Row>
-                <Button href={ROUTES.SELECT} variant="warning" size="lg" block>Play quiz</Button>
+                {this.props.spotify.getAccessToken() !== null
+                  ? <Button href={ROUTES.SELECT} variant="warning" size="lg" block>Play quiz</Button>
+                  : <Button href={ROUTES.SELECT} variant="warning" size="lg" block disabled>Play quiz</Button>}
               </Row>
               <Row>
-                <Button href={ROUTES.CREATE} variant="warning" size="lg" block>Create quiz</Button>
+                {this.props.spotify.getAccessToken() !== null
+                  ? <Button href={ROUTES.CREATE} variant="warning" size="lg" block>Create quiz</Button>
+                  : <Button href={ROUTES.CREATE} variant="warning" size="lg" block disabled>Create quiz</Button>}
               </Row>
             </Col>
           </Row>
@@ -34,4 +39,4 @@ class LandingPage extends Component {
   }
 }
 
-export default LandingPage;
+export default withSpotify(LandingPage);
