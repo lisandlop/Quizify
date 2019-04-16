@@ -34,7 +34,7 @@ class SelectQuiz extends Component {
     }
     
   componentDidMount() {
-    this.props.firebase.getAllQuizzes().then((response) => {
+    this.props.firebase.getQuizzesByParams(this.quizName, this.quizAuthor, this.quizLanguage).then((response) => {
       this.setState({
         quizzes: response,
         loading: false
@@ -77,7 +77,15 @@ class SelectQuiz extends Component {
         //Push new URL and re-render page
         window.history.pushState({}, '', url)
         this.updated = false;
-        this.setState({ reRender: true });
+        this.setState({ loading: true });
+
+        //Perform query
+        this.props.firebase.getQuizzesByParams(this.quizName, this.quizAuthor, this.quizLanguage).then((response) => {
+          this.setState({
+            quizzes: response,
+            loading: false
+          })
+        })
       }
     }
 
@@ -115,7 +123,7 @@ class SelectQuiz extends Component {
                       <option value="IS">Íslenska</option>
                       <option value="DE">Deutsch</option>
                       <option value="NO">Norsk</option>
-                      <option value="SV">Svenska</option>
+                      <option value="SE">Svenska</option>
                       <option value="FI">Soumi</option>
                     </Form.Control> 
                   </Form.Group>
