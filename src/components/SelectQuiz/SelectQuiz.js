@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FlagIcon from '../FlagIcon/FlagIcon.js';
 
@@ -19,63 +20,65 @@ class SelectQuiz extends Component {
       
       let url = new URL(document.URL);
 
-      this.quizName = url.searchParams.get("quizName") == null ? '' : url.searchParams.get("quizName");
-      this.filter = url.searchParams.get("quizAuthor") == null ? '' : url.searchParams.get("quizAuthor");
-      this.filter = url.searchParams.get("quizLanguage") == null ? '' : url.searchParams.get("quizLanguage");
-  
+      this.quizName = url.searchParams.get("name") == null ? '' : url.searchParams.get("name");
+      this.quizAuthor = url.searchParams.get("author") == null ? '' : url.searchParams.get("author");
+      this.quizLanguage = url.searchParams.get("lang") == null ? '' : url.searchParams.get("lang");
+
       this.state = {
         loading: true,
         quizzes: [],
         filtered: [],
       };
+
       this.updated = false;
     }
     
-    componentDidMount() {
-      this.props.firebase.getAllQuizzes().then((response) => {
-        this.setState({
-          quizzes: response,
-          loading: false
-        })
+  componentDidMount() {
+    this.props.firebase.getAllQuizzes().then((response) => {
+      this.setState({
+        quizzes: response,
+        loading: false
       })
-    }
+    })
+  }
 
-    handleNameChange = (e) => {
-        console.log("NameChange")
-		this.quizname = e.target.value
-		this.updated = true
+  handleNameChange = (e) => {
+		this.quizName = e.target.value;
+		this.updated = true;
   }
   
-    handleAuthorChange = (e) => {
-		this.quizAuthor = e.target.value
-		this.updated = true
+  handleAuthorChange = (e) => {
+		this.quizAuthor = e.target.value;
+		this.updated = true;
 	}
 
-    handleLanguageChange = (e) => {
-        console.log('Language change')
-        this.quizLanguage = e.target.value
-        console.log(this.quizLanguage)
-		this.updated = true
-    }
+  handleLanguageChange = (e) => {
+    this.quizLanguage = e.target.value;
+    this.updated = true;
+  }
     
 	handleSubmit = (e) => {
-        alert("Hit kom jag!")
-        e.preventDefault()
+    e.preventDefault()
 
-    //Update URL if new query
+      //Update URL if new query
 	    if (this.updated) {
-            console.log('Här nu')
-            let url = '/search?'
-            
-            if (this.quizName!== '') {url += 'name='+ this.quizName}
-            if (this.quizAuthor!== '') {url += 'name='+ this.quizAuthor}
-            if (this.quizLanguage!== '') {url += 'name='+ this.quizLanguage}
-
-			//Push new URL and re-render page
-			window.history.pushState({}, '', url)
-			this.updated = false;
-			this.setState({updated: true})
+        let url = ROUTES.SELECT + '?';
+        
+        if (this.quizName !== '') url += 'name='+ this.quizName;
+        if (this.quizAuthor !== '') {
+          if (url[url.length -1] !== '?') url += '&';
+          url += 'author='+ this.quizAuthor;
         }
+        if (this.quizLanguage !== '') {
+          if (url[url.length -1] !== '?') url += '&';
+          url += 'lang='+ this.quizLanguage;
+        }
+
+        //Push new URL and re-render page
+        window.history.pushState({}, '', url)
+        this.updated = false;
+        this.setState({ reRender: true });
+      }
     }
 
 
@@ -88,37 +91,38 @@ class SelectQuiz extends Component {
               </Col>
               <Col xs={12} sm={4}>
                 
-                <form onSubmit={this.handleSubmit}>
-                {/* <Form> */}
+                <Form onSubmit={this.handleSubmit}>
 
-                  <Form.Group role="form" controlId="quizName">
-                    <input type="text" className="form-control mr-sm-3" defaultValue={this.quizName} onChange={this.handleNameChange} placeholder="Quiz name"/>
+                  <Form.Group controlId="quizName">
+                    <Form.Label>Quiz name:</Form.Label>
+                    <Form.Control type="text" defaultValue={this.quizName} onChange={this.handleNameChange} placeholder="Quiz name"/>
                   </Form.Group>
 
                   <Form.Group controlId="quizAuthor">
-                    <Form.Label>Search author of quiz</Form.Label>
-                    <Form.Control type="text" onChange={this.handleAuthorChange} placeholder="Author" />
+                    <Form.Label>Quiz author:</Form.Label>
+                    <Form.Control type="text" defaultValue={this.quizAuthor} onChange={this.handleAuthorChange} placeholder="Author" />
                   </Form.Group>
 
-                  <Form.Group role="form" controlId="quizLanguage">
-                    <Form.Label>Language</Form.Label>
-                    <Form.Control as="select" onChange={this.handleLanguageChange}>
-                      <option value="All">Any language</option>
+                  <Form.Group controlId="quizLanguage">
+                    <Form.Label>Language of questions:</Form.Label>
+                    <Form.Control as="select" defaultValue={this.quizLanguage} onChange={this.handleLanguageChange}>
+                      <option value="">Any language</option>
                       <option disabled>-----------</option>
                       <option value="DK">Dansk</option>
                       <option value="GB">English</option>
                       <option value="ES">Español</option>
                       <option value="FR">Français</option>
-                      <option value="FI">Íslenska</option>
+                      <option value="IS">Íslenska</option>
                       <option value="DE">Deutsch</option>
                       <option value="NO">Norsk</option>
                       <option value="SV">Svenska</option>
                       <option value="FI">Soumi</option>
                     </Form.Control> 
                   </Form.Group>
+
+                  <Button variant="primary" type="submit" block>Search</Button>
                 
-                {/* </Form> */}
-                </form>
+                </Form>
               </Col>
 
 
