@@ -110,6 +110,7 @@ class Question extends Component {
 							<Row>
 								<Col xs={6}>
 									<Button className={this.checkAnswer(0)} onClick={() => this.handleAnswer(0)} variant="warning" size="lg" block>{this.state.options[0]}</Button>
+									{/* <Button className={this.checkAnswer(0)} onClick={() => this.handleAnswer(0)} id="opt1" size="lg" block>{this.state.options[0]}</Button> */}
 								</Col><Col xs={6}>
 									<Button className={this.checkAnswer(1)} onClick={() => this.handleAnswer(1)} variant="primary" size="lg" block>{this.state.options[1]}</Button>
 								</Col>
