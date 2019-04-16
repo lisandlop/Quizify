@@ -22,7 +22,11 @@ class SpotifySongSelect extends Component {
     this.song = '';
     this.artist = '';
     this.updated = false;
-    this.songList = [];
+
+    this.state = {
+      loading: false,
+      songList: []
+    }
   }
 
   handleSongChange = (e) => {
@@ -47,14 +51,15 @@ class SpotifySongSelect extends Component {
         if (this.artist !== '') query += ' '; }
       if (this.artist !== '') query += `artist:${this.artist}`;
 
+      this.setState({ loading: true })
       this.props.spotify.searchTracks(query)
         .then(data => {
-          this.songList = data.tracks.items.map(song => {
+          var songList = data.tracks.items.map(song => {
             return song;
           });
           this.updated = false;
 
-          this.setState({ reRender: true });
+          this.setState({ songList: songList, loading: false });
         })
 		}
   }
@@ -95,22 +100,24 @@ class SpotifySongSelect extends Component {
             </Row>
           </Form>
           <CardDeck>
-            {this.songList.map((song, k) => (
-              <Card className="songPreview" key={k}>
-                <Card.Img variant="top" src={song.album.images[0].url}/>
-                <Card.ImgOverlay className="justify-content-center" onClick={() => this.playPause(song.id)}>
-                  {this.state.playing === song.id
-                    ? <FontAwesomeIcon size="3x" icon={faPauseCircle}/>
-                    : <FontAwesomeIcon size="3x" icon={faPlayCircle}/>
-                  }
-                </Card.ImgOverlay>
-                <Card.Body>
-                  <Card.Text>{song.name}</Card.Text>
-                </Card.Body>
-                <Card.Footer>
-                  <Button onClick={() => this.props.selectSong(false, song)} block>Select</Button>
-                </Card.Footer>
-              </Card>
+            {this.state.loading
+              ? <h1>Loading...</h1>
+              : this.state.songList.map((song, k) => (
+                <Card className="songPreview" key={k}>
+                  <Card.Img variant="top" src={song.album.images[0].url}/>
+                  <Card.ImgOverlay className="justify-content-center" onClick={() => this.playPause(song.id)}>
+                    {this.state.playing === song.id
+                      ? <FontAwesomeIcon size="3x" icon={faPauseCircle}/>
+                      : <FontAwesomeIcon size="3x" icon={faPlayCircle}/>
+                    }
+                  </Card.ImgOverlay>
+                  <Card.Body>
+                    <Card.Text>{song.name}</Card.Text>
+                  </Card.Body>
+                  <Card.Footer>
+                    <Button onClick={() => this.props.selectSong(false, song)} block>Select</Button>
+                  </Card.Footer>
+                </Card>
             ))}
           </CardDeck>
         </Modal.Body>
