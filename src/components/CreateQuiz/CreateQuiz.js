@@ -55,6 +55,11 @@ class CreateQuiz extends Component {
     }
     this.setState({ selectingSong: false, target: null })
   }
+
+  deleteQuestion(question, answer) {
+    
+
+  }
   
   render() {
     let { musicquiz } = this.state
@@ -78,7 +83,7 @@ class CreateQuiz extends Component {
 
               <Form.Group controlId="CreateForm.QuizName">
                 <Form.Label>Enter quiz name</Form.Label>
-                <Form.Control type="text" placeholder="Question" />
+                <Form.Control type="text" placeholder="Quiz name" />
               </Form.Group>
 
               <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} >
@@ -116,6 +121,11 @@ class CreateQuiz extends Component {
                       <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
                       <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
                     </Form.Group>
+                  </Col>
+
+                  <Col>
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                    <Button className="DeleteButton" size="lg"><i className="fa fa-trash"></i></Button>
                   </Col>
 
                 </Row>
