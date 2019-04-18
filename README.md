@@ -135,7 +135,6 @@ Deploys the react app to firebase. Should ony be used from master branch.
       * StartQuiz.sccs*
         <br/>
         Styles the startquiz component with Sassy CSS.
-  <br/>
   * */constants*
     * colors.scss
       <br/>
@@ -153,7 +152,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
       Creates the landing page. <br/>
       Corresponds to the '/' route.
     * NoMatch.js 
-<br/>
+  <br/>
     * QuizPage.js
       <br/>
       Creates the quiz playing page. <br/>
