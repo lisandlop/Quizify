@@ -1,17 +1,20 @@
 .LandingPage {
- /* text-align: center;
-  background-image: linear-gradient(to bottom,rgb(41, 110, 41), white);
-*/
-  // ----------------- OLD ONE -------->
-/*.LandingPage {
+
+//----------------- SAME COLOR WHOLE PAGE/GRADIENT --------> 
+ text-align: center;
+ background-image: linear-gradient(to bottom,rgb(41, 110, 41), rgb(148, 219, 81));
+//----------------------------------------------------> 
+
+
+  /* ----------------- THE FIRST ONE WE HAD -------->
   text-align: center;
   background-image: url('music_1.png');
   background-repeat: no-repeat;
   background-size: cover;
-*/
+----------------------------------------------------> */
   
-
-  // background-image: url('music_1.png');
+/* ----------------- DARK VERSION WITH REACT-COLOR/GREEN -------->
+  //background-image: url('music_1.png');
   background-repeat: no-repeat;
   background-size: cover;
   font-family: futura; 
@@ -19,7 +22,9 @@
   overflow: auto; 
   max-height: calc(100%);
   max-width: calc(100%);
-  
+----------------------------------------------------> */
+
+
   #StartOrCreateCol {
     padding: 5em; 
 
