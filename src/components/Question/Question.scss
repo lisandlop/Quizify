@@ -48,6 +48,12 @@
         background-color: grey; 
     }
 
+    @media only screen and (max-width: 575px) {
+        .recordPicture {
+            display: none;
+        }
+    }
+
     #recordPlayers {
         align-self: center; 
     }

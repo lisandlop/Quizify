@@ -85,7 +85,7 @@ class Question extends Component {
 					<br/>
 					
 					<Row>
-						<Col xs={12} sm={6}>
+						<Col xs={12} sm={6} className="recordPicture">
 							<Row id="tictacRow" className="justify-content-center">
 								<Card id="recordPlayer">
 									<Card.Img id="record" src="https://upload.wikimedia.org/wikipedia/commons/7/75/Vinyl_record.svg" alt="Record base" />
