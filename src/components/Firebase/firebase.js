@@ -10,7 +10,9 @@ class Firebase {
     this.db = app.firestore();
   }
 
-  // *** Quiz API ***
+  // Get
+  // ------------------------------------------------------------
+
   getQuizByID = quizid => this.db.collection('quizzes').doc(quizid)
     .get()
     .then(snapshot => {
@@ -69,6 +71,28 @@ class Firebase {
     })
 
 
+  // Set
+  // ------------------------------------------------------------
+  async createNewQuiz(quiz, questionList) {
+    var newQuiz = this.db.collection('quizzes').doc();
+
+    newQuiz.set(quiz)
+
+    questionList.forEach(track => {
+      var quizSong = newQuiz.collection('songs').doc();
+
+      var correctPosition = Math.floor(Math.random() * Math.floor(4));
+      var options = track.falseOptions;
+      options.splice(correctPosition, 0, track.answer);
+
+      quizSong.set({
+        correctAnswer: correctPosition,
+        options: options,
+        question: track.question,
+        track: track.track
+      }) 
+    })
+  }
 };
 
 export default Firebase;

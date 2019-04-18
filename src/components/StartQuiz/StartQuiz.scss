@@ -1,3 +1,4 @@
+
 .QuizStart {
   overflow: auto; 
   max-height: calc(100%);
@@ -9,6 +10,7 @@
 }
 
 .StartQuizButton {
+
     //margin-top:200px;
     padding-top: 50px;
     padding-bottom:50px;
@@ -16,6 +18,7 @@
     border-radius: 50%;
     // background-color: rgb(128, 0, 0);  
     transform: translateY(4px);
+
 }
 
 .StartQuizButton span { //makes it slow/panning
@@ -34,5 +37,5 @@
 
   .StartQuiz {
     margin: 5em; 
-  }
 
+  }
