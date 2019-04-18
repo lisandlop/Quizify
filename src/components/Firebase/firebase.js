@@ -73,16 +73,12 @@ class Firebase {
 
   // Set
   // ------------------------------------------------------------
-  async createNewQuiz(musicQuiz) {
+  async createNewQuiz(quiz, questionList) {
     var newQuiz = this.db.collection('quizzes').doc();
 
-    newQuiz.set({
-      name: 'Jura och Jonatan testat',
-      author: 'Jura & Jonatan',
-      language: 'Blahonga'
-    })
+    newQuiz.set(quiz)
 
-    musicQuiz.map(track => {
+    questionList.forEach(track => {
       var quizSong = newQuiz.collection('songs').doc();
 
       var correctPosition = Math.floor(Math.random() * Math.floor(4));
