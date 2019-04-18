@@ -176,6 +176,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
     * SelectPage.scss
       <br/>
       Styles the SelectPage component with Sassy CSS.
+  <br/>
   * App.js
     <br/>
     Router for the application.
