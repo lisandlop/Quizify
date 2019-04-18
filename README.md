@@ -145,14 +145,15 @@ Deploys the react app to firebase. Should ony be used from master branch.
       Exports string-constants for each path used as a route.
   <br/>
   * */containers*
+  <br/>
     * CreateQuizPage.js
-
+    <br/>
     * LandingPage.js
       <br/>
       Creates the landing page. <br/>
       Corresponds to the '/' route.
     * NoMatch.js 
-
+<br/>
     * QuizPage.js
       <br/>
       Creates the quiz playing page. <br/>
@@ -164,7 +165,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
   <br/>
   * */styles*
     * CreateQuizPage.scss
-    
+
     * LandingPage.scss
       <br/>
       Styles the LandingPage component with Sassy CSS.
