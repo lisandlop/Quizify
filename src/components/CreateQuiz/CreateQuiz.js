@@ -10,6 +10,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 
+
 import { compose } from 'recompose';
 import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
@@ -32,6 +33,7 @@ class CreateQuiz extends Component {
 
     this.deleteQuestion = this.deleteQuestion.bind(this)
   }
+
 
   handleQuizChange = (e, type) => {
     if (type === 'name') this.quiz.name = e.target.value;
@@ -170,6 +172,7 @@ class CreateQuiz extends Component {
           </Col>
 
           <Col>
+
               <Form id="questionFields" className="questionList">
               {this.questionList.map((val, idx) => {
                 return (

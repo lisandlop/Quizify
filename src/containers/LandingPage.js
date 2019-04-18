@@ -22,6 +22,7 @@ class LandingPage extends Component {
 
             <Col xs={12} sm={6} id="StartOrCreateCol">
               <Row>
+                <p id="info">Hello fellow music quizzer! If you want to play a quiz, click "Play quiz". If you don't find any quizzes of your interests you can create a new one by clicking "Create quiz". Remember: you have to be logged in into your Spotify account before starting! Enjoy!</p>
                 {this.props.spotify.getAccessToken() !== null
                   ? <Button href={ROUTES.SELECT} size="lg" block>Play quiz</Button>
                   : <Button href={ROUTES.SELECT} size="lg" block disabled>Play quiz</Button>}
