@@ -241,7 +241,7 @@ class CreateQuiz extends Component {
                 )})
               }
             </Form>
-            <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} style={{ width: '80%' }}>
+            <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} style={{ width: '50%', position: 'left'}}>
               <span>Add question</span>
             </Button>
           </Col>
