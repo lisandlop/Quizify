@@ -34,8 +34,11 @@
     }
 }
 
-#searchBtn {
-    margin: 7px; 
+#quizSearch {
+    #searchBtn,
+    #backBtn {
+        margin: 7px; 
+    }
 }
 
 .card-img-overlay {

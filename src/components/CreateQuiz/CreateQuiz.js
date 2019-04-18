@@ -187,6 +187,9 @@ class CreateQuiz extends Component {
                 <span>Submit Quiz</span>
               </Button>
 
+              <Button id="backBtn" variant="dark" style={{ marginTop: '15px' }} block onClick={() => window.history.go(-1)}>
+                Back to main menu
+              </Button>
             </Form>
           </Col>
 
@@ -241,7 +244,7 @@ class CreateQuiz extends Component {
                 )})
               }
             </Form>
-            <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} style={{ width: '80%' }}>
+            <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} style={{ width: '50%', position: 'left'}}>
               <span>Add question</span>
             </Button>
           </Col>
