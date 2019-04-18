@@ -162,7 +162,6 @@ Deploys the react app to firebase. Should ony be used from master branch.
       <br/>
       Creates the select quiz page. <br/>
       Corresponds to the '/selectQuiz' route.
-  <br/>
   * */styles*
     * CreateQuizPage.scss
       <br/>
