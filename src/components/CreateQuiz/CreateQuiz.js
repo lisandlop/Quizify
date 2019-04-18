@@ -20,7 +20,7 @@ class CreateQuiz extends Component {
 
 
     this.state = {
-      musicquiz: [{ question: "", answer: "" }],
+      musicQuiz: [{ question: "", answer: "", falseOptions: [], track: "" }],
       selectingSong: false
     }
   }
@@ -28,9 +28,9 @@ class CreateQuiz extends Component {
 
   handleChange = (e) => {
     if (["question", "answer"].includes(e.target.className)) {
-      let musicquiz = [...this.state.musicquiz]
-      musicquiz[e.target.dataset.id][e.target.className] = e.target.value
-      this.setState({ musicquiz }, () => console.log(this.state.musicquiz))
+      let musicQuiz = [...this.state.musicQuiz]
+      musicQuiz[e.target.dataset.id][e.target.className] = e.target.value
+      this.setState({ musicQuiz }, () => console.log(this.state.musicQuiz))
     } else {
       this.setState({ [e.target.name]: e.target.value })
     }
@@ -38,11 +38,14 @@ class CreateQuiz extends Component {
 
   addQuestion = (e) => {
     this.setState((prevState) => ({
-      musicquiz: [...prevState.musicquiz, { question: "", answer: "" }],
+      musicQuiz: [...prevState.musicQuiz, { question: "", answer: "", falseOptions: [], track: "" }],
     }));
   }
 
-  handleSubmit = (e) => { e.preventDefault() }
+  handleSubmit = (e) => { 
+    e.preventDefault()
+    console.log(this.state.musicQuiz)
+  }
 
   spotifySongSelection = (e) => {
     e.target.blur();
@@ -62,7 +65,7 @@ class CreateQuiz extends Component {
   }
   
   render() {
-    let { musicquiz } = this.state
+    let { musicQuiz } = this.state
     return (
       <Container>
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
@@ -95,7 +98,7 @@ class CreateQuiz extends Component {
 
           <Col>
             <div className="questionList">
-          {musicquiz.map((val, idx) => {
+          {musicQuiz.map((val, idx) => {
             // let questionId = `question-${idx}`, answerId = `answer-${idx}`
             return (
 
@@ -134,7 +137,7 @@ class CreateQuiz extends Component {
             })
           }</div>
           <div className="Confirm" >
-            <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)} block>
+            <Button variant="primary" size="lg" className="ConfirmButton" onClick={(e) => this.handleSubmit(e)} block>
               <span>Confirm</span>
             </Button>
           </div>
