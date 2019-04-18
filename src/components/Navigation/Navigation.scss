@@ -6,11 +6,15 @@
     font-size: 60pt; 
     //font-family: 'Unica One', cursive;
     //font-family: 'Nanum Gothic', sans-serif;
-    font-family: 'Quicksand', sans-serif;
+    //font-family: 'Quicksand', sans-serif;
     //font-family: 'Special Elite', cursive;
+    //font-family: 'Reenie Beanie', cursive;
+    font-family: 'Josefin Sans';
+    
 
-    color: white; 
 
+    //color: white; 
+    color: lightgreen;
    /* font-size: 40pt; 
     font-family: futura; 
     color: #2de630; */
@@ -23,8 +27,12 @@
 //------------- CHANGE COLOR HEADER ------>
 #navigation {
     //background-color:rgba(153, 148, 145, 0.726);
-    
-    background-image: linear-gradient(to top, rgb(37, 35, 61), rgba(153, 148, 145, 0.726));
+
+    background-color: rgb(37, 25, 25);
+    //background-image: linear-gradient(to bottom,rgba(231, 85, 0, 0.788), rgb(129, 114, 106));
+
+    //background-image: linear-gradient(to bottom,rgb(148, 96, 100), rgba(146, 106, 109, 0.87));
+    //background-image: linear-gradient(to top, rgb(37, 35, 61), rgba(153, 148, 145, 0.726));
     //background-image: linear-gradient(to bottom,rgb(37, 35, 61), rgba(134, 243, 134, 0.514));
 
 

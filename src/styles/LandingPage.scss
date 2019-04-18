@@ -2,7 +2,10 @@
 
 //----------------- SAME COLOR WHOLE PAGE/GRADIENT --------> 
  text-align: center;
- background-image: linear-gradient(to bottom,rgb(37, 35, 61), rgba(134, 243, 134, 0.514));
+ //background-image: linear-gradient(to bottom,rgb(161, 95, 106), rgba(255, 142, 13, 0.514));
+ background-image: linear-gradient(to bottom right,rgb(105, 71, 71), rgb(3, 3, 3));
+
+
  //----------------------------------------------------> 
 
 
@@ -38,7 +41,8 @@
 
   #info {
     font-size: 14pt;
-    color: white;
-    text-align: left;
+    //color: white; 
+    color: lightgreen;
+    text-align: center;
   }
 }
