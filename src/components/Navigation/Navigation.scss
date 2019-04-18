@@ -4,11 +4,15 @@
 
 #quizifyButton {
     font-size: 60pt; 
-    font-family: fantasy ; 
+    //font-family: 'Unica One', cursive;
+    //font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    //font-family: 'Special Elite', cursive;
+
     color: white; 
 
    /* font-size: 40pt; 
-    font-family: FANTASY; 
+    font-family: futura; 
     color: #2de630; */
 }
 
@@ -18,6 +22,11 @@
 
 //------------- CHANGE COLOR HEADER ------>
 #navigation {
-    background-color:rgb(41, 110, 41);
+    //background-color:rgba(153, 148, 145, 0.726);
+    
+    background-image: linear-gradient(to top, rgb(37, 35, 61), rgba(153, 148, 145, 0.726));
+    //background-image: linear-gradient(to bottom,rgb(37, 35, 61), rgba(134, 243, 134, 0.514));
+
+
 
 }
