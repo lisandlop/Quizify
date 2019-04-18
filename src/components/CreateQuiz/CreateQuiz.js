@@ -22,6 +22,8 @@ class CreateQuiz extends Component {
       musicquiz: [{ question: "", answer: "" }],
       selectingSong: false
     }
+
+    this.deleteQuestion = this.deleteQuestion.bind(this)
   }
   
   handleChange = (e) => {
@@ -54,11 +56,14 @@ class CreateQuiz extends Component {
     this.setState({ selectingSong: false, target: null })
   }
 
-  deleteQuestion = (e) => {
-    console.log("deleteyay")
-    //addQuestion.remove(this.props.musicquiz);
-
+  deleteQuestion () {
+    this.setState(({ musicquiz }) => {
+      const mQuestions = [ ...musicquiz ]
+      mQuestions.splice(null, 1)
+      return { musicquiz: mQuestions }
+    })
   }
+
   
   render() {
     let { musicquiz } = this.state
@@ -124,7 +129,7 @@ class CreateQuiz extends Component {
 
                   <Col>
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                    <Button className="DeleteButton" size="lg" onClick={this.deleteQuestion}><i className="fa fa-trash"></i></Button>
+                    <Button className="DeleteButton" size="lg" onClick={() => this.deleteQuestion()}><i className="fa fa-trash"></i></Button>
                   </Col>
 
                 </Row>
