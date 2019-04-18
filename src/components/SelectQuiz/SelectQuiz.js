@@ -8,7 +8,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FlagIcon from '../FlagIcon/FlagIcon.js';
-import Navbar from 'react-bootstrap/Navbar';
 
 import './SelectQuiz.scss'
 

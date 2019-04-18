@@ -43,23 +43,20 @@ Deploys the react app to firebase. Should ony be used from master branch.
 <br/>
 <br/>
 
-## Development progress :chart_with_upwards_trend:
+## Achievements :chart_with_upwards_trend:
 
-- [x] Setup basic framework (React)
-- [x] Install useful packages (Sass, React-router etc.)
-- [x] Initial layout
-- [x] Configure deployment method
-- [x] Make contant with Spotify API
-- [x] Connect to Firebase Cloudstore
-- [ ] Install Spotify WebPlayer (If needed)
-- [ ] Setup Quizzing components
-- [ ] Make all buttons work
-- [ ] Create a quiz
-- [ ] Create filter functions
-- [ ] ...
-- [ ] ...
-- [ ] ...
-- [ ] ...
+* Log in with Spotify account
+* Play a quiz
+  * Filter and search for quizzes or quiz author
+  * Choose a quiz 
+  * Play the quiz
+  * Get your result & the songs used in the quiz
+  * Play another quiz!
+* Create a new quiz
+  * Enter quiz name, author name and set language
+  * Create questions
+    * Add Spotify songs by searching directly in the app
+    * Add question, and answer options
 
 <br/>
 <br/>
@@ -78,6 +75,14 @@ Deploys the react app to firebase. Should ony be used from master branch.
 
 */src*
   * */components*
+    * */CreateQuiz*
+      * CreateQuiz.js
+        <br/>
+        Component to create quiz.
+    * */EndGame*
+      * EndGame.js
+        <br/>
+        Shows the results from the played quiz, and prints the artists and songs from the quiz.
     * */Firebase*
       * config.js
         <br/>
@@ -105,18 +110,10 @@ Deploys the react app to firebase. Should ony be used from master branch.
       * Question.scss
         <br/>
         Styles the question component with Sassy CSS.
-    * */Quizzes*
-      * Quizzes.js
-        <br/>
-        Currently serves as test for firebase db.
     * */SelectQuiz*
       * SelectQuiz.js
         <br/>
         Creates a select quiz component.
-    * */SignUp*
-      * SignUp.js
-        <br/>
-        Currently serves as test for firebase auth.
     * */Spotify*
       * Spotify.js
         <br/>
@@ -124,6 +121,14 @@ Deploys the react app to firebase. Should ony be used from master branch.
       * Spotify.scss
         <br/>
         Styles the spotify component with Sassy CSS.
+    * */SpotifyLogin*
+      * SpotifyLogin.js
+        <br/>
+        Contains the spotify login part.
+    * */SpotifySongSelect*
+      * SpotifySongSelect.js
+        <br/>
+        Component to search for songs when creating quiz. 
     * */StartQuiz*
       * StartQuiz.js
         <br/>
@@ -139,10 +144,16 @@ Deploys the react app to firebase. Should ony be used from master branch.
       <br/>
       Exports string-constants for each path used as a route.
   * */containers*
+    * CreateQuizPage.js
+      <br/>
+      Container holding the create quiz page. 
     * LandingPage.js
       <br/>
       Creates the landing page. <br/>
       Corresponds to the '/' route.
+    * NoMatch.js 
+      <br/>
+      Page shown if chosen a wrong route. 
     * QuizPage.js
       <br/>
       Creates the quiz playing page. <br/>
@@ -152,6 +163,9 @@ Deploys the react app to firebase. Should ony be used from master branch.
       Creates the select quiz page. <br/>
       Corresponds to the '/selectQuiz' route.
   * */styles*
+    * CreateQuizPage.scss
+      <br/>
+      Styles the CreateQuizPage component with Sassy CSS. 
     * LandingPage.scss
       <br/>
       Styles the LandingPage component with Sassy CSS.
