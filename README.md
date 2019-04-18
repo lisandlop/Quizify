@@ -75,15 +75,14 @@ Deploys the react app to firebase. Should ony be used from master branch.
 
 */src*
   * */components*
-    * */CreateQuestion*
-      * CreateQuestion.js
-
     * */CreateQuiz*
       * CreateQuiz.js
-
+        <br/>
+        Component to create quiz.
     * */EndGame*
       * EndGame.js
-
+        <br/>
+        Shows the results from the played quiz, and prints the artists and songs from the quiz.
     * */Firebase*
       * config.js
         <br/>
@@ -124,10 +123,12 @@ Deploys the react app to firebase. Should ony be used from master branch.
         Styles the spotify component with Sassy CSS.
     * */SpotifyLogin*
       * SpotifyLogin.js
-    
+        <br/>
+        Contains the spotify login part.
     * */SpotifySongSelect*
       * SpotifySongSelect.js
-
+        <br/>
+        Component to search for songs when creating quiz. 
     * */StartQuiz*
       * StartQuiz.js
         <br/>
@@ -142,17 +143,17 @@ Deploys the react app to firebase. Should ony be used from master branch.
     * routes.js
       <br/>
       Exports string-constants for each path used as a route.
-  <br/>
   * */containers*
-  <br/>
     * CreateQuizPage.js
-    <br/>
+      <br/>
+      Container holding the create quiz page. 
     * LandingPage.js
       <br/>
       Creates the landing page. <br/>
       Corresponds to the '/' route.
     * NoMatch.js 
-  <br/>
+      <br/>
+      Page shown if chosen a wrong route. 
     * QuizPage.js
       <br/>
       Creates the quiz playing page. <br/>
@@ -164,7 +165,8 @@ Deploys the react app to firebase. Should ony be used from master branch.
   <br/>
   * */styles*
     * CreateQuizPage.scss
-
+      <br/>
+      Styles the CreateQuizPage component with Sassy CSS. 
     * LandingPage.scss
       <br/>
       Styles the LandingPage component with Sassy CSS.
