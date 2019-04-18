@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //import Row from 'react-bootstrap/Row';
 //import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import * as ROUTES from '../../constants/routes';
+
 import './EndGame.scss'
 
 class EndGame extends Component {
@@ -29,8 +31,8 @@ class EndGame extends Component {
         })}
         <br/>
 
-        <Button variant="primary" size="lg" className = "QuizAgainButton">
-          <span>Take quiz again?</span>
+        <Button variant="info" size="lg" className = "QuizAgainButton" href={ROUTES.SELECT}>
+          <span>Play another quiz!</span>
         </Button>
       </div>
     );

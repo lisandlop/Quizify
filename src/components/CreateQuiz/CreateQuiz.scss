@@ -39,11 +39,11 @@
   margin: 5em; 
 }
 
-#vline {
-  border-left: 6px solid yellow;
+/*#vline {
+  border-left: 4px solid black;
   height: 80px;
   
-}
+}*/
 
   .Wrong {
     border-color: red;
@@ -56,3 +56,26 @@
     border-color: green;
     border-width: 5px;
   }
+
+.questionList {
+  margin: 5%;
+}
+
+.DeleteButton {
+  padding-top: 5px;
+  padding-bottom:5px;
+  border-radius: 50px 50px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+}
+
+.DeleteButton:hover {
+  background-color: yellow;
+}
+
+.fa fa-trash {
+  width: 150%;
+  height: 150%;
+
+}

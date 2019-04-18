@@ -15,7 +15,7 @@ const Navigation = () => (
 				<FontAwesomeIcon size="2x" icon={faSpotify}/>
 				<FontAwesomeIcon size="2x" icon={faQuestion}/>
 			</Navbar.Brand>
-			<Navbar.Brand href={ROUTES.LANDING}>Quizify</Navbar.Brand>
+			<Navbar.Brand id="quizifyButton" href={ROUTES.LANDING}>Quizify</Navbar.Brand>
 			<Navbar.Brand>
 				<FontAwesomeIcon size="2x" icon={faQuestion}/>
 				<FontAwesomeIcon size="2x" icon={faSpotify}/>
