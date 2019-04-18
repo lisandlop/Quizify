@@ -70,23 +70,23 @@
     }
     
     #album {
-    width: 120px;
-    animation: Album-spin infinite 20s linear;
+        width: 120px;
+        animation: Album-spin infinite 20s linear;
     }
 
     #recordHole {
-    padding-top: 8.6rem;
+        padding-top: 8.6rem;
     }
 
     #recordLines {
-    opacity: 0.2;
-    width: 300px;
-    animation: Album-spin infinite 20s linear; 
+        opacity: 0.2;
+        width: 300px;
+        animation: Album-spin infinite 20s linear; 
     }
 
     #recordPlayer {
-    background-color: rgba(0,0,0,0);
-    border: none;
+        background-color: rgba(0,0,0,0);
+        border: none;
 
         .card-img-overlay {
             padding: 0;
@@ -98,14 +98,14 @@
     }
 
     @keyframes Album-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 
     @keyframes Album-wobble {
-    from { transform: rotate(0deg); }
-    50% { transform: rotate(3deg); }
-    to { transform: rotate(0deg); }
+        from { transform: rotate(0deg); }
+        50% { transform: rotate(3deg); }
+        to { transform: rotate(0deg); }
     }
 
     #nextQuestion {

@@ -26,7 +26,10 @@ class CreateQuiz extends Component {
     super(props);
 
     this.quiz = { name: '', author: '', language: '' };
-    this.questionList = [{ question: "", answer: "", falseOptions: [], track: "", trackName: "" }];
+    this.questionList = [{ question: '', answer: '', falseOptions: [], track: '', trackName: '' }];
+
+    if (JSON.parse(localStorage.getItem('createQuizQuestions')))
+      this.questionList = JSON.parse(localStorage.getItem('createQuizQuestions'))
 
     this.state = {
       loading: true,
@@ -53,7 +56,10 @@ class CreateQuiz extends Component {
   addQuestion = (e) => {
     let valid = this.validateQuestion(this.questionList[this.questionList.length - 1]);
 
-    if (valid) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
+    if (valid) {
+      this.questionList.push({ question: '', answer: '', falseOptions: [], track: '' });
+      localStorage.setItem('createQuizQuestions', JSON.stringify(this.questionList));
+    }
     else alert('Please fill in previous question fully first.');
 
     this.setState({ reRender: true });
@@ -96,6 +102,7 @@ class CreateQuiz extends Component {
     
     if (!flagged) {
       this.props.firebase.createNewQuiz(this.quiz, this.questionList).then(e => {
+        localStorage.removeItem('createQuizQuestions');
         alert('Quizzen sparad!');
         this.setState({ quizSubmitted: true })
       })
@@ -118,14 +125,17 @@ class CreateQuiz extends Component {
 
   deleteQuestion = (e, idx) => {
     this.questionList.splice(idx, 1);
-    if (this.questionList.length === 0) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
-    document.getElementById("questionFields").reset();
+    if (this.questionList.length === 0) this.questionList.push({ question: '', answer: '', falseOptions: [], track: '' });
+    document.getElementById('questionFields').reset();
     this.setState({ reRender: true });
   }
 
   componentWillMount() {
     this.props.spotify.getMe().then(response => {
-      this.quiz.author = response.display_name;
+      if (response.display_name) {
+        this.quiz.author = response.display_name;
+        document.getElementById('quizAuthor').value = response.display_name;
+      }
     })
     this.setState({ loading: false });
   }
@@ -134,7 +144,6 @@ class CreateQuiz extends Component {
     return (
       <Container>
         {this.state.quizSubmitted && <Redirect to={ROUTES.LANDING}/>}
-        
 
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
           {this.state.selectingSong && <SpotifySongSelect selectSong={this.spotifySongSelected} />}
@@ -147,17 +156,17 @@ class CreateQuiz extends Component {
           <Col sm={3}>
             <Form id="QuizForm">
 
-              <Form.Group controlId="CreateForm.QuizName">
+              <Form.Group controlId="quizName">
                 <Form.Label>Enter quiz name</Form.Label>
                 <Form.Control type="text" placeholder="Quiz name..." onChange={(e) => this.handleQuizChange(e, 'name')} />
               </Form.Group>
 
-              <Form.Group controlId="CreateForm.QuizAuthor">
+              <Form.Group controlId="quizAuthor">
                 <Form.Label>Enter author name</Form.Label>
-                <Form.Control type="text" defaultValue={this.quiz.author} placeholder="Author name..." onClick={(e) => this.handleQuizChange(e, 'author')} />
+                <Form.Control type="text" placeholder="Author name..." onClick={(e) => this.handleQuizChange(e, 'author')} />
               </Form.Group>
 
-              <Form.Group controlId="CreateForm.Language">
+              <Form.Group controlId="quizLanguage">
                 <Form.Label>Enter quiz name</Form.Label>
                 <Form.Control as="select" onChange={(e) => this.handleQuizChange(e, 'lang')}>
                   <option value="">Set language</option>
@@ -174,16 +183,15 @@ class CreateQuiz extends Component {
                 </Form.Control>
               </Form.Group>
 
-              <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} >
-                <span>Add question</span>
+              <Button variant="primary" size="lg" className="ConfirmButton" onClick={(e) => this.handleSubmit(e)} block>
+                <span>Submit Quiz</span>
               </Button>
 
             </Form>
           </Col>
 
           <Col>
-
-              <Form id="questionFields" className="questionList">
+            <Form id="questionFields" className="questionList">
               {this.questionList.map((val, idx) => {
                 return (
                   <div key={idx}>
@@ -230,15 +238,12 @@ class CreateQuiz extends Component {
 
                     </Row>
                   </div>
-                )
-              })
+                )})
               }
             </Form>
-            <div className="Confirm" >
-              <Button variant="primary" size="lg" className="ConfirmButton" onClick={(e) => this.handleSubmit(e)} block>
-                <span>Confirm</span>
-              </Button>
-            </div>
+            <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} style={{ width: '80%' }}>
+              <span>Add question</span>
+            </Button>
           </Col>
         </Row>
       </Container>
