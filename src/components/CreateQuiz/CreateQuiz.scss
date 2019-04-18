@@ -46,15 +46,17 @@
 }*/
 
   .Wrong {
-    border-color: red;
-    border-width: 5px;
+    //border-color: red;
+    //border-width: 5px;
+    background-color: rgb(236, 140, 96)
 
 
   }
 
   #correct {
-    border-color: green;
-    border-width: 5px;
+    //border-color: green;
+    //border-width: 5px;
+    background-color: rgb(96, 236, 108)
   }
 
 .questionList {
@@ -68,10 +70,12 @@
   width: 50px;
   height: 50px;
   text-align: center;
+  background-color: transparent;
+  border-color: transparent;
 }
 
 .DeleteButton:hover {
-  background-color: yellow;
+  background-color: grey;
 }
 
 .fa fa-trash {

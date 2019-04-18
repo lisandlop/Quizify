@@ -128,9 +128,7 @@ class SelectQuiz extends Component {
                       <option value="FI">Soumi</option>
                     </Form.Control> 
                   </Form.Group>
-
                   <Button id="searchBtn" variant="primary" type="submit" block>Search</Button>
-                
                 </Form>
               </Col>
 

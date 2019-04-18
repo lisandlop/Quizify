@@ -18,14 +18,14 @@ class CreateQuiz extends Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       musicquiz: [{ question: "", answer: "" }],
       selectingSong: false
     }
+
+    this.deleteQuestion = this.deleteQuestion.bind(this)
   }
   
-
   handleChange = (e) => {
     if (["question", "answer"].includes(e.target.className)) {
       let musicquiz = [...this.state.musicquiz]
@@ -56,10 +56,14 @@ class CreateQuiz extends Component {
     this.setState({ selectingSong: false, target: null })
   }
 
-  deleteQuestion(question, answer) {
-    
-
+  deleteQuestion () {
+    this.setState(({ musicquiz }) => {
+      const mQuestions = [ ...musicquiz ]
+      mQuestions.splice(null, 1)
+      return { musicquiz: mQuestions }
+    })
   }
+
   
   render() {
     let { musicquiz } = this.state
@@ -78,12 +82,12 @@ class CreateQuiz extends Component {
 
               <Form.Group controlId="CreateForm.Author">
                 <Form.Label>Enter author name</Form.Label>
-                <input type="text" className="form-control mr-sm-3" placeholder={"Author name"} />
+                <input type="text" className="form-control mr-sm-3" placeholder={"Author name..."} />
               </Form.Group>
 
               <Form.Group controlId="CreateForm.QuizName">
                 <Form.Label>Enter quiz name</Form.Label>
-                <Form.Control type="text" placeholder="Quiz name" />
+                <Form.Control type="text" placeholder="Quiz name..." />
               </Form.Group>
 
               <Button variant="primary" size="lg" className="AddButton" onClick={this.addQuestion} >
@@ -125,7 +129,7 @@ class CreateQuiz extends Component {
 
                   <Col>
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                    <Button className="DeleteButton" size="lg"><i className="fa fa-trash"></i></Button>
+                    <Button className="DeleteButton" size="lg" onClick={() => this.deleteQuestion()}><i className="fa fa-trash"></i></Button>
                   </Col>
 
                 </Row>
