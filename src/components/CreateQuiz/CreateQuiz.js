@@ -19,16 +19,16 @@ class CreateQuiz extends Component {
     super(props);
 
     this.state = {
-      musicquiz: [{ question: "", answer: "" }],
+      musicQuiz: [{ question: "", answer: "", falseOptions: [], track: "" }],
       selectingSong: false
     }
   }
   
   handleChange = (e) => {
     if (["question", "answer"].includes(e.target.className)) {
-      let musicquiz = [...this.state.musicquiz]
-      musicquiz[e.target.dataset.id][e.target.className] = e.target.value
-      this.setState({ musicquiz }, () => console.log(this.state.musicquiz))
+      let musicQuiz = [...this.state.musicQuiz]
+      musicQuiz[e.target.dataset.id][e.target.className] = e.target.value
+      this.setState({ musicQuiz }, () => console.log(this.state.musicQuiz))
     } else {
       this.setState({ [e.target.name]: e.target.value })
     }
@@ -36,7 +36,7 @@ class CreateQuiz extends Component {
 
   addQuestion = (e) => {
     this.setState((prevState) => ({
-      musicquiz: [...prevState.musicquiz, { question: "", answer: "" }],
+      musicQuiz: [...prevState.musicQuiz, { question: "", answer: "", falseOptions: [], track: "" }],
     }));
   }
 
@@ -64,7 +64,7 @@ class CreateQuiz extends Component {
   }
   
   render() {
-    let { musicquiz } = this.state
+    let { musicQuiz } = this.state
     return (
       <Container>
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
@@ -97,7 +97,7 @@ class CreateQuiz extends Component {
 
           <Col>
             <div className="questionList">
-          {musicquiz.map((val, idx) => {
+          {musicQuiz.map((val, idx) => {
             // let questionId = `question-${idx}`, answerId = `answer-${idx}`
             return (
 
