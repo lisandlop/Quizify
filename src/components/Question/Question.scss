@@ -1,4 +1,9 @@
 .Question {
+
+    #questionRow, #questionNumber {
+        color: lightgreen; 
+    }
+
     #altCol {
         align-self: center;
 
@@ -41,6 +46,12 @@
 
     .remainingAnswers {
         background-color: grey; 
+    }
+
+    @media only screen and (max-width: 575px) {
+        .recordPicture {
+            display: none;
+        }
     }
 
     #recordPlayers {

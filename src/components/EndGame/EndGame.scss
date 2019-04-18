@@ -1,3 +1,7 @@
+.endGameText {
+  color: lightgreen; 
+}
+
 .QuizAgainButton {
     //margin-top:200px;
     padding-top: 50px;
@@ -9,27 +13,9 @@
 
 }
 
-/*.StartQuizButton active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}*/
-
 .StartQuizButton span { //makes it slow/panning
-    //cursor: pointer;
-    //display: inline-block;
-    //position: relative;
     transition: 0.5s;
 }
-
-.StartQuizButton span:after {
-    //content: '\00bb';
-    //position: absolute;
-    //opacity: 10;
-    //top: 0;
-    //right: -20px;
-    //transition: 0.5s;
-  }
   
   .StartQuizButton:hover span {
     padding-right: 10px;

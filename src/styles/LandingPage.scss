@@ -1,7 +1,7 @@
 .LandingPage {
-  text-align: center;
+ /* text-align: center;
   background-image: linear-gradient(to bottom,rgb(41, 110, 41), white);
-
+*/
   // ----------------- OLD ONE -------->
 /*.LandingPage {
   text-align: center;
@@ -11,12 +11,23 @@
 */
   
 
+  // background-image: url('music_1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: futura; 
+
+  overflow: auto; 
+  max-height: calc(100%);
+  max-width: calc(100%);
+  
   #StartOrCreateCol {
     padding: 5em; 
 
     .btn {
       padding: 1em; 
       margin: 1em; 
+      background-color: lightseagreen; 
+      border-color: lightseagreen; 
     }
   }
 

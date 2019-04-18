@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Image from 'react-bootstrap/Image';
 import Button from 'react-bootstrap/Button'; 
 import Row from 'react-bootstrap/Row';
+import './SpotifyLogin.scss';
 
 import { withSpotify } from '../Spotify';
 
@@ -39,17 +40,21 @@ class SpotifyLogin extends Component {
           ? <Button variant="success" style={{margin: '4em'}} onClick={() => this.props.spotify.authenticateSpotify()}>
 					    Log in to Spotify
             </Button>
-          : <div style={{color: 'white'}}>
-              <br />
+          : <div className="welcomeCol">
+              <br /><br/>
               {this.state.name !== '' 
                 ? <div>
                     <h1>Welcome, </h1>
                     <h1>{this.state.name}!</h1>
                   </div>
                 : <h1>Welcome!</h1>}
+
+              <br/>
               <Image src={this.state.userImage} style={{width: '20%'}} roundedCircle/>
+              <br/><br/>
               <Row>
-                <Button variant="light" onClick={() => this.signOut()} style={{margin: '1em 10em', alignItems: 'center', width: '150px', margin:'auto'}} block>
+                <Button variant="dark" onClick={() => this.signOut()} style={{margin: '1em 10em', alignItems: 'center'}} block>
+
                   Log out
                 </Button>
               </Row>

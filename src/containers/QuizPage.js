@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+// import Col from 'react-bootstrap/Col';
 import '../styles/QuizPage.scss';
 
 import StartQuiz from '../components/StartQuiz/StartQuiz';
@@ -51,8 +51,7 @@ class QuizPage extends Component {
     return (
       <div className="QuizPage backpage">
         <Container fluid={true}>
-          <Row>
-            <Col xs={12}>
+          <Row className="justify-content-center">
               {!this.state.started 
                 ? <StartQuiz startQuiz={this.startQuiz} quizname={this.state.quizname} status={this.state.status}/>
                 : [!this.state.finished
@@ -60,7 +59,6 @@ class QuizPage extends Component {
                   : <EndGame key = '2' finalPoints={this.state.finalPoints} questions={this.state.questions} songList={this.state.songs}/>
                 ]
               }
-            </Col>
           </Row>
         </Container>
       </div>

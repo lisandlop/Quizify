@@ -3,6 +3,10 @@
   color: white; 
   padding: 2em; 
 
+  overflow: auto; 
+  max-height: calc(100%);
+  max-width: calc(100%);
 }
+
 
 

@@ -7,10 +7,10 @@ import * as ROUTES from '../../constants/routes';
 class QuizStart extends Component {
   render() {
     return (
-      <div>
+      <div className="QuizStart">
         {this.props.quizname
-          ? <h1>Quiz: { this.props.quizname }</h1> 
-          : <h1>Loading quiz...</h1>
+          ? <h1 id="quizName" >Quiz: { this.props.quizname }</h1> 
+          : <h1 id="loadingName" >Loading quiz...</h1>
         }
         <div className="StartQuiz" >
           {this.props.status !== 'READY' 
