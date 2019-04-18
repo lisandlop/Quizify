@@ -187,6 +187,9 @@ class CreateQuiz extends Component {
                 <span>Submit Quiz</span>
               </Button>
 
+              <Button id="backBtn" variant="dark" style={{ marginTop: '15px' }} block onClick={() => window.history.go(-1)}>
+                Back to main menu
+              </Button>
             </Form>
           </Col>
 

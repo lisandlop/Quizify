@@ -98,13 +98,6 @@ class SelectQuiz extends Component {
                 <p id="selectaquiz">Select a Quiz</p>
               </Col>
 
-              {/* <Navbar id="searchNavbar" collapseOnSelect expand="lg" variant="dark">
-                <Button className="navbar-toggler" data-toggle="collapse" data-target="#quizSearch">
-                  <span className="navbar-toggler-icon"/>
-                  Filters
-                </Button>
-              </Navbar> */}
-
               <Col xs={12} sm={4} id="quizSearch">
                 <Form onSubmit={this.handleSubmit}>
 
@@ -136,6 +129,10 @@ class SelectQuiz extends Component {
                   </Form.Group>
 
                   <Button id="searchBtn" variant="primary" type="submit" block>Search</Button>
+
+                  <Button id="backBtn" variant="dark" style={{ marginTop: '15px' }} block onClick={() => window.history.go(-1)}>
+                    Back to main menu
+                  </Button>
                 </Form>
                 <br/>
               </Col>

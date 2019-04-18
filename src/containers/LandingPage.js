@@ -24,13 +24,13 @@ class LandingPage extends Component {
               <Row>
                 <p id="info">Hello fellow music quizzer! If you want to play a quiz, click "Play quiz". If you don't find any quizzes of your interests you can create a new one by clicking "Create quiz". Remember: you have to be logged in into your Spotify account before starting! Enjoy!</p>
                 {this.props.spotify.getAccessToken() !== null
-                  ? <Button href={ROUTES.SELECT} size="lg" block>Play quiz</Button>
-                  : <Button href={ROUTES.SELECT} size="lg" block disabled>Play quiz</Button>}
+                  ? <Button href={ROUTES.SELECT} size="lg" variant="success" block>Play quiz</Button>
+                  : <Button href={ROUTES.SELECT} size="lg" variant="success" block disabled>Play quiz</Button>}
               </Row>
               <Row>
                 {this.props.spotify.getAccessToken() !== null
-                  ? <Button href={ROUTES.CREATE} size="lg" block>Create quiz</Button>
-                  : <Button href={ROUTES.CREATE} size="lg" block disabled>Create quiz</Button>}
+                  ? <Button href={ROUTES.CREATE} size="lg" variant="info" block>Create quiz</Button>
+                  : <Button href={ROUTES.CREATE} size="lg" variant="info" block disabled>Create quiz</Button>}
               </Row>
             </Col>
           </Row>
