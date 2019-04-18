@@ -44,7 +44,6 @@ class CreateQuiz extends Component {
   }
 
   addQuestion = (e) => {
-    console.log(this.questionList)
     let lastQuestion = this.questionList[this.questionList.length - 1];
     let flag = false;
 
@@ -151,27 +150,33 @@ class CreateQuiz extends Component {
                       <Col>
                         <Form.Group id="vline">
                           <Form.Control type="text" defaultValue={this.questionList[idx].question} placeholder="Question" 
-                                        onChange={(e) => this.handleQuestionChange(e, idx, 'question')} />
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'question')} 
+                                        readOnly={this.questionList.length > idx + 1}/>
                           <Form.Control type="text" defaultValue={this.questionList[idx].trackName} id={`${idx}`} placeholder="Song" 
-                                        onFocus={(e) => this.spotifySongSelection(e)} />
+                                        onFocus={(e) => this.spotifySongSelection(e)}
+                                        readOnly={this.questionList.length > idx + 1}/>
                         </Form.Group>
                       </Col>
 
                       <Col>
                         <Form.Group>
                           <Form.Control type="text" defaultValue={this.questionList[idx].answer} id="correct" placeholder="Correct answer" 
-                                        onChange={(e) => this.handleQuestionChange(e, idx, 'correct')} />
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'correct')} 
+                                        readOnly={this.questionList.length > idx + 1}/>
                           <Form.Control type="text" defaultValue={this.questionList[idx].falseOptions[0]} className="Wrong" placeholder="Wrong answer 1" 
-                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 0)} />
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 0)} 
+                                        readOnly={this.questionList.length > idx + 1}/>
                         </Form.Group>
                       </Col>
 
                       <Col>
                         <Form.Group>
                           <Form.Control type="text" defaultValue={this.questionList[idx].falseOptions[1]} className="Wrong" placeholder="Wrong answer 2" 
-                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 1)} />
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 1)} 
+                                        readOnly={this.questionList.length > idx + 1}/>
                           <Form.Control type="text" defaultValue={this.questionList[idx].falseOptions[2]} className="Wrong" placeholder="Wrong answer 3" 
-                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 2)} />
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 2)} 
+                                        readOnly={this.questionList.length > idx + 1}/>
                         </Form.Group>
                       </Col>
 
