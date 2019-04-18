@@ -10,7 +10,9 @@ class Firebase {
     this.db = app.firestore();
   }
 
-  // *** Quiz API ***
+  // Get
+  // ------------------------------------------------------------
+
   getQuizByID = quizid => this.db.collection('quizzes').doc(quizid)
     .get()
     .then(snapshot => {
@@ -69,6 +71,41 @@ class Firebase {
     })
 
 
+  // Set
+  // ------------------------------------------------------------
+  async createNewQuiz(musicQuiz) {
+    var newQuiz = this.db.collection('quizzes').doc();
+
+    newQuiz.set({
+      name: 'Jura och Jonatan testat',
+      author: 'Jura & Jonatan',
+      language: 'Blahonga'
+    })
+
+    console.log(musicQuiz)
+
+    for (let index = 0; index < 2; index++) {
+      var quizSong = newQuiz.collection('songs').doc();
+      
+      quizSong.set({
+        track: `asdjoasdas${index}`
+      })
+      
+    }
+
+  }
+
+
+//   db.collection("cities").add({
+//     name: "Tokyo",
+//     country: "Japan"
+// })
+// .then(function(docRef) {
+//     console.log("Document written with ID: ", docRef.id);
+// })
+// .catch(function(error) {
+//     console.error("Error adding document: ", error);
+// });
 };
 
 export default Firebase;

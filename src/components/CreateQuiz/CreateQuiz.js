@@ -40,7 +40,10 @@ class CreateQuiz extends Component {
     }));
   }
 
-  handleSubmit = (e) => { e.preventDefault() }
+  handleSubmit = (e) => { 
+    e.preventDefault() 
+    this.props.firebase.createNewQuiz(this.state.musicquiz);
+  }
 
   spotifySongSelection = (e) => {
     e.target.blur();
@@ -133,7 +136,7 @@ class CreateQuiz extends Component {
             })
           }</div>
           <div className="Confirm" >
-            <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)} block>
+            <Button variant="primary" size="lg" className="ConfirmButton" onClick={(e) => this.handleSubmit(e)} block>
               <span>Confirm</span>
             </Button>
           </div>
