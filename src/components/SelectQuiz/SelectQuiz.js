@@ -98,7 +98,7 @@ class SelectQuiz extends Component {
               <Col xs={12}>
                 <p id="selectaquiz">Select a Quiz</p>
               </Col>
-              <Col xs={12} sm={4}>
+              <Col xs={12} sm={4} className="quizSearch">
                 
                 <Form onSubmit={this.handleSubmit}>
 

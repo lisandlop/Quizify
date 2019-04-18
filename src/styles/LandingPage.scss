@@ -4,6 +4,10 @@
   background-repeat: no-repeat;
   background-size: cover;
   font-family: futura; 
+
+  overflow: auto; 
+  max-height: calc(100%);
+  max-width: calc(100%);
   
   #StartOrCreateCol {
     padding: 5em; 

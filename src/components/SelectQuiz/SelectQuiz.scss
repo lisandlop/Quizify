@@ -17,6 +17,12 @@
     }
 }
 
+.quizSearch {
+    overflow: auto;
+    max-height: calc(90% - 80px);
+    padding-top: 5px;
+}
+
 #searchBtn {
     margin: 7px; 
 }

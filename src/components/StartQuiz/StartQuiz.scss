@@ -1,6 +1,7 @@
 .QuizStart {
   overflow: auto; 
-  max-height: calc(100% - 80px);
+  max-height: calc(100%);
+  max-width: calc(100%);
 }
 
 #quizName, #loadingName {
