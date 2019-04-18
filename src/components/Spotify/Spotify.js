@@ -12,7 +12,7 @@ class SpotifyAPI extends Spotify {
 			let spotifyToken = JSON.parse(localStorage.getItem("spotifyToken"));
 
 			//Check if the access token is still valid, else flags for timeout
-			if (new Date().getTime() - parseInt(spotifyToken.timeStamp) < spotifyToken.timeOut)  {
+			if (new Date().getTime() - parseInt(spotifyToken.timeStamp) < spotifyToken.timeOut) {
 				this.setAccessToken(spotifyToken.value)
 			}
 			else {
@@ -38,7 +38,7 @@ class SpotifyAPI extends Spotify {
 			redirect_uri: document.URL.substring(0, document.URL.indexOf('/', 10))
 		})
 
-		window.location.replace(authUrl);
+		window.location.href = authUrl;
 	}
 
 	getHashParams() {

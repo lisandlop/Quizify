@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
+import * as ROUTES from '../../constants/routes';
 import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 
 
@@ -28,7 +30,8 @@ class CreateQuiz extends Component {
 
     this.state = {
       loading: true,
-      selectingSong: false
+      selectingSong: false,
+      quizSubmitted: false
     }
 
     this.deleteQuestion = this.deleteQuestion.bind(this)
@@ -70,8 +73,6 @@ class CreateQuiz extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log('Quiz:', this.quiz)
-    console.log('Questions:', this.questionList)
     e.preventDefault()
     let flagged = false;
 
@@ -92,7 +93,13 @@ class CreateQuiz extends Component {
       alert('Finish or remove the last question.');
     }
 
-    if (!flagged) this.props.firebase.createNewQuiz(this.quiz, this.questionList);
+    
+    if (!flagged) {
+      this.props.firebase.createNewQuiz(this.quiz, this.questionList).then(e => {
+        alert('Quizzen sparad!');
+        this.setState({ quizSubmitted: true })
+      })
+    }
   }
 
   spotifySongSelection = (e) => {
@@ -126,6 +133,9 @@ class CreateQuiz extends Component {
   render() {
     return (
       <Container>
+        {this.state.quizSubmitted && <Redirect to={ROUTES.LANDING}/>}
+        
+
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
           {this.state.selectingSong && <SpotifySongSelect selectSong={this.spotifySongSelected} />}
         </Modal>
@@ -144,7 +154,7 @@ class CreateQuiz extends Component {
 
               <Form.Group controlId="CreateForm.QuizAuthor">
                 <Form.Label>Enter author name</Form.Label>
-                <Form.Control type="text" defaultValue={this.spotifyName} placeholder="Author name..." onClick={(e) => this.handleQuizChange(e, 'author')} />
+                <Form.Control type="text" defaultValue={this.quiz.author} placeholder="Author name..." onClick={(e) => this.handleQuizChange(e, 'author')} />
               </Form.Group>
 
               <Form.Group controlId="CreateForm.Language">
