@@ -10,7 +10,8 @@ import * as ROUTES from '../../constants/routes';
 
 const Navigation = () => (
 	<div id="navigation">
-		<Navbar className="justify-content-center" bg="dark" variant="dark">
+
+		<Navbar className="justify-content-center" bg=" " variant="dark">
 		{/* <Navbar className="headerBar justify-content-center"> */}
 			<Navbar.Brand>
 				<FontAwesomeIcon size="2x" icon={faSpotify} style={{color: 'lightgreen'}}/>
