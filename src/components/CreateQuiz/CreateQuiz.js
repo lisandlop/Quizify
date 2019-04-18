@@ -96,8 +96,9 @@ class CreateQuiz extends Component {
     }
     else if (!this.validateQuestion(this.questionList[this.questionList.length - 1])) {
       flagged = true;
-      alert('Finish or remove the last question.')
+      alert('Finish or remove the last question.');
     }
+
     
     if (!flagged) {
       this.props.firebase.createNewQuiz(this.quiz, this.questionList).then(e => {
