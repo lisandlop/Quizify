@@ -21,10 +21,16 @@
     color: lightgreen; 
 }
 
-.quizSearch {
+#quizSearch {
     overflow: auto;
     max-height: calc(90% - 80px);
     padding-top: 5px;
+}
+
+@media only screen and (max-width: 575px) {
+    #quizSearch {
+        display: none;
+    }
 }
 
 #searchBtn {

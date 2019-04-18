@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import FlagIcon from '../FlagIcon/FlagIcon.js';
+import Navbar from 'react-bootstrap/Navbar';
 
 import './SelectQuiz.scss'
 
@@ -89,7 +90,6 @@ class SelectQuiz extends Component {
       }
     }
 
-
     render() {
       return (
         <Container>
@@ -98,8 +98,15 @@ class SelectQuiz extends Component {
               <Col xs={12}>
                 <p id="selectaquiz">Select a Quiz</p>
               </Col>
-              <Col xs={12} sm={4} className="quizSearch">
-                
+
+              {/* <Navbar id="searchNavbar" collapseOnSelect expand="lg" variant="dark">
+                <Button className="navbar-toggler" data-toggle="collapse" data-target="#quizSearch">
+                  <span className="navbar-toggler-icon"/>
+                  Filters
+                </Button>
+              </Navbar> */}
+
+              <Col xs={12} sm={4} id="quizSearch">
                 <Form onSubmit={this.handleSubmit}>
 
                   <Form.Group controlId="quizName">
@@ -128,8 +135,10 @@ class SelectQuiz extends Component {
                       <option value="FI">Soumi</option>
                     </Form.Control> 
                   </Form.Group>
+
                   <Button id="searchBtn" variant="primary" type="submit" block>Search</Button>
                 </Form>
+                <br/>
               </Col>
 
 
@@ -153,7 +162,7 @@ class SelectQuiz extends Component {
                     </Card>
                   </Link>
                 ))}
-
+                <br/>
               </Col>
             </Row>
             <br /><br />
