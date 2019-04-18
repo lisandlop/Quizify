@@ -18,26 +18,28 @@ class CreateQuiz extends Component {
   constructor(props) {
     super(props);
 
+    this.musicQuiz = [{ question: "", answer: "", falseOptions: [], track: "" }];
+
     this.state = {
-      musicQuiz: [{ question: "", answer: "", falseOptions: [], track: "" }],
       selectingSong: false
     }
   }
   
-  handleChange = (e) => {
-    if (["question", "answer"].includes(e.target.className)) {
-      let musicQuiz = [...this.state.musicQuiz]
-      musicQuiz[e.target.dataset.id][e.target.className] = e.target.value
-      this.setState({ musicQuiz }, () => console.log(this.state.musicQuiz))
-    } else {
-      this.setState({ [e.target.name]: e.target.value })
+  handleChange = (e, idx, type, id = null) => {
+    if (type == 'question') {
+      this.musicQuiz[idx].question = e.target.value;
+    }
+    else if (type == 'correct') {
+      this.musicQuiz[idx].answer = e.target.value;
+    }
+    else if (type == 'false') {
+      this.musicQuiz[idx].falseOptions[id] = e.target.value;
     }
   }
 
   addQuestion = (e) => {
-    this.setState((prevState) => ({
-      musicQuiz: [...prevState.musicQuiz, { question: "", answer: "", falseOptions: [], track: "" }],
-    }));
+    this.musicQuiz.push({ question: "", answer: "", falseOptions: [], track: "" });
+    this.setState({ reRender: true });
   }
 
   handleSubmit = (e) => { 
@@ -53,6 +55,7 @@ class CreateQuiz extends Component {
   spotifySongSelected = (cancelled, track) => {
     if (!cancelled) {
       document.getElementById(this.state.target.id).value = track.name;
+      this.musicQuiz[this.state.target.id].track = track.id;
     }
     this.setState({ selectingSong: false, target: null })
   }
@@ -64,7 +67,6 @@ class CreateQuiz extends Component {
   }
   
   render() {
-    let { musicQuiz } = this.state
     return (
       <Container>
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
@@ -97,7 +99,7 @@ class CreateQuiz extends Component {
 
           <Col>
             <div className="questionList">
-          {musicQuiz.map((val, idx) => {
+            {this.musicQuiz.map((val, idx) => {
             // let questionId = `question-${idx}`, answerId = `answer-${idx}`
             return (
 
@@ -106,22 +108,22 @@ class CreateQuiz extends Component {
 
                   <Col>
                     <Form.Group id="vline">
-                      <Form.Control type="text" placeholder="Question" />
-                      <Form.Control type="text" id={`song-${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
+                      <Form.Control type="text" placeholder="Question" onChange={(e) => this.handleChange(e, idx, 'question')}/>
+                      <Form.Control type="text" id={`${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
                     </Form.Group>
                   </Col>
 
                   <Col>
                     <Form.Group>
-                      <Form.Control type="text" id="correct" placeholder="Correct answer" />
-                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+                      <Form.Control type="text" id="correct" placeholder="Correct answer" onChange={(e) => this.handleChange(e, idx, 'correct')}/>
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" onChange={(e) => this.handleChange(e, idx, 'false', 0)}/>
                     </Form.Group>
                   </Col>
 
                   <Col>
                     <Form.Group>
-                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
-                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" onChange={(e) => this.handleChange(e, idx, 'false', 1)}/>
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" onChange={(e) => this.handleChange(e, idx, 'false', 2)}/>
                     </Form.Group>
                   </Col>
 
