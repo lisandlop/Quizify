@@ -93,11 +93,12 @@ class SelectQuiz extends Component {
     render() {
       return (
         <Container>
+          <br/>
             <Row>
               <Col xs={12}>
                 <p id="selectaquiz">Select a Quiz</p>
               </Col>
-              <Col xs={12} sm={4}>
+              <Col xs={12} sm={4} className="quizSearch">
                 
                 <Form onSubmit={this.handleSubmit}>
 
@@ -127,9 +128,7 @@ class SelectQuiz extends Component {
                       <option value="FI">Soumi</option>
                     </Form.Control> 
                   </Form.Group>
-                  
-                  <Button variant="primary" type="submit" style={{ margin: '7px' }} block>Search</Button>
-
+                  <Button id="searchBtn" variant="primary" type="submit" block>Search</Button>
                 </Form>
               </Col>
 
@@ -137,7 +136,7 @@ class SelectQuiz extends Component {
               <Col xs={12} sm={8} className="quizList">
 
                 {this.state.loading
-                ? <h1>Loading...</h1>
+                ? <h1 id="loadingQuizes">Loading...</h1>
                 : this.state.quizzes.map((quiz, k) => (
                   <Link key={k} to={`${ROUTES.PLAY}/${quiz.id}`}>
                     <Card bg="info" text="white" style={{ marginBottom: '20px' }}>

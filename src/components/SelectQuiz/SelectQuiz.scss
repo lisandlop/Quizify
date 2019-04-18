@@ -1,3 +1,7 @@
+#selectaquiz {
+    color: #90ee90; 
+}
+
 .quizList {
     text-align: center; 
     overflow: auto;
@@ -11,6 +15,20 @@
     div.bg-info:hover {
         background-color: #178292!important
     }
+}
+
+#loadingQuizes {
+    color: lightgreen; 
+}
+
+.quizSearch {
+    overflow: auto;
+    max-height: calc(90% - 80px);
+    padding-top: 5px;
+}
+
+#searchBtn {
+    margin: 7px; 
 }
 
 .card-img-overlay {

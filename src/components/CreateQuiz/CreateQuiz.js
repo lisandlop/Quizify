@@ -29,6 +29,8 @@ class CreateQuiz extends Component {
       loading: true,
       selectingSong: false
     }
+
+    this.deleteQuestion = this.deleteQuestion.bind(this)
   }
 
   handleQuizChange = (e, type) => {
@@ -105,6 +107,7 @@ class CreateQuiz extends Component {
     this.setState({ selectingSong: false, target: null })
   }
 
+<<<<<<< HEAD
   deleteQuestion = (e, idx) => {
     this.questionList.splice(idx, 1);
     if (this.questionList.length === 0) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
@@ -119,6 +122,17 @@ class CreateQuiz extends Component {
     this.setState({ loading: false });
   }
 
+=======
+  deleteQuestion () {
+    this.setState(({ musicquiz }) => {
+      const mQuestions = [ ...musicquiz ]
+      mQuestions.splice(null, 1)
+      return { musicquiz: mQuestions }
+    })
+  }
+
+  
+>>>>>>> afbb6d178bc2b8f9dca79fc371da123928f96ca7
   render() {
     return (
       <Container>
@@ -168,6 +182,7 @@ class CreateQuiz extends Component {
           </Col>
 
           <Col>
+<<<<<<< HEAD
               <Form id="questionFields" className="questionList">
               {this.questionList.map((val, idx) => {
                 return (
@@ -224,6 +239,52 @@ class CreateQuiz extends Component {
                 <span>Confirm</span>
               </Button>
             </div>
+=======
+            <div className="questionList">
+          {musicquiz.map((val, idx) => {
+            // let questionId = `question-${idx}`, answerId = `answer-${idx}`
+            return (
+
+              <div key={idx}>
+                <Row>
+
+                  <Col>
+                    <Form.Group id="vline">
+                      <Form.Control type="text" placeholder="Question" />
+                      <Form.Control type="text" id={`song-${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)}/>
+                    </Form.Group>
+                  </Col>
+
+                  <Col>
+                    <Form.Group>
+                      <Form.Control type="text" id="correct" placeholder="Correct answer" />
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" />
+                    </Form.Group>
+                  </Col>
+
+                  <Col>
+                    <Form.Group>
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" />
+                      <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" />
+                    </Form.Group>
+                  </Col>
+
+                  <Col>
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                    <Button className="DeleteButton" size="lg" onClick={() => this.deleteQuestion()}><i className="fa fa-trash"></i></Button>
+                  </Col>
+
+                </Row>
+              </div>
+              )
+            })
+          }</div>
+          <div className="Confirm" >
+            <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)} block>
+              <span>Confirm</span>
+            </Button>
+          </div>
+>>>>>>> afbb6d178bc2b8f9dca79fc371da123928f96ca7
           </Col>
         </Row>
       </Container>

@@ -23,13 +23,13 @@ class LandingPage extends Component {
             <Col xs={12} sm={6} id="StartOrCreateCol">
               <Row>
                 {this.props.spotify.getAccessToken() !== null
-                  ? <Button href={ROUTES.SELECT} variant="warning" size="lg" block>Play quiz</Button>
-                  : <Button href={ROUTES.SELECT} variant="warning" size="lg" block disabled>Play quiz</Button>}
+                  ? <Button href={ROUTES.SELECT} size="lg" block>Play quiz</Button>
+                  : <Button href={ROUTES.SELECT} size="lg" block disabled>Play quiz</Button>}
               </Row>
               <Row>
                 {this.props.spotify.getAccessToken() !== null
-                  ? <Button href={ROUTES.CREATE} variant="warning" size="lg" block>Create quiz</Button>
-                  : <Button href={ROUTES.CREATE} variant="warning" size="lg" block disabled>Create quiz</Button>}
+                  ? <Button href={ROUTES.CREATE} size="lg" block>Create quiz</Button>
+                  : <Button href={ROUTES.CREATE} size="lg" block disabled>Create quiz</Button>}
               </Row>
             </Col>
           </Row>

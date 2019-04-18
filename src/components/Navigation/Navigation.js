@@ -11,14 +11,15 @@ import * as ROUTES from '../../constants/routes';
 const Navigation = () => (
 	<div id="navigation">
 		<Navbar className="justify-content-center" bg="dark" variant="dark">
+		{/* <Navbar className="headerBar justify-content-center"> */}
 			<Navbar.Brand>
-				<FontAwesomeIcon size="2x" icon={faSpotify}/>
-				<FontAwesomeIcon size="2x" icon={faQuestion}/>
+				<FontAwesomeIcon size="2x" icon={faSpotify} style={{color: 'lightgreen'}}/>
+				<FontAwesomeIcon size="2x" icon={faQuestion} style={{color: 'lightgreen'}}/>
 			</Navbar.Brand>
 			<Navbar.Brand id="quizifyButton" href={ROUTES.LANDING}>Quizify</Navbar.Brand>
 			<Navbar.Brand>
-				<FontAwesomeIcon size="2x" icon={faQuestion}/>
-				<FontAwesomeIcon size="2x" icon={faSpotify}/>
+				<FontAwesomeIcon size="2x" icon={faQuestion} style={{color: 'lightgreen'}}/>
+				<FontAwesomeIcon size="2x" icon={faSpotify} style={{color: 'lightgreen'}}/>
 			</Navbar.Brand>
 		</Navbar>
 	</div>
