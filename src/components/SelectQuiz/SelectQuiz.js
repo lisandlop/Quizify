@@ -127,9 +127,9 @@ class SelectQuiz extends Component {
                       <option value="FI">Soumi</option>
                     </Form.Control> 
                   </Form.Group>
+                  
+                  <Button variant="primary" type="submit" style={{ margin: '7px' }} block>Search</Button>
 
-                  <Button variant="primary" type="submit" block>Search</Button>
-                
                 </Form>
               </Col>
 
