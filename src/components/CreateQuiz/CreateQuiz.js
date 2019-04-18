@@ -22,7 +22,7 @@ class CreateQuiz extends Component {
   constructor(props) {
     super(props);
 
-    this.quiz = { name: '', author: '', lang: '' };
+    this.quiz = { name: '', author: '', language: '' };
     this.questionList = [{ question: "", answer: "", falseOptions: [], track: "", trackName: "" }];
 
     this.state = {
@@ -34,7 +34,7 @@ class CreateQuiz extends Component {
   handleQuizChange = (e, type) => {
     if (type === 'name') this.quiz.name = e.target.value;
     else if (type === 'author') this.quiz.author = e.target.value;
-    else if (type === 'lang') this.quiz.lang = e.target.value;
+    else if (type === 'lang') this.quiz.language = e.target.value;
   }
 
   handleQuestionChange = (e, idx, type, id = null) => {
@@ -44,24 +44,51 @@ class CreateQuiz extends Component {
   }
 
   addQuestion = (e) => {
-    let lastQuestion = this.questionList[this.questionList.length - 1];
-    let flag = false;
+    let valid = this.validateQuestion(this.questionList[this.questionList.length - 1]);
 
-    Object.keys(lastQuestion).forEach(key => {
-      if (Array.isArray(lastQuestion[key])) {
-        lastQuestion[key].forEach(item => { if (item === '') flag = true; })
-      }
-      else if (lastQuestion[key] === '') flag = true;
-    })
-
-    if (!flag) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
+    if (valid) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
     else alert('Please fill in previous question fully first.');
+
     this.setState({ reRender: true });
   }
 
+  validateQuestion(question) {
+    let flag = false;
+
+    Object.keys(question).forEach(key => {
+      if (Array.isArray(question[key])) {
+        question[key].forEach(item => { if (item === '') flag = true; })
+      }
+      else if (question[key] === '') flag = true;
+    })
+
+    return !flag;
+  }
+
   handleSubmit = (e) => {
+    console.log('Quiz:', this.quiz)
+    console.log('Questions:', this.questionList)
     e.preventDefault()
-    this.props.firebase.createNewQuiz(this.quiz, this.questionList);
+    let flagged = false;
+
+    if(this.quiz.name === '') { 
+      flagged = true;
+      alert('Fill in quiz name');
+    }
+    else if (this.quiz.author === '') { 
+      flagged = true; 
+      alert('Fill in quiz author');
+    }
+    else if (this.quiz.language === '') { 
+      flagged = true;
+      alert('Fill in quiz language');
+    }
+    else if (!this.validateQuestion(this.questionList[this.questionList.length - 1])) {
+      flagged = true;
+      alert('Finish or remove the last question.')
+    }
+    
+    if (!flagged) this.props.firebase.createNewQuiz(this.quiz, this.questionList);
   }
 
   spotifySongSelection = (e) => {
@@ -108,7 +135,7 @@ class CreateQuiz extends Component {
 
               <Form.Group controlId="CreateForm.QuizName">
                 <Form.Label>Enter quiz name</Form.Label>
-                <Form.Control type="text" placeholder="Quiz name..." onClick={(e) => this.handleQuizChange(e, 'name')} />
+                <Form.Control type="text" placeholder="Quiz name..." onChange={(e) => this.handleQuizChange(e, 'name')} />
               </Form.Group>
 
               <Form.Group controlId="CreateForm.QuizAuthor">
@@ -118,8 +145,8 @@ class CreateQuiz extends Component {
 
               <Form.Group controlId="CreateForm.Language">
                 <Form.Label>Enter quiz name</Form.Label>
-                <Form.Control as="select" onClick={(e) => this.handleQuizChange(e, 'lang')}>
-                  <option value="">Any language</option>
+                <Form.Control as="select" onChange={(e) => this.handleQuizChange(e, 'lang')}>
+                  <option value="">Set language</option>
                   <option disabled>-----------</option>
                   <option value="DK">Dansk</option>
                   <option value="GB">English</option>
@@ -153,8 +180,7 @@ class CreateQuiz extends Component {
                                         onChange={(e) => this.handleQuestionChange(e, idx, 'question')} 
                                         readOnly={this.questionList.length > idx + 1}/>
                           <Form.Control type="text" defaultValue={this.questionList[idx].trackName} id={`${idx}`} placeholder="Song" 
-                                        onFocus={(e) => this.spotifySongSelection(e)}
-                                        readOnly={this.questionList.length > idx + 1}/>
+                                        onFocus={(e) => this.spotifySongSelection(e)}/>
                         </Form.Group>
                       </Col>
 
