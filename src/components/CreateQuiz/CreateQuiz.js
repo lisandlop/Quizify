@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 
@@ -21,7 +23,7 @@ class CreateQuiz extends Component {
     super(props);
 
     this.quiz = { name: '', author: '', lang: '' };
-    this.questionList = [{ question: "", answer: "", falseOptions: [], track: "" }];
+    this.questionList = [{ question: "", answer: "", falseOptions: [], track: "", trackName: "" }];
 
     this.state = {
       loading: true,
@@ -42,7 +44,19 @@ class CreateQuiz extends Component {
   }
 
   addQuestion = (e) => {
-    this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
+    console.log(this.questionList)
+    let lastQuestion = this.questionList[this.questionList.length - 1];
+    let flag = false;
+
+    Object.keys(lastQuestion).forEach(key => {
+      if (Array.isArray(lastQuestion[key])) {
+        lastQuestion[key].forEach(item => { if (item === '') flag = true; })
+      }
+      else if (lastQuestion[key] === '') flag = true;
+    })
+
+    if (!flag) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
+    else alert('Please fill in previous question fully first.');
     this.setState({ reRender: true });
   }
 
@@ -60,14 +74,16 @@ class CreateQuiz extends Component {
     if (!cancelled) {
       document.getElementById(this.state.target.id).value = track.name;
       this.questionList[this.state.target.id].track = track.id;
+      this.questionList[this.state.target.id].trackName = track.name;
     }
     this.setState({ selectingSong: false, target: null })
   }
 
-  deleteQuestion = (e) => {
-    console.log("deleteyay")
-    //addQuestion.remove(this.props.questionList);
-
+  deleteQuestion = (e, idx) => {
+    this.questionList.splice(idx, 1);
+    if (this.questionList.length === 0) this.questionList.push({ question: "", answer: "", falseOptions: [], track: "" });
+    document.getElementById("questionFields").reset();
+    this.setState({ reRender: true });
   }
 
   componentWillMount() {
@@ -89,7 +105,7 @@ class CreateQuiz extends Component {
             <p id="createaquiz">Create a Quiz</p>
           </Col>
           <Col sm={3}>
-            <Form>
+            <Form id="QuizForm">
 
               <Form.Group controlId="CreateForm.QuizName">
                 <Form.Label>Enter quiz name</Form.Label>
@@ -126,44 +142,52 @@ class CreateQuiz extends Component {
           </Col>
 
           <Col>
-            <div className="questionList">
+              <Form id="questionFields" className="questionList">
               {this.questionList.map((val, idx) => {
                 return (
-
                   <div key={idx}>
                     <Row>
 
                       <Col>
                         <Form.Group id="vline">
-                          <Form.Control type="text" placeholder="Question" onChange={(e) => this.handleQuestionChange(e, idx, 'question')} />
-                          <Form.Control type="text" id={`${idx}`} placeholder="Song" onFocus={(e) => this.spotifySongSelection(e)} />
+                          <Form.Control type="text" defaultValue={this.questionList[idx].question} placeholder="Question" 
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'question')} />
+                          <Form.Control type="text" defaultValue={this.questionList[idx].trackName} id={`${idx}`} placeholder="Song" 
+                                        onFocus={(e) => this.spotifySongSelection(e)} />
                         </Form.Group>
                       </Col>
 
                       <Col>
                         <Form.Group>
-                          <Form.Control type="text" id="correct" placeholder="Correct answer" onChange={(e) => this.handleQuestionChange(e, idx, 'correct')} />
-                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 1" onChange={(e) => this.handleQuestionChange(e, idx, 'false', 0)} />
+                          <Form.Control type="text" defaultValue={this.questionList[idx].answer} id="correct" placeholder="Correct answer" 
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'correct')} />
+                          <Form.Control type="text" defaultValue={this.questionList[idx].falseOptions[0]} className="Wrong" placeholder="Wrong answer 1" 
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 0)} />
                         </Form.Group>
                       </Col>
 
                       <Col>
                         <Form.Group>
-                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 2" onChange={(e) => this.handleQuestionChange(e, idx, 'false', 1)} />
-                          <Form.Control type="text" className="Wrong" placeholder="Wrong answer 3" onChange={(e) => this.handleQuestionChange(e, idx, 'false', 2)} />
+                          <Form.Control type="text" defaultValue={this.questionList[idx].falseOptions[1]} className="Wrong" placeholder="Wrong answer 2" 
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 1)} />
+                          <Form.Control type="text" defaultValue={this.questionList[idx].falseOptions[2]} className="Wrong" placeholder="Wrong answer 3" 
+                                        onChange={(e) => this.handleQuestionChange(e, idx, 'false', 2)} />
                         </Form.Group>
                       </Col>
 
                       <Col>
                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-                        <Button className="DeleteButton" size="lg" onClick={this.deleteQuestion}><i className="fa fa-trash"></i></Button>
+                        <Button className="DeleteButton" size="lg" onClick={(e) => this.deleteQuestion(e, idx)}>
+                          <FontAwesomeIcon icon={faTrash}/>
+                        </Button>
                       </Col>
 
                     </Row>
                   </div>
                 )
               })
-              }</div>
+              }
+            </Form>
             <div className="Confirm" >
               <Button variant="primary" size="lg" className="ConfirmButton" onClick={(e) => this.handleSubmit(e)} block>
                 <span>Confirm</span>
