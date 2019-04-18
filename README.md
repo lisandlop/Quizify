@@ -43,29 +43,20 @@ Deploys the react app to firebase. Should ony be used from master branch.
 <br/>
 <br/>
 
-## Development progress :chart_with_upwards_trend:
-
-### First development
-
-### Achievements
-* Setup basic framework (React)
-* Install useful packages (Sass, React-router etc.)
-* Initial layout
-* Configure deployment method
-* Make contant with Spotify API
-* Connect to Firebase Cloudstore
-- [ ] Setup Quizzing components
-- [ ] Make all buttons work
-- [ ] Create a quiz
-- [ ] Create filter functions
-- [ ] ...
-- [ ] ...
-- [ ] ...
-- [ ] ...
+## Achievements :chart_with_upwards_trend:
 
 * Log in with Spotify account
 * Play a quiz
-  * Filter, search and choose a quiz 
+  * Filter and search for quizzes or quiz author
+  * Choose a quiz 
+  * Play the quiz
+  * Get your result & the songs used in the quiz
+  * Play another quiz!
+* Create a new quiz
+  * Enter quiz name, author name and set language
+  * Create questions
+    * Add Spotify songs by searching directly in the app
+    * Add question, and answer options
 * 
 
 <br/>
