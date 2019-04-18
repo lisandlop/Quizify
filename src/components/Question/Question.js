@@ -127,8 +127,8 @@ class Question extends Component {
 							{this.state.answerSelected === ''
 								? <div/>
 								: [this.state.questionnr !== this.props.questions.length
-										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="light" size="lg" block>Next question</Button>
-										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true, this.points, this.songList)} variant="light" size="lg" block>Check results</Button>
+										? <Button key="next" id="nextQuestion" onClick={() => this.getQuestion()} variant="dark" size="lg" block>Next question</Button>
+										: <Button key="finish" id="checkResults" onClick={() => this.props.finishedQuiz(true, this.points, this.songList)} variant="dark" size="lg" block>Check results</Button>
 									]
 							}
 							<br/>
