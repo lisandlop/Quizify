@@ -45,7 +45,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
 
 ## Development progress :chart_with_upwards_trend:
 
-- [x] Setup basic framework (React)
+* Setup basic framework (React)
 - [x] Install useful packages (Sass, React-router etc.)
 - [x] Initial layout
 - [x] Configure deployment method
