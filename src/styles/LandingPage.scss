@@ -1,12 +1,15 @@
 .LandingPage {
   text-align: center;
+  background-image: linear-gradient(to bottom,rgb(41, 110, 41), white);
+
+  // ----------------- OLD ONE -------->
+/*.LandingPage {
+  text-align: center;
   background-image: url('music_1.png');
   background-repeat: no-repeat;
   background-size: cover;
+*/
   
-
-
-
 
   #StartOrCreateCol {
     padding: 5em; 
@@ -15,5 +18,11 @@
       padding: 1em; 
       margin: 1em; 
     }
+  }
+
+  #info {
+    font-size: 14pt;
+    color: white;
+    text-align: left;
   }
 }

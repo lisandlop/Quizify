@@ -47,9 +47,9 @@ class SpotifyLogin extends Component {
                     <h1>{this.state.name}!</h1>
                   </div>
                 : <h1>Welcome!</h1>}
-              <Image src={this.state.userImage} style={{width: '50%'}} roundedCircle/>
+              <Image src={this.state.userImage} style={{width: '20%'}} roundedCircle/>
               <Row>
-                <Button variant="light" onClick={() => this.signOut()} style={{margin: '1em 10em', alignItems: 'center'}} block>
+                <Button variant="light" onClick={() => this.signOut()} style={{margin: '1em 10em', alignItems: 'center', width: '150px', margin:'auto'}} block>
                   Log out
                 </Button>
               </Row>

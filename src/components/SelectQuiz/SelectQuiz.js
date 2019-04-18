@@ -124,7 +124,7 @@ class SelectQuiz extends Component {
                       <option value="DE">Deutsch</option>
                       <option value="NO">Norsk</option>
                       <option value="SE">Svenska</option>
-                      <option value="FI">Soumi</option>
+                      <option value="FI">Suomi</option>
                     </Form.Control> 
                   </Form.Group>
                   

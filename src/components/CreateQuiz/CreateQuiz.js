@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 
 import './CreateQuiz.scss';
+import '../SelectQuiz/SelectQuiz.js';
 
 //import './CreateQuestion.js';
 
@@ -26,7 +27,7 @@ class CreateQuiz extends Component {
     this.deleteQuestion = this.deleteQuestion.bind(this)
   }
   
-  handleChange = (e) => {
+  /*handleChange = (e) => {
     if (["question", "answer"].includes(e.target.className)) {
       let musicquiz = [...this.state.musicquiz]
       musicquiz[e.target.dataset.id][e.target.className] = e.target.value
@@ -34,7 +35,7 @@ class CreateQuiz extends Component {
     } else {
       this.setState({ [e.target.name]: e.target.value })
     }
-  }
+  }*/
 
   addQuestion = (e) => {
     this.setState((prevState) => ({
@@ -137,7 +138,7 @@ class CreateQuiz extends Component {
               )
             })
           }</div>
-          <div className="Confirm" >
+         <div className="Confirm" >
             <Button variant="primary" size="lg" className="ConfirmButton" onClick={() => this.props.SelectQuiz(true)} block>
               <span>Confirm</span>
             </Button>
