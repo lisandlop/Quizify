@@ -136,7 +136,7 @@ class SelectQuiz extends Component {
               <Col xs={12} sm={8} className="quizList">
 
                 {this.state.loading
-                ? <h1>Loading...</h1>
+                ? <h1 id="loadingQuizes">Loading...</h1>
                 : this.state.quizzes.map((quiz, k) => (
                   <Link key={k} to={`${ROUTES.PLAY}/${quiz.id}`}>
                     <Card bg="info" text="white" style={{ marginBottom: '20px' }}>
