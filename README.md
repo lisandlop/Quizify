@@ -45,13 +45,15 @@ Deploys the react app to firebase. Should ony be used from master branch.
 
 ## Development progress :chart_with_upwards_trend:
 
+### First development
+
+### Achievements
 * Setup basic framework (React)
-- [x] Install useful packages (Sass, React-router etc.)
-- [x] Initial layout
-- [x] Configure deployment method
-- [x] Make contant with Spotify API
-- [x] Connect to Firebase Cloudstore
-- [ ] Install Spotify WebPlayer (If needed)
+* Install useful packages (Sass, React-router etc.)
+* Initial layout
+* Configure deployment method
+* Make contant with Spotify API
+* Connect to Firebase Cloudstore
 - [ ] Setup Quizzing components
 - [ ] Make all buttons work
 - [ ] Create a quiz
@@ -60,6 +62,11 @@ Deploys the react app to firebase. Should ony be used from master branch.
 - [ ] ...
 - [ ] ...
 - [ ] ...
+
+* Log in with Spotify account
+* Play a quiz
+  * Filter, search and choose a quiz 
+* 
 
 <br/>
 <br/>
