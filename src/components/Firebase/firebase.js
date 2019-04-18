@@ -82,30 +82,21 @@ class Firebase {
       language: 'Blahonga'
     })
 
-    console.log(musicQuiz)
-
-    for (let index = 0; index < 2; index++) {
+    musicQuiz.map(track => {
       var quizSong = newQuiz.collection('songs').doc();
-      
+
+      var correctPosition = Math.floor(Math.random() * Math.floor(4));
+      var options = track.falseOptions;
+      options.splice(correctPosition, 0, track.answer);
+
       quizSong.set({
-        track: `asdjoasdas${index}`
-      })
-      
-    }
-
+        correctAnswer: correctPosition,
+        options: options,
+        question: track.question,
+        track: track.track
+      }) 
+    })
   }
-
-
-//   db.collection("cities").add({
-//     name: "Tokyo",
-//     country: "Japan"
-// })
-// .then(function(docRef) {
-//     console.log("Document written with ID: ", docRef.id);
-// })
-// .catch(function(error) {
-//     console.error("Error adding document: ", error);
-// });
 };
 
 export default Firebase;

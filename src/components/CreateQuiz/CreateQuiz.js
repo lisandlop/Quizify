@@ -44,7 +44,7 @@ class CreateQuiz extends Component {
 
   handleSubmit = (e) => { 
     e.preventDefault() 
-    this.props.firebase.createNewQuiz(this.state.musicquiz);
+    this.props.firebase.createNewQuiz(this.musicQuiz);
   }
 
   spotifySongSelection = (e) => {
@@ -62,7 +62,7 @@ class CreateQuiz extends Component {
 
   deleteQuestion = (e) => {
     console.log("deleteyay")
-    //addQuestion.remove(this.props.musicquiz);
+    //addQuestion.remove(this.props.musicQuiz);
 
   }
   
