@@ -1,3 +1,7 @@
+#selectaquiz {
+    color: #90ee90; 
+}
+
 .quizList {
     text-align: center; 
     overflow: auto;
@@ -11,6 +15,10 @@
     div.bg-info:hover {
         background-color: #178292!important
     }
+}
+
+#searchBtn {
+    margin: 7px; 
 }
 
 .card-img-overlay {

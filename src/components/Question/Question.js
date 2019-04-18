@@ -80,8 +80,8 @@ class Question extends Component {
 	render() {
 			return (
 				<div className="Question">
-					<h2>{this.state.questionnr !== 0 && `Question nr. ${this.state.questionnr}`}</h2>
-					<h1>{this.state.question}</h1>
+					<h3 id="questionNumber" >{this.state.questionnr !== 0 && `Question nr. ${this.state.questionnr}`}</h3>
+					<h1 id="questionRow" >{this.state.question}</h1>
 					<br/>
 					
 					<Row>

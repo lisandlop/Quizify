@@ -1,18 +1,18 @@
 .LandingPage {
   text-align: center;
-  background-image: url('music_1.png');
+  // background-image: url('music_1.png');
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: futura; 
   
-  
-
-
   #StartOrCreateCol {
     padding: 5em; 
 
     .btn {
       padding: 1em; 
       margin: 1em; 
+      background-color: lightseagreen; 
+      border-color: lightseagreen; 
     }
   }
 }

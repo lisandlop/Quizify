@@ -93,6 +93,7 @@ class SelectQuiz extends Component {
     render() {
       return (
         <Container>
+          <br/>
             <Row>
               <Col xs={12}>
                 <p id="selectaquiz">Select a Quiz</p>
@@ -128,7 +129,7 @@ class SelectQuiz extends Component {
                     </Form.Control> 
                   </Form.Group>
 
-                  <Button variant="primary" type="submit" block>Search</Button>
+                  <Button id="searchBtn" variant="primary" type="submit" block>Search</Button>
                 
                 </Form>
               </Col>
