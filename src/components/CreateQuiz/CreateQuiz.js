@@ -157,17 +157,17 @@ class CreateQuiz extends Component {
             <Form id="QuizForm">
 
               <Form.Group controlId="quizName">
-                <Form.Label>Enter quiz name</Form.Label>
-                <Form.Control type="text" placeholder="Quiz name..." onChange={(e) => this.handleQuizChange(e, 'name')} />
+                <Form.Label>Quiz name:</Form.Label>
+                <Form.Control type="text" placeholder="Set name..." onChange={(e) => this.handleQuizChange(e, 'name')} />
               </Form.Group>
 
               <Form.Group controlId="quizAuthor">
-                <Form.Label>Enter author name</Form.Label>
-                <Form.Control type="text" placeholder="Author name..." onClick={(e) => this.handleQuizChange(e, 'author')} />
+                <Form.Label>Author name:</Form.Label>
+                <Form.Control type="text" placeholder="Set author..." onClick={(e) => this.handleQuizChange(e, 'author')} />
               </Form.Group>
 
               <Form.Group controlId="quizLanguage">
-                <Form.Label>Enter quiz name</Form.Label>
+                <Form.Label>Quiz language:</Form.Label>
                 <Form.Control as="select" onChange={(e) => this.handleQuizChange(e, 'lang')}>
                   <option value="">Set language</option>
                   <option disabled>-----------</option>
