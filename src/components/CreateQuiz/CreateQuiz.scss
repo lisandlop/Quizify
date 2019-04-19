@@ -1,56 +1,40 @@
-.StartQuizButton {
-    //margin-top:200px;
-    padding-top: 50px;
-    padding-bottom:50px;
-    margin: 4px 2px;
-    border-radius: 50%;
-    background-color: lightseagreen;  
-    transform: translateY(4px);
+.CreateQuizPage{
+  .StartQuizButton {
+      //margin-top:200px;
+      padding-top: 50px;
+      padding-bottom:50px;
+      margin: 4px 2px;
+      border-radius: 50%;
+      background-color: lightseagreen;  
+      transform: translateY(4px);
 
-}
+  }
 
-.questionList {
-  text-align: center; 
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-height: calc(75% - 20px);
-  padding-top: 5px;
-  margin-bottom: 10px;
-}
+  .StartQuizButton span { //makes it slow/panning
+      //cursor: pointer;
+      //display: inline-block;
+      //position: relative;
+      transition: 0.5s;
+  }
+    
+  .StartQuizButton:hover span {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
 
-.StartQuizButton span { //makes it slow/panning
-    //cursor: pointer;
-    //display: inline-block;
-    //position: relative;
-    transition: 0.5s;
-}
-  
-.StartQuizButton:hover span {
-  padding-right: 10px;
-  padding-left: 10px;
-}
+  .StartQuizButton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 
-.StartQuizButton:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-
-.StartQuiz {
-  margin: 5em; 
-}
-
-/*#vline {
-  border-left: 4px solid black;
-  height: 80px;
-  
-}*/
+  .StartQuiz {
+    margin: 5em; 
+  }
 
   .Wrong {
     //border-color: red;
     //border-width: 5px;
     background-color: rgb(236, 96, 96)
-
-
   }
 
   #correct {
@@ -59,28 +43,46 @@
     background-color: rgb(96, 236, 108)
   }
 
-.questionList {
-  margin: 5%;
-}
+  .questionList {
+    text-align: center; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(95% - 63px);
+    padding-top: 5px;
+    margin: 10px;
+  }
 
+  .col-sm-3,
+  .col {
+    text-align: center; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100% - 72px);
+  }
 
-.DeleteButton {
-  padding-top: 5px;
-  padding-bottom:5px;
-  border-radius: 50px 50px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-  background-color: transparent;
-  border-color: transparent;
-}
+  .col-sm-3 {
+    padding-top: 5px;
+    padding-bottom: 10px;
+  }
 
-.DeleteButton:hover {
-  background-color: grey;
-}
+  .DeleteButton {
+    padding-top: 5px;
+    padding-bottom:5px;
+    border-radius: 50px 50px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background-color: transparent;
+    border-color: transparent;
+  }
 
-.fa fa-trash {
-  width: 150%;
-  height: 150%;
+  .DeleteButton:hover {
+    background-color: grey;
+  }
 
+  .fa fa-trash {
+    width: 150%;
+    height: 150%;
+
+  }
 }

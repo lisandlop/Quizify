@@ -56,7 +56,7 @@ class CreateQuiz extends Component {
   addQuestion = (e) => {
     let valid = this.validateQuestion(this.questionList[this.questionList.length - 1]);
 
-    if (valid) {
+    if (true) {
       this.questionList.push({ question: '', answer: '', falseOptions: [], track: '' });
       localStorage.setItem('createQuizQuestions', JSON.stringify(this.questionList));
     }
@@ -162,12 +162,12 @@ class CreateQuiz extends Component {
               </Form.Group>
 
               <Form.Group controlId="quizAuthor">
-                <Form.Label>Author name:</Form.Label>
+                <Form.Label>Author:</Form.Label>
                 <Form.Control type="text" placeholder="Set author..." onClick={(e) => this.handleQuizChange(e, 'author')} />
               </Form.Group>
 
               <Form.Group controlId="quizLanguage">
-                <Form.Label>Quiz language:</Form.Label>
+                <Form.Label>Language of questions:</Form.Label>
                 <Form.Control as="select" onChange={(e) => this.handleQuizChange(e, 'lang')}>
                   <option value="">Set language</option>
                   <option disabled>-----------</option>
