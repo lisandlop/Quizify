@@ -133,7 +133,7 @@ Deploys the react app to firebase. Should ony be used from master branch.
       * StartQuiz.js
         <br/>
         Contains a button that starts the quiz.
-      * StartQuiz.sccs*
+      * StartQuiz.sccs
         <br/>
         Styles the startquiz component with Sassy CSS.
   * */constants*
