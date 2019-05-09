@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
+
 import * as ROUTES from '../../constants/routes';
 import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 
@@ -16,6 +17,7 @@ import SpotifySongSelect from '../SpotifySongSelect/SpotifySongSelect';
 import { compose } from 'recompose';
 import { withSpotify } from '../Spotify';
 import { withFirebase } from '../Firebase';
+import { withDragDrop } from '../DragDrop';
 
 
 import './CreateQuiz.scss';
@@ -27,6 +29,7 @@ class CreateQuiz extends Component {
 
     this.quiz = { name: '', author: '', language: '' };
     this.questionList = [{ question: '', answer: '', falseOptions: [], track: '', trackName: '' }];
+    this.modalMessage = {message:''};
 
     if (JSON.parse(localStorage.getItem('createQuizQuestions')))
       this.questionList = JSON.parse(localStorage.getItem('createQuizQuestions'))
@@ -34,7 +37,8 @@ class CreateQuiz extends Component {
     this.state = {
       loading: true,
       selectingSong: false,
-      quizSubmitted: false
+      quizSubmitted: false,
+      handleSubmission: false
     }
 
     this.deleteQuestion = this.deleteQuestion.bind(this)
@@ -84,18 +88,22 @@ class CreateQuiz extends Component {
 
     if(this.quiz.name === '') { 
       flagged = true;
-      alert('Fill in quiz name');
+      this.handleSubmission = true;
+      this.modalMessage.message = 'Fill in quiz name';
     }
     else if (this.quiz.author === '') { 
-      flagged = true; 
+      flagged = true;
+      this.handleSubmission = true;
       alert('Fill in quiz author');
     }
     else if (this.quiz.language === '') { 
       flagged = true;
+      this.handleSubmission = true;
       alert('Fill in quiz language');
     }
     else if (!this.validateQuestion(this.questionList[this.questionList.length - 1])) {
       flagged = true;
+      this.handleSubmission = true;
       alert('Finish or remove the last question.');
     }
 
@@ -140,6 +148,8 @@ class CreateQuiz extends Component {
     this.setState({ loading: false });
   }
 
+  
+
   render() {
     return (
       <Container>
@@ -147,6 +157,9 @@ class CreateQuiz extends Component {
 
         <Modal className="SpotifySongSelect" size="xl" show={this.state.selectingSong} onHide={() => this.spotifySongSelected(true)}>
           {this.state.selectingSong && <SpotifySongSelect selectSong={this.spotifySongSelected} />}
+        </Modal>
+
+        <Modal className="SubmissionMessage" size="xl" show={this.state.handleSubmission}>
         </Modal>
 
         <Row>
