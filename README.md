@@ -1,5 +1,7 @@
 # [Quizify](https://kthquizify.firebaseapp.com)
 
+Take a quiz: https://kthquizify.firebaseapp.com!
+
 ## First time setup :floppy_disk:
 ```
 git clone git@github.com:kthquizify/Quizify.git
