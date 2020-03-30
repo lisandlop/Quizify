@@ -1,6 +1,7 @@
 # [Quizify](https://kthquizify.firebaseapp.com)
 
 Take a quiz: https://kthquizify.firebaseapp.com! (use Google Chrome for sound to work)
+
 A web music quiz where the user can play and create quizzes to share.
 
 The web app is using Spotify API and it is built in ReactJs (JavaScript, HTML, CSS). 
