@@ -1,6 +1,6 @@
 # [Quizify](https://kthquizify.firebaseapp.com)
 
-Take a quiz: https://kthquizify.firebaseapp.com!
+Take a quiz: https://kthquizify.firebaseapp.com! (use Google Chrome for sound to work)
 
 ## First time setup :floppy_disk:
 ```
